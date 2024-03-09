@@ -94,9 +94,15 @@ function App() {
             <VscArrowCircleRight className="subscription-arrow-icon" />
           </form>
           <div className="social-icons-container">
-            <LiaFacebook className="social-icon facebook-icon" />
-            <CiTwitter className="social-icon twitter-icon" />
-            <CiYoutube className="social-icon youtube-icon" />
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+              <LiaFacebook className="social-icon facebook-icon" />
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+              <CiTwitter className="social-icon twitter-icon" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer">
+              <CiYoutube className="social-icon youtube-icon" />
+            </a>
           </div>
         </div>
       </footer>
