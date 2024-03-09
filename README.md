@@ -1,3 +1,5 @@
+![appJs](https://github.com/anikobakhidze/react-accelerator/assets/80447919/628af01c-bf64-4805-aea2-5cf03b1067b6)
+
 CRA -ის ინსტალაციის შემდეგ გასუფთავებულია პროექტის სტრუქტურა არასასურველი ფაილების, სტილებისა და jsx-გან.
 App.js ფაილში მოცემულია ერთი landing-page, სადაც განთავსებულია ვებ-გვერდზე არსებული მინიმალური ინფორმაცია
 (jsx-ის სინტაქსით დაწერილი header, main content, footer).
