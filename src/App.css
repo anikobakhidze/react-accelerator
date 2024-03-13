@@ -2,59 +2,77 @@
 .header-container {
   @apply w-full h-16 flex place-items-center justify-around bg-gray-100 fixed border-b-2 border-solid border-black;
 }
-.nav-container {
+
+.nav-header-container {
   @apply w-2/6;
 }
+
 .nav-list-container {
   @apply flex justify-between;
 }
+
 .nav-list {
   @apply transition-all duration-300 hover:font-bold w-16 text-center;
 }
+
 .header-icons-container {
   @apply flex justify-between w-24;
 }
+
 .header-icon {
-  @apply w-6 h-6 cursor-pointer hover:scale-125  transition-all;
+  @apply w-6 h-6 cursor-pointer hover:scale-125 transition-all;
 }
+
 /* main section */
 .main-content {
   @apply flex flex-col items-center bg-gray-100 h-screen pt-16;
 }
+
 .section-container {
   @apply w-4/5;
 }
+
 .section-heading {
-  @apply text-xl font-bold mb-2  pt-16;
+  @apply text-xl font-bold mb-2 pt-16;
 }
+
 /* footer section */
 .footer-container {
   @apply flex place-items-center justify-around bg-gray-900 text-white pb-6;
 }
+
 .footer-link {
   @apply transition-colors duration-300 hover:text-gray-300;
 }
+
 .subscription-container {
   @apply relative flex flex-col;
 }
+
 .subscription-input {
   @apply p-2 pr-8 rounded-lg outline-none text-gray-900 mt-2;
 }
+
 .subscription-arrow-icon {
   @apply absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-green-500 hover:scale-125;
 }
+
 .social-icons-container {
   @apply flex pt-4 gap-2.5;
 }
+
 .social-icon {
   @apply w-8 h-8 cursor-pointer hover:scale-125 transition-all duration-300;
 }
+
 .facebook-icon {
   @apply hover:text-blue-700;
 }
+
 .twitter-icon {
   @apply hover:text-blue-400;
 }
+
 .youtube-icon {
   @apply hover:text-red-700;
 }
