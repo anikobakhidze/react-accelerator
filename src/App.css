@@ -23,16 +23,17 @@
   @apply w-6 h-6 cursor-pointer hover:scale-125 transition-all;
 }
 
-/* main section */
+/* main articles */
 .main-content {
-  @apply flex flex-col items-center bg-gray-100 h-screen pt-16;
+  @apply bg-gray-100 h-screen pt-16;
 }
-
-.section-container {
-  @apply w-4/5;
+.articles-section-container {
+  @apply mx-auto w-4/5 mt-10;
 }
-
-.section-heading {
+.articles-section-heading {
+  @apply text-xl text-center font-bold;
+}
+.article-heading {
   @apply text-xl font-bold mb-2 pt-16;
 }
 
