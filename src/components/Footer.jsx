@@ -4,7 +4,6 @@ import { VscArrowCircleRight } from "react-icons/vsc";
 import { LiaFacebook } from "react-icons/lia";
 import { CiTwitter, CiYoutube } from "react-icons/ci";
 import Logo from "./Logo";
-import List from "./List";
 function Footer() {
   return (
     <footer className="footer-container">
@@ -13,10 +12,14 @@ function Footer() {
         <nav>
           <ul>
             <li>
-              <a href="/">Terms & Conditions</a>
+              <a href="/" className="footer-link">
+                Terms & Conditions
+              </a>
             </li>
-            <li>
-              <a href="/">Privacy & Policy</a>
+            <li className="my-2">
+              <a href="/" className="footer-link">
+                Privacy & Policy
+              </a>
             </li>
           </ul>
         </nav>

@@ -3,7 +3,7 @@
   @apply w-full h-16 flex place-items-center justify-around bg-gray-100 fixed border-b-2 border-solid border-black;
 }
 
-.nav-header-container {
+.nav-container {
   @apply w-2/6;
 }
 
