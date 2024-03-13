@@ -12,8 +12,12 @@ function Footer() {
         <Logo logo={footerLogo} />
         <nav>
           <ul>
-            <List className="footer-link" text="Terms & Conditions" />
-            <List className="footer-link " text=" Privacy & Policy" />
+            <li>
+              <a href="/">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="/">Privacy & Policy</a>
+            </li>
           </ul>
         </nav>
         <p>&copy; 2024</p>
