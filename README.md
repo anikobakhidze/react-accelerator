@@ -1,6 +1,6 @@
-![appJs](https://github.com/anikobakhidze/react-accelerator/assets/80447919/628af01c-bf64-4805-aea2-5cf03b1067b6)
+![screenshot](https://github.com/anikobakhidze/react-accelerator/assets/80447919/210e0254-6d5f-4c19-b386-b69e05ecd7a4)
+articles სექციის დამატება 
 
-App.js ფაილში მოცემული ერთი landing-page-ის განაწილება კომპონენტებში. components ფაილში თავმოყრილია, ყველა  ის შექმნილი  კომპონენტი, რომელიც საჭირო იყო ჩვენი აპლიკაციის რეფაქტორინგისთვის.
 ## პროექტის გაშვება
 
 1. დაკლონეთ რეპოზიტორი გითჰაბ ბმულიდან
