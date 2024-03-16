@@ -3,9 +3,12 @@ import ProductCard from "./ProductCard";
 
 function ProductList() {
   return (
-    <ul className="grid grid-cols-4 h-screen gap-8">
+    <ul className="grid grid-cols-3 h-screen  gap-y-6">
       {productList.map((product) => (
-        <li key={product.id}>
+        <li
+          key={product.id}
+          className="mx-auto shadow-md shadow-[#1c5858] rounded-xl"
+        >
           <ProductCard product={product} />
         </li>
       ))}
