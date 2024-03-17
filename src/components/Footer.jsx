@@ -1,24 +1,36 @@
-import React from "react";
 import footerLogo from "../assets/images/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
-import { LiaFacebook } from "react-icons/lia";
-import { CiTwitter, CiYoutube } from "react-icons/ci";
 import Logo from "./Logo";
+import SocialIcons from "./SocialIcons";
 function Footer() {
   return (
-    <footer className="footer-container">
+    <footer className="flex place-items-center justify-around bg-[#1c5858] text-white pb-6">
       <div>
         <Logo logo={footerLogo} />
         <nav>
           <ul>
             <li>
-              <a href="/" className="footer-link">
+              <a
+                href="/"
+                className="transition-colors duration-300 hover:text-gray-300"
+              >
                 Terms & Conditions
               </a>
             </li>
             <li className="my-2">
-              <a href="/" className="footer-link">
+              <a
+                href="/"
+                className="transition-colors duration-300 hover:text-gray-300"
+              >
                 Privacy & Policy
+              </a>
+            </li>
+            <li className="my-2">
+              <a
+                href="/"
+                className="transition-colors duration-300 hover:text-gray-300"
+              >
+                Contact
               </a>
             </li>
           </ul>
@@ -26,27 +38,17 @@ function Footer() {
         <p>&copy; 2024</p>
       </div>
       <div>
-        <form className="subscription-container">
+        <form className="relative flex flex-col">
           <label htmlFor="subscription">Get Newsletter Updates</label>
           <input
             id="subscription"
-            className="subscription-input"
+            className="p-2 pr-8 rounded-lg outline-none text-gray-900 mt-2"
             type="email"
             placeholder="Subscribe"
           />
-          <VscArrowCircleRight className="subscription-arrow-icon" />
+          <VscArrowCircleRight className=" absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-[#53b1b1] hover:scale-125" />
         </form>
-        <div className="social-icons-container">
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-            <LiaFacebook className="social-icon facebook-icon" />
-          </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
-            <CiTwitter className="social-icon twitter-icon" />
-          </a>
-          <a href="https://www.youtube.com" target="_blank" rel="noreferrer">
-            <CiYoutube className="social-icon youtube-icon" />
-          </a>
-        </div>
+        <SocialIcons />
       </div>
     </footer>
   );

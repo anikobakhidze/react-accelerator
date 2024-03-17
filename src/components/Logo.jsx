@@ -1,8 +1,8 @@
 import React from "react";
 
-function Logo({ href = "/", logo }) {
+function Logo({ logo }) {
   return (
-    <a href={href}>
+    <a href="/">
       <img src={logo} alt="logo" />
     </a>
   );
