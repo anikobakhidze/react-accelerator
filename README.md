@@ -1,5 +1,6 @@
-![screenshot](https://github.com/anikobakhidze/react-accelerator/assets/80447919/210e0254-6d5f-4c19-b386-b69e05ecd7a4)
-articles სექციის დამატება 
+![image](https://github.com/anikobakhidze/react-accelerator/assets/80447919/5eb34dc5-e815-41ec-a07f-784bfcd5aeba)
+
+Non scrolling გვერდის დამატება
 
 ## პროექტის გაშვება
 
