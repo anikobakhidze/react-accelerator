@@ -5,7 +5,7 @@ import SearchBar from "./components/SearchBar.jsx";
 import AppRoutes from "./AppRoutes.js";
 function App() {
   return (
-    <main className="flex flex-col max-h-screen bg-gray-100 ">
+    <main className="flex flex-col h-screen bg-gray-100 ">
       <Header />
       <SearchBar />
       <AppRoutes />
