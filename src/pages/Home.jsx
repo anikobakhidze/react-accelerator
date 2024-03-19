@@ -1,4 +1,5 @@
-import ProductList from "./ProductList";
+import React from "react";
+import ProductList from "../components/ProductList";
 function Home() {
   return (
     <section className="overflow-auto w-4/5 mx-auto py-10 ">

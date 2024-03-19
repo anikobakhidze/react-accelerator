@@ -5,6 +5,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FiSun } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import HeaderButton from "./HeaderButton";
+import routesData from "../constants/routesData";
 function Header() {
   return (
     <header className="flex justify-around items-center h-20 pt-6">
@@ -21,7 +22,7 @@ function Header() {
             <a href="/">About</a>
           </li>
           <li className="w-16 transition-all duration-300 hover:font-bold text-center">
-            <a href="/">Contact</a>
+            <a href={routesData.CONTACT}>Contact</a>
           </li>
         </ul>
       </nav>

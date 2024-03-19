@@ -1,4 +1,4 @@
-import productList from "../utils/productsList";
+import productList from "../constants/productsList";
 import ProductCard from "./ProductCard";
 
 function ProductList() {

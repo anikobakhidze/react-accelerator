@@ -1,7 +1,6 @@
 const productList = [
   {
     id: 1,
-
     title: "iPhone 13",
     description:
       "The iPhone 13 features a 6.1-inch Super Retina XDR display, A15 Bionic chip, and dual-camera system.",
