@@ -4,6 +4,7 @@ const contactData = [
     title: "(+995)577000000",
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, maiores.",
+    href: "tel:+995577000000",
   },
   {
     type: "email",
@@ -11,6 +12,7 @@ const contactData = [
     title: "example@example.com",
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, maiores.",
+    href: "mailto:example@example.com",
   },
   {
     type: "address",
