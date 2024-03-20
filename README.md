@@ -1,6 +1,6 @@
-![image](https://github.com/anikobakhidze/react-accelerator/assets/80447919/5eb34dc5-e815-41ec-a07f-784bfcd5aeba)
 
-Non scrolling გვერდის დამატება
+<img width="1591" alt="contactPage" src="https://github.com/anikobakhidze/react-accelerator/assets/80447919/2b61bbe6-cbc0-4d75-bc0d-511e83342d85">
+Contact page -ის დამატება
 
 ## პროექტის გაშვება
 
