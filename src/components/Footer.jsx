@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import SocialIcons from "./SocialIcons";
 function Footer() {
   return (
-    <footer className="flex place-items-center justify-around bg-[#1c5858] text-white pb-6">
+    <footer className="flex place-items-center justify-around bg-[#1c5858] text-white pb-6 my-auto">
       <div>
         <Logo logo={footerLogo} />
         <nav>

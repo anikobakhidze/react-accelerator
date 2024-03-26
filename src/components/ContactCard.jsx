@@ -2,8 +2,8 @@ import React from "react";
 import { AiOutlinePhone } from "react-icons/ai";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { FiMapPin } from "react-icons/fi";
+import { Link } from "react-router-dom";
 function ContactCard({ data: { type, title, paragraph, href } }) {
-  console.log(href);
   let image;
   switch (type) {
     case "mobile":
@@ -19,12 +19,12 @@ function ContactCard({ data: { type, title, paragraph, href } }) {
       image = null;
   }
   return (
-    <div className="w-80 rounded-xl odd:bg-[#5f8d8f] even:bg-[#c7d8dc] p-8">
+    <div className="w-80 rounded-xl odd:bg-medium-green even:bg-light-green p-8">
       <h3 className="flex items-center justify-center pb-6 font-bold  text-lg gap-3">
         {href ? (
-          <a href={href} className="flex items-center gap-3">
+          <Link to={href} className="flex items-center gap-3">
             {image} {title}
-          </a>
+          </Link>
         ) : (
           <>
             {image}
