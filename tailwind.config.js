@@ -8,6 +8,10 @@ module.exports = {
         800: "800px",
         "48%": "48%",
       },
+      colors: {
+        "light-green": "#c7d8dc",
+        "medium-green": "#5f8d8f",
+      },
     },
   },
   plugins: [],
