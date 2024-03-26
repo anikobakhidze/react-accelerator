@@ -1,6 +1,6 @@
 
-<img width="1591" alt="contactPage" src="https://github.com/anikobakhidze/react-accelerator/assets/80447919/2b61bbe6-cbc0-4d75-bc0d-511e83342d85">
-Contact page -ის დამატება
+![user-profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/6ddb0cad-d61f-4377-affd-3a4b844038ff)
+მომხმარებლის პროფილის გვერდის  დამატება
 
 ## პროექტის გაშვება
 
