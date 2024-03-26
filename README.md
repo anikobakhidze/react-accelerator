@@ -1,6 +1,7 @@
-![user-profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/6ddb0cad-d61f-4377-affd-3a4b844038ff)
 
-მომხმარებლის პროფილის გვერდის დამატება
+![user-profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/4270ba41-1b0c-49f4-b448-60bf7b5bc033)
+მომხმარებლის პროფილის გვერდის  დამატება
+
 
 ## პროექტის გაშვება
 
