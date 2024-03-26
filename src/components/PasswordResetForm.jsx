@@ -23,7 +23,7 @@ function PasswordResetForm() {
         placeholder="Confirm Password"
       />
       <button className="bg-medium-green text-white h-12 rounded-full text-xl hover:bg-teal-800">
-        Save profile
+        Reset Password
       </button>
     </fieldset>
   );

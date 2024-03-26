@@ -4,10 +4,8 @@ import UserProfileInfo from "./UserProfileInfo";
 
 function UserProfileSettings() {
   return (
-    <section className="flex flex-1 flex-col bg-light-green py-14 ">
-      <h2 className="text-center text-3xl font-bold text-teal-800 mb-12">
-        User Profile
-      </h2>
+    <section className="flex flex-1 flex-col items-center justify-center bg-light-green py-14 ">
+      <h2 className="text-3xl font-bold text-teal-800 mb-12">User Profile</h2>
       <div className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-between rounded-3xl items-center">
         <img
           src={defaultUserImage}
