@@ -3,7 +3,7 @@ import routesData from "../constants/routesData";
 import { NavLink } from "react-router-dom";
 function HeaderNavigationList() {
   return (
-    <nav className="w-2/6">
+    <nav className="w-96">
       <ul className="flex justify-between ">
         <li className="w-16 transition-all duration-300 hover:font-bold text-center">
           <NavLink to="/">Home</NavLink>

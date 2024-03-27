@@ -11,12 +11,12 @@ import routesData from "../constants/routesData";
 function Header() {
   const navigate = useNavigate();
   return (
-    <header className="flex justify-around items-center h-20 pt-6">
+    <header className="flex justify-around items-center h-20 pt-6 ">
       <Logo logo={logo} />
       <HeaderNavigationList />
       <div className="w-28 flex justify-between">
         <HeaderButton onClick={() => navigate(routesData.USERPROFILE)}>
-          <AiOutlineUser className="w-5 h-5" />
+          <AiOutlineUser className="w-5 h-5 " />
         </HeaderButton>
         <HeaderButton>
           <FaCartShopping />
