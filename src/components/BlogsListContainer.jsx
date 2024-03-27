@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 
 function BlogsListContainer() {
   return (
-    <section>
+    <section className="overflow-auto">
       <h2 className="text-2xl font-bold text-center my-10">
         iPhone Insights: Stay Updated with the Latest Blogs
       </h2>
