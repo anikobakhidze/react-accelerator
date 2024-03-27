@@ -1,20 +1,25 @@
 import React from "react";
 import routesData from "../constants/routesData";
+import { NavLink } from "react-router-dom";
 function HeaderNavigationList() {
   return (
-    <nav className="w-80">
-      <ul className="flex justify-around ">
+    <nav className="w-96">
+      <ul className="flex justify-between ">
         <li className="w-16 transition-all duration-300 hover:font-bold text-center">
-          <a href="/">Home</a>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className="w-16 transition-all duration-300 hover:font-bold text-center">
-          <a href="/">Products</a>
+          <NavLink to="/products">Products</NavLink>
         </li>
         <li className="w-16 transition-all duration-300 hover:font-bold text-center">
-          <a href="/">About</a>
+          <NavLink to="/about">About</NavLink>
         </li>
-        <li className="w-16 transition-all duration-300 hover:font-bold text-center">
-          <a href={routesData.CONTACT}>Contact</a>
+
+        <li className="w-16 transition-all duration-300 hover:font-bold text-center active:font-bold ">
+          <NavLink to={routesData.CONTACT}>Contact</NavLink>
+        </li>
+        <li className="w-16 transition-all duration-300 hover:font-bold text-center ">
+          <NavLink to={routesData.BLOGS}>Blogs</NavLink>
         </li>
       </ul>
     </nav>
