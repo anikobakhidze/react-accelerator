@@ -1,5 +1,5 @@
-![user-profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/4270ba41-1b0c-49f4-b448-60bf7b5bc033)
-მომხმარებლის პროფილის გვერდის დამატება
+<img width="1758" alt="Screenshot 2024-03-27 at 15 22 37" src="https://github.com/anikobakhidze/react-accelerator/assets/80447919/3d616938-a169-45a8-a6b5-bcd35ddc15cc">
+ბლოგის გვერდის დამატება
 
 ## პროექტის გაშვება
 
