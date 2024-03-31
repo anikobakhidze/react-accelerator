@@ -7,7 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import HeaderButton from "./HeaderButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import { useNavigate } from "react-router-dom";
-import routesData from "../constants/routesData";
+import routesData from "../data/routesData";
 function Header() {
   const navigate = useNavigate();
   return (

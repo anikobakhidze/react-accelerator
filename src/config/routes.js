@@ -1,4 +1,4 @@
-import routesData from "../constants/routesData";
+import routesData from "../data/routesData";
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import UserProfile from "../pages/UserProfile";

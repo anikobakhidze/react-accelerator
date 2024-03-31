@@ -1,5 +1,5 @@
 import React from "react";
-import contactData from "../constants/contactData";
+import contactData from "../data/contactData";
 import ContactUsForm from "../components/ContactUsForm";
 import ContactCard from "../components/ContactCard";
 import SocialIcons from "../components/SocialIcons";
