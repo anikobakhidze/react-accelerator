@@ -25,7 +25,10 @@ function SearchBar({ onClick, setSortProducts, productList }) {
   }, [searchInput, setSortProducts, productList]);
 
   const handleChange = (e) => {
-    setSearchInput(e.target.value);
+    const newSearchInput = e.target.value;
+    setSearchInput((prevSearchInput) =>
+      newSearchInput !== prevSearchInput ? newSearchInput : prevSearchInput
+    );
   };
 
   return (
