@@ -21,6 +21,13 @@ const productList = [
     price: 699,
   },
   {
+    id: 4,
+    title: "Apple Watch Series 7",
+    description:
+      "The Apple Watch Series 7 features a larger, more durable display, advanced health features, and fast charging.",
+    price: 399,
+  },
+  {
     id: 5,
     title: "iPhone 15 Pro Max",
     description:
@@ -42,6 +49,13 @@ const productList = [
     price: 899,
   },
   {
+    id: 8,
+    title: "AirPods Pro",
+    description:
+      "The AirPods Pro feature active noise cancellation, transparency mode, and customizable fit.",
+    price: 249,
+  },
+  {
     id: 9,
     title: "iPhone 14 Pro Max",
     description:
@@ -61,6 +75,13 @@ const productList = [
     description:
       "The iPhone 14 features a 6.1-inch Super Retina XDR display, A16 Bionic chip, and dual-camera system. ",
     price: 899,
+  },
+  {
+    id: 12,
+    title: "AirPods Max",
+    description:
+      "The AirPods Max feature high-fidelity audio, adaptive EQ, and spatial audio with dynamic head tracking.",
+    price: 549,
   },
 ];
 

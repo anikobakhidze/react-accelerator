@@ -1,5 +1,4 @@
-import React from "react"; // Import React if not already imported
-import blogsData from "../constants/blogsData";
+import blogsData from "../data/blogsData";
 import BlogCard from "./BlogCard";
 
 function BlogsListContainer() {
