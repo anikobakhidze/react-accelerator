@@ -1,9 +1,11 @@
-მომხმარებლის პროფილის გვერდის  დამატება ; მომხმარებლის პროფილის გვერდზე გადასასვლელად დააჭირეთ ჰედერში user - ის იკონკას
-![user-profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/4270ba41-1b0c-49f4-b448-60bf7b5bc033)
+პროფილის გვერდის ყველა ინფუთი მუშაობს useState hook -ის გამოყენებით 
+![profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/3cff3356-3de3-4a59-8d20-a60e9b8f5752)
 
 
-<img width="1758" alt="Screenshot 2024-03-27 at 15 22 37" src="https://github.com/anikobakhidze/react-accelerator/assets/80447919/3d616938-a169-45a8-a6b5-bcd35ddc15cc">
-ბლოგის გვერდის დამატება
+მთავარ გვერდზე პროდუქტები ისორტება ფასის მიხედვით ლაგდებოდეს, ხელმეორედ დაჭერის დროს reset-ება სთეითი,
+![sortItems](https://github.com/anikobakhidze/react-accelerator/assets/80447919/53ff11c9-fa82-453c-8b5f-893765623729)
+ასევე მთავარ გვერდზე გვაქვს debounce ფუნქციონალი ძიების ინფუთი, რომლის მეშვეობითაც აითემები  იფილტრება ავტომატურად ყოველ key stroke-ზე 
+![filterItems](https://github.com/anikobakhidze/react-accelerator/assets/80447919/7809664b-aa4a-4683-ae2a-e1b0ac6bd2d7)
 
 ## პროექტის გაშვება
 
