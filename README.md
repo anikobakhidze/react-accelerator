@@ -1,25 +1,36 @@
-პროფილის გვერდის ყველა ინფუთი მუშაობს useState hook -ის გამოყენებით 
-![profile](https://github.com/anikobakhidze/react-accelerator/assets/80447919/3cff3356-3de3-4a59-8d20-a60e9b8f5752)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Getting Started
 
-მთავარ გვერდზე პროდუქტები ისორტება ფასის მიხედვით ლაგდებოდეს, ხელმეორედ დაჭერის დროს reset-ება სთეითი,
-![sortItems](https://github.com/anikobakhidze/react-accelerator/assets/80447919/53ff11c9-fa82-453c-8b5f-893765623729)
-ასევე მთავარ გვერდზე გვაქვს debounce ფუნქციონალი ძიების ინფუთი, რომლის მეშვეობითაც აითემები  იფილტრება ავტომატურად ყოველ key stroke-ზე 
-![filterItems](https://github.com/anikobakhidze/react-accelerator/assets/80447919/7809664b-aa4a-4683-ae2a-e1b0ac6bd2d7)
+First, run the development server:
 
-## პროექტის გაშვება
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-1. დაკლონეთ რეპოზიტორი გითჰაბ ბმულიდან
-   https://github.com/anikobakhidze/react-accelerator
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-ან თქვენს ტერმინალში პირდაპირ გაუშვით ბრძანება
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-git clone https://github.com/anikobakhidze/react-accelerator
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-2. დაკლონილი პროექტი გახსენით VS კოდის ედიტორში
+## Learn More
 
-3. ტერმინალში გაუშვით ბრძანება npm i , რათა დაინსტალირდეს ყველა ის ბიბლიოთება, tool-ები რაც არსებობს package.json ფაილში
+To learn more about Next.js, take a look at the following resources:
 
-4. პროექტის ბრაუზერში გასახსნელად ტერმინალში გაუშვით ბრძანება npm start
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-5. პროექტი გაიხსნება ბრაუზერში http://localhost:3000 მსგავს ლოკალურ მისამართზე
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
