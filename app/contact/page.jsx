@@ -1,10 +1,13 @@
 import React from "react";
-import contactData from "../data/contactData";
-import ContactUsForm from "../components/ContactUsForm";
-import ContactCard from "../components/ContactCard";
-import SocialIcons from "../components/SocialIcons";
-
-function Contact() {
+import contactData from "../../data/contactData";
+import ContactUsForm from "../../components/ContactUsForm";
+import ContactCard from "../../components/ContactCard";
+import SocialIcons from "../../components/SocialIcons";
+export const metadata = {
+  title: "Contact Us",
+  description: "Contact page",
+};
+export default function Contact() {
   return (
     <section className="flex flex-col overflow-auto items-center ">
       <div className="flex flex-col justify-center items-center h-80 w-full font-bold bg-[#c7d8dc] pb-10">
@@ -20,5 +23,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;
