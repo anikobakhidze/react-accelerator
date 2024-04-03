@@ -1,10 +1,11 @@
 import React from "react";
-
+import Image from "next/image";
+import Link from "next/link";
 function Logo({ logo }) {
   return (
-    <a href="/">
-      <img src={logo} alt="logo" />
-    </a>
+    <Link href="/">
+      <Image src={logo} alt="logo" priority={false} />
+    </Link>
   );
 }
 

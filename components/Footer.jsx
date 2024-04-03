@@ -1,7 +1,8 @@
-import footerLogo from "../assets/images/footerLogo.png";
+import footerLogo from "../public/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
 import Logo from "./Logo";
 import SocialIcons from "./SocialIcons";
+import Link from "next/link";
 function Footer() {
   return (
     <footer className="flex place-items-center justify-around bg-[#1c5858] text-white pb-6 my-auto">
@@ -10,28 +11,28 @@ function Footer() {
         <nav>
           <ul>
             <li>
-              <a
+              <Link
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
                 Terms & Conditions
-              </a>
+              </Link>
             </li>
             <li className="my-2">
-              <a
+              <Link
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
                 Privacy & Policy
-              </a>
+              </Link>
             </li>
             <li className="my-2">
-              <a
+              <Link
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

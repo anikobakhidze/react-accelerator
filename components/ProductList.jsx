@@ -1,4 +1,3 @@
-// import productList from "../data/productsList";
 import ProductCard from "./ProductCard";
 
 function ProductList({ sortProducts }) {
