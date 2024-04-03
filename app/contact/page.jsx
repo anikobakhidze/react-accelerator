@@ -4,7 +4,7 @@ import ContactUsForm from "../../components/ContactUsForm";
 import ContactCard from "../../components/ContactCard";
 import SocialIcons from "../../components/SocialIcons";
 
-function Contact() {
+export default function Contact() {
   return (
     <section className="flex flex-col overflow-auto items-center ">
       <div className="flex flex-col justify-center items-center h-80 w-full font-bold bg-[#c7d8dc] pb-10">
@@ -20,5 +20,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

@@ -2,7 +2,6 @@ import React from "react";
 import { AiOutlinePhone } from "react-icons/ai";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { FiMapPin } from "react-icons/fi";
-import { Link } from "next/navigation";
 function ContactCard({ data: { type, title, paragraph, href } }) {
   let image;
   switch (type) {
