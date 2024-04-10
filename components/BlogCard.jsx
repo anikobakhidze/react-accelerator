@@ -1,6 +1,7 @@
 import defaultBlogImage from "../public/defaultBlogImage.webp";
 import Image from "next/image";
-function BlogCard({ blog: { title, description, publicationDate } }) {
+import BlogsCardReadMoreBtn from "./BlogCardReadMoreBtn";
+function BlogCard({ blog: { id, title, body, publicationDate = "10.01.24" } }) {
   return (
     <>
       <Image
@@ -11,14 +12,12 @@ function BlogCard({ blog: { title, description, publicationDate } }) {
         height={212}
         priority={false}
       />
-      <div className="p-6 min-h-64 flex flex-col items-stretch justify-between">
+      <div className="p-6 min-h-64 flex flex-col  justify-between">
         <h2 className="font-bold mb-3 text-xl">{title}</h2>
-        <p className="text-gray-800">{description}</p>
+        <p className="text-gray-800 max-h-28 overflow-hidden">{body}</p>
         <div className="flex justify-between mt-6">
           <span className="text-gray-400">{publicationDate}</span>
-          <button className="text-teal-700 hover:text-teal-500">
-            Read More...
-          </button>
+          <BlogsCardReadMoreBtn id={id} />
         </div>
       </div>
     </>

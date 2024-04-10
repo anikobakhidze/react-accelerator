@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 function Footer() {
   return (
-    <footer className="flex place-items-center justify-around bg-[#1c5858] text-white pb-6 ">
+    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 ">
       <div>
         <Link href="/">
           <Image src={footerLogo} alt="logo" width={150} height={100} />

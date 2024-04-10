@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-function ProductList({ sortProducts }) {
+function ProductList() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     async function getProducts() {
@@ -13,7 +13,7 @@ function ProductList({ sortProducts }) {
     getProducts();
   }, []);
   return (
-    <ul className="grid grid-cols-3 h-screen  gap-y-6">
+    <ul className="grid grid-cols-3 h-screen  gap-y-8 cursor-pointer">
       {products.map((product) => (
         <li
           key={product.id}
