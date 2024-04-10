@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-// import blogsData from "../data/blogsData";
 import BlogCard from "./BlogCard";
 
 function BlogsListContainer() {

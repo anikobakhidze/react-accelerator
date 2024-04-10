@@ -18,16 +18,11 @@ export default function BlogsDetailPage({ params: { blogsId } }) {
       <h2 className="text-dark-green w-4/5 mx-auto text-3xl font-bold mb-10 first-letter:capitalize my-10">
         Blog {blog.id}
       </h2>
+
       <div className="flex flex-col gap-10 w-4/5  mx-auto">
         <div>
-          <Image
-            src={defaultBlogImage}
-            alt={blog.title}
-            width={500}
-            height={500}
-          />
+          <Image src={defaultBlogImage} alt="blog" width={500} height={500} />
         </div>
-
         <h3 className="font-bold text-xl mr-10 text-dark-green ">
           {blog.title}
         </h3>
