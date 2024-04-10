@@ -1,14 +1,24 @@
-import blogsData from "../data/blogsData";
+"use client";
+import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 
 function BlogsListContainer() {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    async function getBlog() {
+      const resp = await fetch("https://dummyjson.com/posts");
+      const blogs = await resp.json();
+      setBlogs(blogs.posts);
+    }
+    getBlog();
+  });
   return (
     <section className="overflow-auto">
       <h2 className="text-2xl font-bold text-center my-10">
-        iPhone Insights: Stay Updated with the Latest Blogs
+        Stay Updated with the Latest Blogs
       </h2>
       <ul className="w-4/5 grid grid-cols-1 md:w-[90%] md:gap-10 md:grid-cols-2 xl:grid-cols-3 gap-14 mx-auto my-10">
-        {blogsData.map((blog) => {
+        {blogs.map((blog) => {
           return (
             <li
               key={blog.id}

@@ -26,7 +26,7 @@ function HomePageContainer() {
       <h2 className="text-xl font-bold mb-12 ">
         Innovate Your Life with the iPhone Series
       </h2>
-      <ProductList sortProducts={sortProducts} />
+      <ProductList />
     </section>
   );
 }
