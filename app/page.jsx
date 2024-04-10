@@ -1,5 +1,4 @@
-import HomePageContainer from "@/components/HomePageContainer";
-import "tailwindcss/tailwind.css";
+import HomePageContainer from "../components/HomePageContainer";
 
 export default function Home() {
   return <HomePageContainer />;

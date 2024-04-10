@@ -3,7 +3,7 @@ import UserProfileInfo from "./UserProfileInfo";
 import Image from "next/image";
 function UserProfileSettings() {
   return (
-    <section className="flex flex-1 flex-col bg-light-green py-14 ">
+    <section className="flex  flex-1 flex-col bg-light-green py-14 ">
       <h2 className="text-center text-3xl font-bold text-teal-800 mb-12">
         User Profile
       </h2>

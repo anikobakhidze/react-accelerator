@@ -3,10 +3,7 @@ import contactData from "../../data/contactData";
 import ContactUsForm from "../../components/ContactUsForm";
 import ContactCard from "../../components/ContactCard";
 import SocialIcons from "../../components/SocialIcons";
-export const metadata = {
-  title: "Contact Us",
-  description: "Contact page",
-};
+
 export default function Contact() {
   return (
     <section className="flex flex-col overflow-auto items-center ">
