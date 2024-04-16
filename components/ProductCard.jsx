@@ -16,8 +16,9 @@ function ProductCard({
           <Image
             src={thumbnail}
             alt={title}
-            className=" rounded-t-[12px] mb-2"
+            className="rounded-t-[12px] mb-2"
             fill
+            sizes="(max-width: 768px) 100vw, 300px"
           />
         </div>
         <h3 className="font-bold text-center text-[#3f3b35]">{title}</h3>
