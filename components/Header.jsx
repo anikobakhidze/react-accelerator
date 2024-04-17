@@ -9,6 +9,8 @@ import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
 import { logout } from "@/app/actions";
+import LogOutBtn from "./LogOutBtn";
+
 async function Header() {
   const handleLogOut = async () => {
     "use server";
@@ -35,7 +37,7 @@ async function Header() {
       <button className="hidden md:hidden">
         <GiHamburgerMenu />
       </button>
-      <button onClick={handleLogOut}>LogOut</button>
+      <LogOutBtn handleLogOut={handleLogOut} />
     </header>
   );
 }

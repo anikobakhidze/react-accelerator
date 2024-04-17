@@ -9,10 +9,9 @@ export const metadata = {
   description: "homework",
 };
 export default function DashboardLayout({ children }) {
-  // const cookieStore = cookies();
-  // const cookie = cookieStore.get(AUTH_COOKIE_KEY);
-  // if (!cookie) redirect("/login");
-  // console.log(cookie);
+  const cookieStore = cookies();
+  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
+  if (!cookie) redirect("/login");
   return (
     <main className="flex flex-col justify-between min-h-screen">
       <Header />

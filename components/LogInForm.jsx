@@ -1,39 +1,65 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 function LogInForm({ handleLogIn }) {
-  const [user, setUser] = useState({ username: " ", password: " " });
+  const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = (e) => {
     e.preventDefault();
     handleLogIn(user.username, user.password);
   };
   return (
-    <form>
-      <h2>USER LOGIN</h2>
-      <label htmlFor="email">Email</label>
+    <form className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4">
+      <h2 className="text-2xl font-bold text-dark-green text-center">
+        USER LOGIN
+      </h2>
+      <label htmlFor="email" className="text-xl font-semibold text-dark-green">
+        Email
+      </label>
       <input
         type="email"
         id="email"
-        placeholder="email"
+        placeholder="Email"
         value={user.username}
         onChange={(e) =>
           setUser((prev) => ({ ...prev, username: e.target.value }))
         }
+        className="h-10 rounded-2xl outline-none pl-5 text-18 text-dark-green"
       />
-      <label htmlFor="password">password</label>
+      <label
+        htmlFor="password"
+        className="text-xl font-semibold text-dark-green"
+      >
+        Password
+      </label>
       <input
         type="password"
         id="password"
-        placeholder="password"
+        placeholder="Password"
         value={user.password}
         onChange={(e) =>
           setUser((prev) => ({ ...prev, password: e.target.value }))
         }
+        className="h-10 rounded-2xl outline-none pl-5 text-lg text-dark-green"
       />
-      <p>Forgot password?</p>
-      <button onClick={handleClick}>Log In</button>
-      <p>
-        Don&apos;t have an account yet? <span>Sign Up</span>
+      <Link
+        href="#"
+        className="text-slate-500 text-end transition-colors duration-300 ease-in-out hover:text-slate-800"
+      >
+        {" "}
+        Forgot password?
+      </Link>
+      <button
+        onClick={handleClick}
+        className="bg-medium-green text-white h-10 rounded-2xl transition hover:bg-dark-green "
+      >
+        Log In
+      </button>
+      <p className="text-slate-500">
+        Don&apos;t have an account yet?{" "}
+        <span className="text-dark-green hover:font-semibold cursor-pointer transition-colors duration-300 ease-in-out">
+          Sign Up
+        </span>
       </p>
     </form>
   );

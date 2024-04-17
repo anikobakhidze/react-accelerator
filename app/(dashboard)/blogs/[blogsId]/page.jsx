@@ -1,5 +1,6 @@
 import Image from "next/image";
-import defaultBlogImage from "../../../public/defaultBlogImage.webp";
+// import defaultBlogImage from "../../../public/defaultBlogImage.webp";
+import defaultBlogImage from "../../../../public/defaultBlogImage.webp";
 import getBlogDetails from "../../../../api/getBlogDetails";
 export default async function BlogsDetailPage({ params: { blogsId } }) {
   const blog = await getBlogDetails(blogsId);

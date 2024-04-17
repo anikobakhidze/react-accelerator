@@ -7,7 +7,6 @@ import { login } from "../actions";
 export default async function LogIn() {
   const cookieStore = cookies();
   const cookie = cookieStore.get(AUTH_COOKIE_KEY);
-  console.log(cookie);
   if (cookie) {
     redirect("/");
   }
@@ -17,7 +16,7 @@ export default async function LogIn() {
   };
 
   return (
-    <main className="w-full h-[100vh] flex justify-center items-center">
+    <main className="w-full h-[100vh] flex justify-center items-center bg-medium-green">
       <LogInForm handleLogIn={handleLogIn} />
     </main>
   );
