@@ -1,20 +1,6 @@
-// "use client";
-// import { useEffect, useState } from "react";
 import Image from "next/image";
 import getProductDetails from "../../../api/getProductDetails";
 export default async function ProductDetailPage({ params: { productId } }) {
-  // const [product, setProduct] = useState([]);
-  // useEffect(() => {
-  //   async function getProductDetails() {
-  //     const response = await fetch(
-  //       `https://dummyjson.com/products/${productId}`
-  //     );
-  //     const product = await response.json();
-  //     setProduct(product);
-  //   }
-  //   getProductDetails();
-  // }, []);
-
   const product = await getProductDetails(productId);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full">
