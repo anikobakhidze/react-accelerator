@@ -1,17 +1,6 @@
-"use client";
-import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 
-function BlogsListContainer() {
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    async function getBlog() {
-      const resp = await fetch("https://dummyjson.com/posts");
-      const blogs = await resp.json();
-      setBlogs(blogs.posts);
-    }
-    getBlog();
-  });
+function BlogsListContainer({ blogs }) {
   return (
     <section className="overflow-auto">
       <h2 className="text-2xl font-bold text-center my-10">

@@ -8,8 +8,9 @@ function Footer() {
     <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 ">
       <div>
         <Link href="/">
-          <Image src={footerLogo} alt="logo" width={150} height={100} />
+          <Image src={footerLogo} alt="logo" />
         </Link>
+
         <nav>
           <ul>
             <li>
