@@ -1,4 +1,4 @@
-"use client";
+"use server";
 import logo from "../public/logo.svg";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,14 +6,15 @@ import { FiSun } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import HeaderButton from "./HeaderButton";
 import HeaderNavigationList from "./HeaderNavigationList";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-function Header() {
-  const router = useRouter();
+import { logout } from "@/app/actions";
+import LogOutBtn from "./LogOutBtn";
 
-  const navigateToProfile = () => {
-    router.push("/profile");
+async function Header() {
+  const handleLogOut = async () => {
+    "use server";
+    await logout();
   };
 
   return (
@@ -23,7 +24,7 @@ function Header() {
       </Link>
       <HeaderNavigationList />
       <div className="w-28 flex justify-between">
-        <HeaderButton onClick={navigateToProfile}>
+        <HeaderButton>
           <AiOutlineUser className="w-5 h-5 " />
         </HeaderButton>
         <HeaderButton>
@@ -36,6 +37,7 @@ function Header() {
       <button className="hidden md:hidden">
         <GiHamburgerMenu />
       </button>
+      <LogOutBtn handleLogOut={handleLogOut} />
     </header>
   );
 }

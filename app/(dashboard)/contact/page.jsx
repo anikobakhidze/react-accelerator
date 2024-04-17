@@ -1,8 +1,8 @@
 import React from "react";
-import contactData from "../../data/contactData";
-import ContactUsForm from "../../components/ContactUsForm";
-import ContactCard from "../../components/ContactCard";
-import SocialIcons from "../../components/SocialIcons";
+import contactData from "../../../data/contactData";
+import ContactUsForm from "../../../components/ContactUsForm";
+import ContactCard from "../../../components/ContactCard";
+import SocialIcons from "../../../components/SocialIcons";
 
 export default function Contact() {
   return (
