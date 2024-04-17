@@ -1,7 +1,7 @@
 // import HomePageContainer from "../components/HomePageContainer";
-import ProductList from "../components/ProductList";
-import SearchBar from "../components/SearchBar";
-import getProducts from "../api/getProducts";
+import ProductList from "../../components/ProductList";
+import SearchBar from "../../components/SearchBar";
+import getProducts from "../../api/getProducts";
 export default async function Home() {
   // function HomePageContainer() {
   //   const [sortProducts, setSortProducts] = useState(productList);

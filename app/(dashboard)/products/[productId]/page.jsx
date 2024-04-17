@@ -1,5 +1,5 @@
 import Image from "next/image";
-import getProductDetails from "../../../api/getProductDetails";
+import getProductDetails from "../../../../api/getProductDetails";
 export default async function ProductDetailPage({ params: { productId } }) {
   const product = await getProductDetails(productId);
   return (

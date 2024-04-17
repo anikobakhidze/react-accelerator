@@ -1,5 +1,5 @@
 import { PacmanLoader } from "react-spinners";
-function Loading() {
+export default function DashboardLoading() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center bg-light-green ">
       <PacmanLoader width={70} color="#1c5858" />
@@ -10,5 +10,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;
