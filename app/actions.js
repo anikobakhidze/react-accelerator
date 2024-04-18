@@ -12,7 +12,6 @@ export async function login(username, password) {
   });
   if (response.ok) {
     const user = await response.json();
-    console.log(user);
     const cookieStore = cookies();
     cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
   }

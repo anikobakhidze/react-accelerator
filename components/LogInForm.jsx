@@ -13,13 +13,16 @@ function LogInForm({ handleLogIn }) {
       <h2 className="text-2xl font-bold text-dark-green text-center">
         USER LOGIN
       </h2>
-      <label htmlFor="email" className="text-xl font-semibold text-dark-green">
-        Email
+      <label
+        htmlFor="username"
+        className="text-xl font-semibold text-dark-green"
+      >
+        Username
       </label>
       <input
-        type="email"
-        id="email"
-        placeholder="Email"
+        type="text"
+        id="username"
+        placeholder="Username"
         value={user.username}
         onChange={(e) =>
           setUser((prev) => ({ ...prev, username: e.target.value }))
