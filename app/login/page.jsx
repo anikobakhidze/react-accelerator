@@ -17,9 +17,9 @@ export default async function LogIn() {
   };
 
   return (
-    <main className="w-full h-[100vh] flex flex-col items-center bg-medium-green">
-      <div className="flex ">
-        <h1>Change Webpage Theme</h1>
+    <main className="w-full h-[100vh] flex flex-col items-center justify-around bg-medium-green dark:bg-slate-800 ">
+      <div className="flex items-center ">
+        <h1 className="text-lg mr-2 text-white">Change Webpage Theme</h1>
         <ThemeSwitch />
       </div>
       <LogInForm handleLogIn={handleLogIn} />

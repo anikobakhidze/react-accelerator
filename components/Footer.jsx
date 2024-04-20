@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 function Footer() {
   return (
-    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 ">
+    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 dark:bg-slate-900">
       <div>
         <Link href="/">
           <Image src={footerLogo} alt="logo" />
@@ -50,7 +50,7 @@ function Footer() {
             type="email"
             placeholder="Subscribe"
           />
-          <VscArrowCircleRight className=" absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-[#53b1b1] hover:scale-125" />
+          <VscArrowCircleRight className=" absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-[#53b1b1] hover:scale-125  dark:text-slate-300" />
         </form>
         <SocialIcons />
       </div>

@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }) {
   const cookie = cookieStore.get(AUTH_COOKIE_KEY);
   if (!cookie) redirect("/login");
   return (
-    <main className="flex flex-col justify-between min-h-screen">
+    <main className="flex flex-col justify-between min-h-screen dark:bg-slate-800">
       <Header />
       {children}
       <Footer />

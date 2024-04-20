@@ -10,7 +10,6 @@ export default function ThemeSwitch() {
 
   useEffect(() => {
     setMounted(true);
-
     if (!theme) {
       setTheme("system");
     }
@@ -36,8 +35,18 @@ export default function ThemeSwitch() {
   };
 
   return resolvedTheme === "dark" ? (
-    <FiSun className="text-[#4abca9] w-5 h-5" onClick={toggleTheme} />
+    <div className="w-8 h-8 rounded-full bg-slate-200 dark flex justify-center items-center">
+      <FiSun
+        className="text-[#4abca9] w-5 h-5 cursor-pointer"
+        onClick={toggleTheme}
+      />
+    </div>
   ) : (
-    <FiMoon className="text-[#4abca9] w-5 h-5" onClick={toggleTheme} />
+    <div className="w-8 h-8 rounded-full bg-slate-200 dark flex justify-center items-center">
+      <FiMoon
+        className="text-[#4abca9] w-5 h-5 cursor-pointer"
+        onClick={toggleTheme}
+      />
+    </div>
   );
 }

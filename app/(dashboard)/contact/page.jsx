@@ -6,8 +6,8 @@ import SocialIcons from "../../../components/SocialIcons";
 
 export default function Contact() {
   return (
-    <section className="flex flex-col overflow-auto items-center ">
-      <div className="flex flex-col justify-center items-center h-80 w-full font-bold bg-[#c7d8dc] pb-10">
+    <section className="flex flex-col overflow-auto items-center dark:bg-slate-800 ">
+      <div className="flex flex-col justify-center items-center h-80 w-full font-bold bg-[#c7d8dc] pb-10 dark:bg-slate-800">
         <h2 className="pt-8 text-3xl ">Contact Us</h2>
         <SocialIcons />
       </div>
