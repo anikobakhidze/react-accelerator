@@ -6,7 +6,9 @@ function LogInForm({ handleLogIn }) {
   const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = (e) => {
     e.preventDefault();
-    handleLogIn(user.username, user.password);
+    handleLogIn(user.username, user.password).then(() =>
+      window.location.reload()
+    );
   };
   return (
     <form className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4  dark:bg-slate-700 ">

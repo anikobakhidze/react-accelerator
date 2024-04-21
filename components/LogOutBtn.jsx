@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 function LogOutBtn({ handleLogOut }) {
   const router = useRouter();
   const handleClick = () => {
-    handleLogOut();
+    handleLogOut().then(() => window.location.reload());
     router.push("/login");
   };
   return (
