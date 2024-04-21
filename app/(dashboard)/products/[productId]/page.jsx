@@ -1,7 +1,17 @@
 import Image from "next/image";
 import getProductDetails from "../../../../api/getProductDetails";
-export default async function ProductDetailPage({ params: { productId } }) {
-  const product = await getProductDetails(productId);
+
+export async function generateStaticParams() {
+  const response = await fetch("https://dummyjson.com/products");
+  const products = await response.json();
+  const paths = products.products.map((product) => ({
+    params: { id: `/products/${product.id}` },
+  }));
+  return paths;
+}
+
+export default async function ProductDetailPage({ params: { id } }) {
+  const product = await getProductDetails(id);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full dark:bg-slate-800">
       <h2 className="text-dark-green w-4/5 mx-auto text-3xl font-bold mb-10 first-letter:capitalize mt-10">

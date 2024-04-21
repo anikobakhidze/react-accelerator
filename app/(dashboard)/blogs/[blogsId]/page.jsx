@@ -2,8 +2,19 @@ import Image from "next/image";
 // import defaultBlogImage from "../../../public/defaultBlogImage.webp";
 import defaultBlogImage from "../../../../public/defaultBlogImage.webp";
 import getBlogDetails from "../../../../api/getBlogDetails";
-export default async function BlogsDetailPage({ params: { blogsId } }) {
-  const blog = await getBlogDetails(blogsId);
+
+export async function generateStaticParams() {
+  const response = await fetch("https://dummyjson.com/posts");
+  const blogs = await response.json();
+  const paths = blogs.posts.map((blog) => ({
+    params: { id: `/blogs/${blog.id}` },
+  }));
+
+  return paths;
+}
+
+export default async function BlogsDetailPage({ params: { id } }) {
+  const blog = await getBlogDetails(id);
 
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full py-10 dark:bg-slate-800">
