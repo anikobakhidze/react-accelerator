@@ -8,7 +8,7 @@ import ProfilePageButton from "./ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
-import { logout } from "@/app/actions";
+import { logout } from "@/app/[lange]/actions";
 import LogOutBtn from "./LogOutBtn";
 import ThemeSwitch from "./ThemeSwitch";
 

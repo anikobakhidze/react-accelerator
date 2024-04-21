@@ -1,7 +1,7 @@
 import Image from "next/image";
 // import defaultBlogImage from "../../../public/defaultBlogImage.webp";
-import defaultBlogImage from "../../../../public/defaultBlogImage.webp";
-import getBlogDetails from "../../../../api/getBlogDetails";
+import defaultBlogImage from "../../../../../public/defaultBlogImage.webp";
+import getBlogDetails from "../../../../../api/getBlogDetails";
 
 export async function generateStaticParams() {
   const response = await fetch("https://dummyjson.com/posts");

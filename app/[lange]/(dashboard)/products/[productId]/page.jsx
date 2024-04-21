@@ -1,5 +1,5 @@
 import Image from "next/image";
-import getProductDetails from "../../../../api/getProductDetails";
+import getProductDetails from "../../../../../api/getProductDetails";
 
 export async function generateStaticParams() {
   const response = await fetch("https://dummyjson.com/products");

@@ -1,5 +1,5 @@
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "../../constants";
 // import { redirect } from "next/navigation";

@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Providers } from "./providers";
 export const metadata = {
-  title: "Iphone Store",
+  title: " Store",
   description: "homework",
 };
 
