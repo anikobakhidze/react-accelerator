@@ -8,9 +8,10 @@ import ProfilePageButton from "./ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
-import { logout } from "@/app/[lange]/actions";
+import { logout } from "@/app/[locale]/actions";
 import LogOutBtn from "./LogOutBtn";
 import ThemeSwitch from "./ThemeSwitch";
+import LanguageChanger from "./LanguageChanger";
 
 async function Header() {
   const handleLogOut = async () => {
@@ -37,7 +38,7 @@ async function Header() {
           <GiHamburgerMenu />
         </button>
       </div>
-
+      <LanguageChanger />
       <LogOutBtn handleLogOut={handleLogOut} />
     </header>
   );

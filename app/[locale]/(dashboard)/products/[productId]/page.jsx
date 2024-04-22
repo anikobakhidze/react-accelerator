@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function ProductDetailPage({ params: { id } }) {
-  const product = await getProductDetails(id);
+export default async function ProductDetailPage({ params: { productId } }) {
+  const product = await getProductDetails(productId);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full dark:bg-slate-800">
       <h2 className="text-dark-green w-4/5 mx-auto text-3xl font-bold mb-10 first-letter:capitalize mt-10">

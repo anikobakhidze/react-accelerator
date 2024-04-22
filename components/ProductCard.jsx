@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 // import defaultImage from "../public/defaultImage.jpg";
 function ProductCard({
   product: { id, title, description, price, thumbnail },
+  addCart,
 }) {
   const routes = useRouter();
   const handleClick = () => {
@@ -32,7 +33,7 @@ function ProductCard({
         </p>
       </div>
       <button className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]">
-        Add to Cart
+        {addCart}
       </button>
     </div>
   );

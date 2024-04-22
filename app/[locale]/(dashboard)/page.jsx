@@ -1,7 +1,9 @@
 // import HomePageContainer from "../components/HomePageContainer";
+
 import ProductList from "../../../components/ProductList";
 import SearchBar from "../../../components/SearchBar";
 import getProducts from "../../../api/getProducts";
+
 export default async function Home() {
   // function HomePageContainer() {
   //   const [sortProducts, setSortProducts] = useState(productList);
@@ -24,9 +26,7 @@ export default async function Home() {
       // setSortProducts={setSortProducts}
       // productList={productList}
       /> */}
-      <h2 className="text-xl font-bold mb-12 ">
-        Innovate Your Life with the iPhone Series
-      </h2>
+
       <ProductList products={products} />
     </section>
   );
