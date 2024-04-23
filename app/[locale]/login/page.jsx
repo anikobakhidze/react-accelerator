@@ -17,10 +17,10 @@ export default async function LogIn({ params: { locale } }) {
   const i18nNamespaces = ["common"];
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
-  const handleLogIn = async (username, password) => {
-    "use server";
-    await login(username, password);
-  };
+  // const handleLogIn = async (username, password) => {
+  //   "use server";
+  //   await login(username, password);
+  // };
 
   return (
     <TranslationsProvider
@@ -35,7 +35,7 @@ export default async function LogIn({ params: { locale } }) {
           <LanguageChanger className="ml-10" />
         </div>
 
-        <LogInForm handleLogIn={handleLogIn} />
+        <LogInForm />
       </main>
     </TranslationsProvider>
   );

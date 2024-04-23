@@ -2,18 +2,33 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-
-function LogInForm({ handleLogIn }) {
+import { useRouter } from "next/navigation";
+function LogInForm() {
+  const router = useRouter();
   const [user, setUser] = useState({ username: "", password: "" });
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    handleLogIn(user.username, user.password).then(() =>
-      window.location.reload()
-    );
+    const resp = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: user.username,
+        password: user.password,
+      }),
+    });
+
+    if (resp.ok) {
+      router.push("/");
+      router.refresh();
+    }
   };
   const { t } = useTranslation();
   return (
-    <form className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4  dark:bg-slate-700 ">
+    <form
+      onSubmit={handleClick}
+      method="POST"
+      className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4  dark:bg-slate-700 "
+    >
       <h2 className="text-2xl font-bold text-dark-green text-center dark:text-white">
         {t("login")}
       </h2>
@@ -56,7 +71,7 @@ function LogInForm({ handleLogIn }) {
         <span>{t("forgotPassword")}?</span>
       </Link>
       <button
-        onClick={handleClick}
+        type="submit"
         className="bg-medium-green text-white h-10 rounded-2xl transition hover:bg-dark-green "
       >
         {t("logInBtn")}
