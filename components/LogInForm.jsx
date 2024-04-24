@@ -9,7 +9,7 @@ function LogInForm() {
   const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = async (e) => {
     e.preventDefault();
-    const resp = await fetch("/login/api", {
+    const resp = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -18,9 +18,7 @@ function LogInForm() {
       }),
     });
 
-    if (resp.ok) {
-      router.push("/");
-    }
+    router.push("/");
   };
   const { t } = useTranslation();
   return (

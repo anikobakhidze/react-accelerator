@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 function LogOutBtn() {
   const router = useRouter();
   const handleClick = async () => {
-    await fetch("/login/api/logout", {
+    await fetch("http://localhost:3000/api/logout", {
       method: "GET",
     });
-    console.log("anna");
+
     router.push("/login");
   };
   const { t } = useTranslation();
