@@ -10,11 +10,10 @@ export async function POST(request) {
     body: JSON.stringify({ username, password }),
   });
 
+  const user = await response.json();
   if (response.ok) {
-    const user = await response.json();
     const cookieStore = cookies();
     cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
   }
-  console.log(user);
   return Response.json(user);
 }

@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+
 function LogInForm() {
   const router = useRouter();
   const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = async (e) => {
     e.preventDefault();
-    const resp = await fetch("/api/login", {
+    const resp = await fetch("/login/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -19,7 +20,6 @@ function LogInForm() {
 
     if (resp.ok) {
       router.push("/");
-      router.refresh();
     }
   };
   const { t } = useTranslation();
@@ -42,6 +42,7 @@ function LogInForm() {
         type="text"
         id="username"
         placeholder={t("username")}
+        required
         value={user.username}
         onChange={(e) =>
           setUser((prev) => ({ ...prev, username: e.target.value }))
@@ -58,6 +59,8 @@ function LogInForm() {
         type="password"
         id="password"
         placeholder={t("password")}
+        autoComplete="off"
+        required
         value={user.password}
         onChange={(e) =>
           setUser((prev) => ({ ...prev, password: e.target.value }))

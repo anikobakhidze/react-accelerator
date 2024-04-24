@@ -1,10 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
-function LogOutBtn({ handleLogOut }) {
+function LogOutBtn() {
   const router = useRouter();
-  const handleClick = () => {
-    handleLogOut().then(() => window.location.reload());
+  const handleClick = async () => {
+    await fetch("/login/api/logout", {
+      method: "GET",
+    });
+    console.log("anna");
     router.push("/login");
   };
   const { t } = useTranslation();

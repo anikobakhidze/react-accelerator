@@ -8,16 +8,16 @@ import ProfilePageButton from "./ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
-import { logout } from "@/app/[locale]/actions";
+// import { logout } from "@/app/[locale]/actions";
 import LogOutBtn from "./LogOutBtn";
 import ThemeSwitch from "./ThemeSwitch";
 import LanguageChanger from "./LanguageChanger";
 
 async function Header() {
-  const handleLogOut = async () => {
-    "use server";
-    await logout();
-  };
+  // const handleLogOut = async () => {
+  //   "use server";
+  //   await logout();
+  // };
 
   return (
     <header className="flex justify-around items-center h-20 pt-6 ">
@@ -39,7 +39,7 @@ async function Header() {
         </button>
       </div>
       <LanguageChanger />
-      <LogOutBtn handleLogOut={handleLogOut} />
+      <LogOutBtn />
     </header>
   );
 }

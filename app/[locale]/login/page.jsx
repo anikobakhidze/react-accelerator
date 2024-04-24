@@ -34,7 +34,6 @@ export default async function LogIn({ params: { locale } }) {
           <ThemeSwitch />
           <LanguageChanger className="ml-10" />
         </div>
-
         <LogInForm />
       </main>
     </TranslationsProvider>

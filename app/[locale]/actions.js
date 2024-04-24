@@ -17,7 +17,7 @@
 //   }
 // }
 
-export async function logout() {
-  const cookieStore = cookies();
-  cookieStore.delete(AUTH_COOKIE_KEY);
-}
+// export async function logout() {
+//   const cookieStore = cookies();
+//   cookieStore.delete(AUTH_COOKIE_KEY);
+// }
