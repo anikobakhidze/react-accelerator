@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 function UserProfileInfo() {
+  const { t } = useTranslation();
   const [userProfile, setUserProfile] = useState({
     name: "Anna",
     surname: "Kobakhidze",
@@ -39,10 +40,10 @@ function UserProfileInfo() {
     <>
       <fieldset className="flex flex-col gap-4 w-2/6 h-80 ">
         <legend className="text-2xl font-bold text-teal-800 mb-4 w-full ">
-          About
+          {t("profilePage.about")}
         </legend>
         <label htmlFor="name" className="text-xl font-semibold">
-          Name
+          {t("profilePage.name")}
         </label>
         <input
           className="h-10 text-lg pl-2 rounded-xl outline-none "
@@ -53,7 +54,7 @@ function UserProfileInfo() {
           onChange={handleNameChange}
         />
         <label htmlFor="surname" className="text-xl font-semibold">
-          Surname
+          {t("profilePage.surname")}
         </label>
         <input
           className="h-10 text-lg pl-2 rounded-xl outline-none "
@@ -64,7 +65,7 @@ function UserProfileInfo() {
           onChange={handleSurnameChange}
         />
         <label htmlFor="email" className="text-xl font-semibold">
-          Email
+          {t("profilePage.email")}
         </label>
         <input
           className="h-10 text-lg pl-2 rounded-xl outline-none "
@@ -77,30 +78,30 @@ function UserProfileInfo() {
       </fieldset>
       <fieldset className="flex flex-col gap-4 w-2/6 h-80">
         <legend className="text-2xl font-bold text-teal-800 mb-4 w-full ">
-          Reset Password
+          {t("profilePage.resetPass")}
         </legend>
         <label className="text-xl font-semibold" htmlFor="password">
-          Password
+          {t("profilePage.password")}
         </label>
         <input
           className="h-10 text-lg pl-2 rounded-xl outline-none focus:border-solid focus:border-2 focus:border-light-green"
           id="password"
           type="password"
-          placeholder="New Password"
+          placeholder={t("profilePage.password")}
           onChange={handlePasswordChange}
         />
         <label className="text-xl font-semibold" htmlFor="confirmPassword">
-          Confirm Password
+          {t("profilePage.confirmPassword")}
         </label>
         <input
           className="h-10 text-lg pl-2 rounded-xl outline-none focus:border-solid focus:border-2 focus:border-light-green"
           id="confirmPassword"
           type="password"
-          placeholder="Confirm Password"
+          placeholder={t("profilePage.confirmPassword")}
           onChange={handleConfirmPasswordChange}
         />
         <button className="bg-medium-green text-white h-12 rounded-full text-xl hover:bg-teal-800">
-          Save Profile
+          {t("profilePage.saveProfile")}
         </button>
       </fieldset>
     </>

@@ -1,11 +1,14 @@
+"use client";
 import footerLogo from "../public/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
 import SocialIcons from "./SocialIcons";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 function Footer() {
+  const { t } = useTranslation();
   return (
-    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 ">
+    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 dark:bg-slate-900">
       <div>
         <Link href="/">
           <Image src={footerLogo} alt="logo" />
@@ -18,7 +21,7 @@ function Footer() {
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
-                Terms & Conditions
+                {t("terms")}
               </Link>
             </li>
             <li className="my-2">
@@ -26,7 +29,7 @@ function Footer() {
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
-                Privacy & Policy
+                {t("privacy")}
               </Link>
             </li>
             <li className="my-2">
@@ -34,7 +37,7 @@ function Footer() {
                 href="/"
                 className="transition-colors duration-300 hover:text-gray-300"
               >
-                Contact
+                {t("contact")}
               </Link>
             </li>
           </ul>
@@ -43,14 +46,14 @@ function Footer() {
       </div>
       <div>
         <form className="relative flex flex-col">
-          <label htmlFor="subscription">Get Newsletter Updates</label>
+          <label htmlFor="subscription"> {t("getUpdates")}</label>
           <input
             id="subscription"
             className="p-2 pr-8 rounded-lg outline-none text-gray-900 mt-2"
             type="email"
-            placeholder="Subscribe"
+            placeholder={t("subscribe")}
           />
-          <VscArrowCircleRight className=" absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-[#53b1b1] hover:scale-125" />
+          <VscArrowCircleRight className=" absolute w-6 h-6 bottom-2 right-1.5 text-gray-800 cursor-pointer transition-all hover:text-[#53b1b1] hover:scale-125  dark:text-slate-300" />
         </form>
         <SocialIcons />
       </div>

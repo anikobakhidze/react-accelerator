@@ -2,12 +2,14 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 function HeaderNavigationList() {
   const pathname = usePathname();
+  const { t } = useTranslation();
   return (
-    <nav className="w-96">
+    <nav className="w-[500px]">
       <ul className="flex justify-between ">
-        <li className="w-16 text-center ">
+        <li className="w-24 text-center ">
           <Link
             href="/"
             className={`link ${
@@ -16,10 +18,10 @@ function HeaderNavigationList() {
                 : "w-16 transition-all duration-300 hover:font-bold "
             }`}
           >
-            Home
+            {t("home")}
           </Link>
         </li>
-        <li className="w-16 text-center ">
+        <li className="w-24 text-center ">
           <Link
             href="/products"
             className={`link ${
@@ -28,10 +30,10 @@ function HeaderNavigationList() {
                 : "w-16 transition-all duration-300 hover:font-bold "
             }`}
           >
-            Products
+            {t("products")}
           </Link>
         </li>
-        <li className="w-16 text-center ">
+        <li className="w-24 text-center ">
           <Link
             href="/about"
             className={`link ${
@@ -40,11 +42,11 @@ function HeaderNavigationList() {
                 : "transition-all duration-300 hover:font-bold "
             }`}
           >
-            About
+            {t("about")}
           </Link>
         </li>
 
-        <li className="w-16 text-center ">
+        <li className="w-24 text-center ">
           <Link
             href="/contact"
             className={`link ${
@@ -53,10 +55,10 @@ function HeaderNavigationList() {
                 : "transition-all duration-300 hover:font-bold "
             }`}
           >
-            Contact
+            {t("contact")}
           </Link>
         </li>
-        <li className="w-16 text-center">
+        <li className="w-24 text-center">
           <Link
             href="/blogs"
             className={`link ${
@@ -65,7 +67,7 @@ function HeaderNavigationList() {
                 : "transition-all duration-300 hover:font-bold "
             }`}
           >
-            Blogs
+            {t("blog")}
           </Link>
         </li>
       </ul>

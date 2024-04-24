@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Iphone Store",
+  title: " Store",
   description: "homework",
 };
 function ProfileLayout({ children }) {
