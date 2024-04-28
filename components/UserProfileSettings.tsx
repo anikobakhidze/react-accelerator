@@ -6,11 +6,11 @@ import { useTranslation } from "react-i18next";
 function UserProfileSettings() {
   const { t } = useTranslation();
   return (
-    <section className="flex  flex-1 flex-col bg-light-green py-14 ">
+    <section className="flex  flex-1 flex-col bg-light-green py-14 dark:bg-slate-800">
       <h2 className="text-center text-3xl font-bold text-teal-800 mb-12">
         {t("profilePage.heading")}
       </h2>
-      <form className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-between rounded-3xl items-center">
+      <form className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-between rounded-3xl items-center dark:bg-slate-600">
         <Image
           src={defaultUserImage}
           alt="user"
