@@ -1,4 +1,4 @@
-import defaultBlogImage from "../public/defaultBlogImage.webp";
+import defaultBlogImage from "../../public/images/defaultBlogImage.webp";
 import Image from "next/image";
 import BlogsCardReadMoreBtn from "./BlogCardReadMoreBtn";
 import React from "react";

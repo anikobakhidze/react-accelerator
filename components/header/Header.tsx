@@ -1,24 +1,16 @@
 "use server";
-import logo from "../public/logo.svg";
-
+import logo from "../../public/images/logo.svg";
 import { FaCartShopping } from "react-icons/fa6";
-
 import { GiHamburgerMenu } from "react-icons/gi";
-import ProfilePageButton from "./ProfilePageButton";
+import ProfilePageButton from "../profile/ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
-// import { logout } from "@/app/[locale]/actions";
-import LogOutBtn from "./LogOutBtn";
-import ThemeSwitch from "./ThemeSwitch";
-import LanguageChanger from "./LanguageChanger";
+import LogOutBtn from "../sharedComponents/UI/LogOutBtn";
+import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
+import LanguageChanger from "../sharedComponents/Language/LanguageChanger";
 
 async function Header() {
-  // const handleLogOut = async () => {
-  //   "use server";
-  //   await logout();
-  // };
-
   return (
     <header className="flex justify-around items-center h-20 pt-6 ">
       <Link href="/">

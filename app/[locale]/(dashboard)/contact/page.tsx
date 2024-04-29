@@ -1,8 +1,8 @@
 "use client";
 import contactData from "../../../../data/contactData";
-import ContactUsForm from "../../../../components/ContactUsForm";
-import ContactCard from "../../../../components/ContactCard";
-import SocialIcons from "../../../../components/SocialIcons";
+import ContactUsForm from "../../../../components/contact/ContactUsForm";
+import ContactCard from "../../../../components/contact/ContactCard";
+import SocialIcons from "../../../../components/sharedComponents/UI/SocialIcons";
 import { useTranslation } from "react-i18next";
 export default function Contact() {
   const { t } = useTranslation();

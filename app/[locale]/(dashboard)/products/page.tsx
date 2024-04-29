@@ -1,5 +1,5 @@
-import getProducts from "@/api/getProducts";
-import ProductList from "@/components/ProductList";
+import getProducts from "../../../../api/products/getProducts";
+import ProductList from "@/components/products/ProductList";
 
 export default async function ProductsPage() {
   const products = await getProducts();

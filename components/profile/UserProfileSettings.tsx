@@ -1,5 +1,5 @@
 "use client";
-import defaultUserImage from "../public/default-user-image.webp";
+import defaultUserImage from "../../public/images/default-user-image.webp";
 import UserProfileInfo from "./UserProfileInfo";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";

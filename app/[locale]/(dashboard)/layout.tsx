@@ -1,9 +1,9 @@
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import Header from "../../../components/header/Header";
+import Footer from "../../../components/footer/Footer";
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "../../constants";
 // import { redirect } from "next/navigation";
-import TranslationsProvider from "@/components/TranslationProvides";
+import TranslationsProvider from "@/components/sharedComponents/Language/TranslationProvides";
 import initTranslations from "@/app/i18n";
 export const metadata = {
   title: "Store",

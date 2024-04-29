@@ -1,7 +1,7 @@
 "use client";
-import footerLogo from "../public/footerLogo.png";
+import footerLogo from "../../public/images/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
-import SocialIcons from "./SocialIcons";
+import SocialIcons from "../sharedComponents/UI/SocialIcons";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";

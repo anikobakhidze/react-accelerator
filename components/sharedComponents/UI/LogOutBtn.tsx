@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 function LogOutBtn() {
   const router = useRouter();
   const handleClick = async () => {
-    await fetch("http://localhost:3000/api/logout", {
+    await fetch("/api/logout", {
       method: "GET",
     });
 

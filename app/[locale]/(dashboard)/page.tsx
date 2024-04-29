@@ -1,9 +1,5 @@
-import HomePageContainer from "../../../components/HomePageContainer";
-
-// import { useState } from "react";
-// import ProductList from "../../../components/ProductList";
-// import SearchBar from "../../../components/SearchBar";
-import getProducts from "../../../api/getProducts";
+import HomePageContainer from "../../../components/home/HomePageContainer";
+import getProducts from "../../../api/products/getProducts";
 
 export default async function Home() {
   const products = await getProducts();

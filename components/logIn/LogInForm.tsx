@@ -9,7 +9,7 @@ function LogInForm() {
   const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/api/login", {
+    await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -22,11 +22,7 @@ function LogInForm() {
   };
   const { t } = useTranslation();
   return (
-    <form
-      // onSubmit={handleClick}
-      // method="POST"
-      className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4  dark:bg-slate-700 "
-    >
+    <form className="bg-slate-100 w-2/3 rounded-lg flex flex-col p-10 gap-y-4  dark:bg-slate-700 ">
       <h2 className="text-2xl font-bold text-dark-green text-center dark:text-white">
         {t("login")}
       </h2>

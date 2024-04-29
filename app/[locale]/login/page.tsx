@@ -1,19 +1,10 @@
 "use server";
-import LogInForm from "@/components/LogInForm";
-// import { cookies } from "next/headers";
-// import { AUTH_COOKIE_KEY } from "../../constants";
-// import { redirect } from "next/navigation";
-// import { login } from "../actions";
-import ThemeSwitch from "@/components/ThemeSwitch";
+import LogInForm from "@/components/logIn/LogInForm";
+import ThemeSwitch from "@/components/sharedComponents/UI/ThemeSwitch";
 import initTranslations from "@/app/i18n";
-import TranslationsProvider from "../../../components/TranslationProvides";
-import LanguageChanger from "@/components/LanguageChanger";
+import TranslationsProvider from "../../../components/sharedComponents/Language/TranslationProvides";
+import LanguageChanger from "@/components/sharedComponents/Language/LanguageChanger";
 export default async function LogIn({ params: { locale } }: IParamsProps) {
-  // const cookieStore = cookies();
-  // const cookie = cookieStore.get(AUTH_COOKIE_KEY);
-  // if (cookie) {
-  //   redirect("/");
-  // }
   const i18nNamespaces = ["common"];
   const { t, resources } = await initTranslations(
     locale,
@@ -21,11 +12,6 @@ export default async function LogIn({ params: { locale } }: IParamsProps) {
     null,
     undefined
   );
-
-  // const handleLogIn = async (username, password) => {
-  //   "use server";
-  //   await login(username, password);
-  // };
 
   return (
     <TranslationsProvider

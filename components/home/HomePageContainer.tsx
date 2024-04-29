@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import ProductList from "./ProductList";
-import SearchBar from "./SearchBar";
+import ProductList from "../products/ProductList";
+import SearchBar from "../sharedComponents/UI/SearchBar";
 
 import { useState } from "react";
 function HomePageContainer({ products }: IProductsContainer) {
