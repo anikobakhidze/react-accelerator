@@ -52,7 +52,7 @@ function LogInForm() {
         >
           {t("username")}
         </label> */}
-        <div className="flex items-center mb-6 bg-light-orange rounded-2xl px-4">
+        <div className="flex items-center mb-6 bg-light-orange rounded-2xl pl-4">
           <div>
             <HiOutlineMailOpen className="h-12 w-6 text-dark-orange" />
           </div>
@@ -65,7 +65,7 @@ function LogInForm() {
             onChange={(e) =>
               setUser((prev) => ({ ...prev, username: e.target.value }))
             }
-            className="h-12 w-full rounded-2xl bg-light-orange outline-none pl-5 text-18 text-dark-green dark:text-white"
+            className="h-12 w-full rounded-2xl bg-light-orange outline-none pl-5 text-18 text-dark-green dark:text-white selection:inherit"
           />
         </div>
         {/* <label
