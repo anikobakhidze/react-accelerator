@@ -31,9 +31,18 @@ export default function LanguageChanger() {
   };
 
   return (
-    <select onChange={handleChange} value={currentLocale} className="ml-10 ">
-      <option value="en">Eng</option>
-      <option value="geo">Geo</option>
+    <select
+      onChange={handleChange}
+      value={currentLocale}
+      className="ml-10  bg-slate-200 rounded-2xl w-28 outline-none px-4 text-medium-green cursor-pointer "
+      cursor-pointer
+    >
+      <option value="en" className="text-dark-orange">
+        Eng
+      </option>
+      <option value="geo" className="hover:text-dark-orange">
+        Geo
+      </option>
     </select>
   );
 }

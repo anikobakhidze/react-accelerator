@@ -1,10 +1,9 @@
 "use server";
 import LogInForm from "@/components/logIn/LogInForm";
-import ThemeSwitch from "@/components/sharedComponents/UI/ThemeSwitch";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "../../../components/sharedComponents/Language/TranslationProvides";
-import LanguageChanger from "@/components/sharedComponents/Language/LanguageChanger";
-import gif from "../../../public/gif/gif.gif";
+
+import logIn from "../../../public/images/logIn.png";
 import Image from "next/image";
 export default async function LogIn({ params: { locale } }: IParamsProps) {
   const i18nNamespaces = ["common"];
@@ -21,31 +20,27 @@ export default async function LogIn({ params: { locale } }: IParamsProps) {
       locale={locale}
       resources={resources}
     >
-      <main className="w-full h-[100vh] flex flex-col items-center justify-around bg-[#b2babe] dark:bg-slate-800 ">
+      <main className="w-full h-[100vh] flex flex-col items-center justify-around  dark:bg-slate-800 bg-light-green">
         {/* <div className="flex items-center ">
           <h1 className="text-lg mr-2 text-white">{t("theme")}</h1>
           <ThemeSwitch />
           <LanguageChanger />
         </div>
         <LogInForm /> */}
-        <section className="flex ">
+        <section className="flex max-w-6xl gap-20  rounded-2xl shadow-2xl p-10 bg-slate-100">
+          {/* <h1 className="text-lg mr-2 text-white">{t("theme")}</h1> */}
+
+          <LogInForm />
+
           <div>
-            {/* <h1 className="text-lg mr-2 text-white">{t("theme")}</h1> */}
-            <ThemeSwitch />
-            <LanguageChanger />
-            <div>
-              <Image
-                src={gif}
-                alt="girl is shopping"
-                width={800}
-                height={800}
-                unoptimized
-                className="rounded-3xl"
-              />
-            </div>
-          </div>
-          <div>
-            <LogInForm />
+            <Image
+              src={logIn}
+              alt="girl is shopping"
+              width={500}
+              height={500}
+              unoptimized
+              className="rounded-3xl"
+            />
           </div>
         </section>
       </main>
