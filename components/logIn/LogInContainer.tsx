@@ -1,18 +1,18 @@
-"use client";
+// "use client";
 import React from "react";
 import Link from "next/link";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
-import LanguageChanger from "../sharedComponents/Language/LanguageChanger";
 import LogInForm from "./LogInForm";
-import { useTranslation } from "react-i18next";
-function LogInContainer() {
-  const { t } = useTranslation();
+import { getI18n } from "../../locales/server";
+import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
+async function LogInContainer() {
+  const t = await getI18n();
   return (
     <React.Fragment>
       <div className="max-w-md ">
         <div className="flex mb-4">
           <ThemeSwitch />
-          <LanguageChanger />
+          <LanguageSwitcher />
         </div>
         <LogInForm />
         <div className="text-slate-400 mt-10">

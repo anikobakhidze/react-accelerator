@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import LogOutBtn from "../sharedComponents/UI/LogOutBtn";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
-import LanguageChanger from "../sharedComponents/Language/LanguageChanger";
+import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
 
 async function Header() {
   return (
@@ -27,7 +27,7 @@ async function Header() {
           <GiHamburgerMenu />
         </button>
       </div>
-      <LanguageChanger />
+      <LanguageSwitcher />
       <LogOutBtn />
     </header>
   );

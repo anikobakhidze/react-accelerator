@@ -1,9 +1,11 @@
 "use client";
 
 import ProductCard from "./ProductCard";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
+import { useI18n } from "../../locales/client";
+
 function ProductList({ products }: IProductsContainer) {
-  const { t } = useTranslation();
+  const t = useI18n();
   return (
     <>
       <h2 className="text-xl font-bold mb-12 ">{t("heading")}</h2>

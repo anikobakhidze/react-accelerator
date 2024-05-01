@@ -1,15 +1,25 @@
 import "./globals.css";
 import { Providers } from "./providers";
+import { I18nProviderClient } from "../../locales/client";
+import { ReactNode } from "react";
 export const metadata = {
   title: " Store",
   description: "homework",
 };
 
-export default function RootLayout({ children }: IChildrenProps) {
+export default function RootLayout({
+  params: { locale },
+  children,
+}: {
+  params: { locale: string };
+  children: ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+        </Providers>
       </body>
     </html>
   );

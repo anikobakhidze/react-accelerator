@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { BsUnlock } from "react-icons/bs";
 import logoPng from "../../public/images/logoPng.png";
+
 import Image from "next/image";
+import { useI18n } from "../../locales/client";
 function LogInForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +25,7 @@ function LogInForm() {
 
     router.push("/");
   };
-  const { t } = useTranslation();
+  const t = useI18n();
 
   const tooglePassword = () => {
     setShowPassword((prev) => !prev);
