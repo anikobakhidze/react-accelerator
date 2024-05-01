@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import defaultImage from "../public/defaultImage.jpg";
 function ProductCard({
   product: { id, title, description, price, thumbnail },
   addCart,

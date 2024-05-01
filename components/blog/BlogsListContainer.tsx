@@ -1,9 +1,10 @@
-"use client";
+// "use client";
 import React from "react";
 import BlogCard from "./BlogCard";
-import { useTranslation } from "react-i18next";
-function BlogsListContainer({ blogs }: IBlogsContainer) {
-  const { t } = useTranslation();
+// import { useTranslation } from "react-i18next";
+import { getI18n } from "../../locales/server";
+async function BlogsListContainer({ blogs }: IBlogsContainer) {
+  const t = await getI18n();
   return (
     <section className="overflow-auto">
       <h2 className="text-2xl font-bold text-center my-10">

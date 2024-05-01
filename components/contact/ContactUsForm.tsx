@@ -1,7 +1,7 @@
 "use client";
-import { useTranslation } from "react-i18next";
+import { useI18n } from "../../locales/client";
 function ContactUsForm() {
-  const { t } = useTranslation();
+  const t = useI18n();
   return (
     <form className="flex flex-col gap-3 max-w-container items-center justify-center w-800 ">
       <div className="flex justify-between mt-8 w-full ">

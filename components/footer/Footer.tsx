@@ -1,17 +1,17 @@
-"use client";
-import footerLogo from "../public/footerLogo.png";
+// "use client";
+import footerLogo from "../../public/images/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
-import SocialIcons from "./SocialIcons";
+import SocialIcons from "../sharedComponents/UI/SocialIcons";
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-function Footer() {
-  const { t } = useTranslation();
+import { getI18n } from "../../locales/server";
+async function Footer() {
+  const t = await getI18n();
   return (
-    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 dark:bg-slate-900">
+    <footer className="flex place-items-center justify-around bg-dark-green text-white pb-6 dark:bg-slate-900 pt-10">
       <div>
         <Link href="/">
-          <Image src={footerLogo} alt="logo" />
+          <Image src={footerLogo} alt="logo" width={70} height={70} />
         </Link>
 
         <nav>

@@ -2,10 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
+import { useI18n } from "../../locales/client";
 function HeaderNavigationList() {
   const pathname = usePathname();
-  const { t } = useTranslation();
+  const t = useI18n();
   return (
     <nav className="w-[500px]">
       <ul className="flex justify-between ">

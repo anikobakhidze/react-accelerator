@@ -1,11 +1,11 @@
 "use client";
 import contactData from "../../../../data/contactData";
-import ContactUsForm from "../../../../components/ContactUsForm";
-import ContactCard from "../../../../components/ContactCard";
-import SocialIcons from "../../../../components/SocialIcons";
-import { useTranslation } from "react-i18next";
+import ContactUsForm from "../../../../components/contact/ContactUsForm";
+import ContactCard from "../../../../components/contact/ContactCard";
+import SocialIcons from "../../../../components/sharedComponents/UI/SocialIcons";
+import { useI18n } from "../../../../locales/client";
 export default function Contact() {
-  const { t } = useTranslation();
+  const t = useI18n();
   return (
     <section className="flex flex-col overflow-auto items-center dark:bg-slate-800 ">
       <div className="flex flex-col justify-center items-center h-80 w-full font-bold bg-[#c7d8dc] pb-10 dark:bg-slate-800">

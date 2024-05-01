@@ -1,34 +1,41 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { AUTH_COOKIE_KEY } from "./constants";
-import { i18nRouter } from "next-i18n-router";
-import i18nConfig from "./i18nConfig";
+import { createI18nMiddleware } from "next-international/middleware";
 
-export function middleware(request: NextRequest): Response {
-  const url = new URL(request.url);
-  const pathname = url.pathname;
-  const cookies = request.cookies;
-  const authCookie = cookies.get(AUTH_COOKIE_KEY);
+const logInRoutes = ["/login", "/ka/login", "/en/login"];
 
-  const authRequiredPaths =
-    !pathname.startsWith("/login") && !pathname.startsWith("/geo/login");
+export default async function middleware(request: NextRequest) {
+  const cookie = request.cookies.get(AUTH_COOKIE_KEY);
+  const path = request.nextUrl.pathname;
 
-  const loginPaths =
-    pathname.startsWith("/login") || pathname.startsWith("/geo/login");
+  const isLogInRoute = logInRoutes.includes(path);
 
-  if (authCookie && loginPaths) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
-  if (!authCookie && authRequiredPaths) {
+  if (!isLogInRoute && !cookie) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
+  if (isLogInRoute && cookie) {
+    return NextResponse.redirect(new URL("/", request.nextUrl));
+  }
 
-  return i18nRouter(request, i18nConfig);
+  const defaultLocale = request.headers.get("ka") || "en";
+
+  const handleI18nRouting = createI18nMiddleware({
+    locales: ["en", "ka"],
+    defaultLocale: "en",
+    urlMappingStrategy: "rewrite",
+  });
+
+  const response = handleI18nRouting(request);
+
+  response.headers.set("ka", defaultLocale);
+
+  return response;
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/((?!api|static|.*\\..*|_next).*)",
+    "/((?!api|_next/static|_next/image|.*\\.png$).*)",
+    "/",
+    "/(ka|en)/:path*",
   ],
 };
