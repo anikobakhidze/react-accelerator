@@ -19,6 +19,7 @@ export default {
   privacy: "Privacy & Policy",
   getUpdates: "Get Newsletter Updates",
   subscribe: "Subscribe",
+  admin: "Admin",
   blogsPage: {
     heading: "Stay Updated with the Latest Blogs",
     readMore: "Read More",

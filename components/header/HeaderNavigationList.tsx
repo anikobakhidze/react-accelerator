@@ -71,6 +71,19 @@ function HeaderNavigationList() {
             {t("blog")}
           </Link>
         </li>
+        <li className="w-24 text-center">
+          {" "}
+          <Link
+            href="/admin"
+            className={`link ${
+              pathname === "/admin"
+                ? "transition-all duration-300 hover:font-bold font-bold"
+                : "transition-all duration-300 hover:font-bold "
+            }`}
+          >
+            {t("admin")}
+          </Link>
+        </li>
       </ul>
     </nav>
   );

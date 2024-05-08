@@ -125,3 +125,33 @@ interface ISearchBarProps {
   setSortProducts: setSortProducts;
   products: IProduct[];
 }
+
+// users
+interface IUser {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
+
+interface IFormUser {
+  name: FormDataEntryValue | null;
+  email: FormDataEntryValue | null;
+  age: FormDataEntryValue | null;
+}
+
+interface IUserFormProps {
+  isVisible: boolean;
+  setIsVisible: (visible: boolean) => void;
+}
+
+interface IUserRowProps {
+  setIsVisible: () => void;
+}
+interface IDeleteUserRow extends IUserRowProps {
+  id: number;
+}
+
+interface IEditUserDetails extends IUserRowProps {
+  user: IUser;
+}
