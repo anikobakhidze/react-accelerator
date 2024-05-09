@@ -19,6 +19,7 @@ export default {
   privacy: "კონფიდენციალობა და პოლიტიკა",
   getUpdates: "მიიღეთ სიახლეები",
   subscribe: "გამოწერა",
+  admin: "ადმინი",
   blogsPage: {
     heading: "მიიღეთ უახლესი ბლოგები",
     readMore: "გაიგე მეტი",
