@@ -32,14 +32,16 @@ function UpdateUserDetails({ user, setIsVisible }: IEditUserDetails) {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-auto border border-medium-green"
       >
-        <button
-          type="button"
-          onClick={handleClose}
-          className="text-dark-green hover:text-medium-green absolute top-3 right-3 text-3xl"
-          aria-label="Close"
-        >
-          &times;
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={handleClose}
+            className="text-dark-green hover:text-medium-green text-3xl w-10 "
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
         <div className="space-y-6">
           <input type="hidden" name="id" value={updateUser.id} />
           <div>
