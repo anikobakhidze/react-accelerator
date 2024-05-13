@@ -33,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     "public/**/*.webp",
-    "postcss.config.js"
+    "postcss.config.js",
+    "context/ProductsProvider.js"
   ],
   "exclude": ["node_modules"]
 }

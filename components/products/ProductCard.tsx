@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 function ProductCard({
   product: { id, title, description, price, thumbnail },
   addCart,
@@ -9,6 +10,13 @@ function ProductCard({
   const handleClick = () => {
     routes.push(`/products/${id}`);
   };
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity = getItemQuantity(id);
   return (
     <div className=" rounded-xl w-[300px] flex flex-col items-between h-full ">
       <div onClick={handleClick}>
@@ -31,9 +39,45 @@ function ProductCard({
           {price} USD
         </p>
       </div>
-      <button className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]">
+      <div className="mt-auto">
+        {quantity === 0 ? (
+          <button
+            className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
+            onClick={() => increaseCartQuantity(id)}
+          >
+            + {addCart}
+          </button>
+        ) : (
+          <div className="flex flex-col gap-4">
+            <div className=" flex justify-around items-center">
+              <button
+                className="bg-blue-600 text-white  px-4 text-xl py-2 hover:bg-blue-800"
+                onClick={() => decreaseCartQuantity(id)}
+              >
+                -
+              </button>
+              <div>
+                <span className="fs-3">{quantity}</span> in cart
+              </div>
+              <button
+                className="bg-blue-600 text-white  px-4 text-xl py-2 hover:bg-blue-800"
+                onClick={() => increaseCartQuantity(id)}
+              >
+                +
+              </button>
+            </div>
+            <button
+              className="bg-red-600 text-white rounded-xl p-2"
+              onClick={() => removeFromCart(id)}
+            >
+              Remove
+            </button>
+          </div>
+        )}
+      </div>
+      {/* <button className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]">
         {addCart}
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Header from "../../../components/header/Header";
 import Footer from "../../../components/footer/Footer";
+
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "../../constants";
 // import { redirect } from "next/navigation";
@@ -26,11 +27,11 @@ export default async function DashboardLayout({ children }: IChildrenProps) {
     //   locale={locale}
     //   resources={resources}
     // >
+
     <main className="flex flex-col justify-between min-h-screen dark:bg-slate-800">
       <Header />
       {children}
       <Footer />
     </main>
-    // </TranslationsProvider>
   );
 }
