@@ -6,18 +6,14 @@ type ShoppingCartProviderProps = {
   children: ReactNode;
 };
 
-type CartItem = {
-  id: number;
-  quantity: number;
-};
-
 type ShoppingCartContext = {
   getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
+  increaseCartQuantity: (product: IProduct) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  resetCart: () => void;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -25,6 +21,7 @@ const ShoppingCartContext = createContext({} as ShoppingCartContext);
 export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
+
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
@@ -39,42 +36,48 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
-  function increaseCartQuantity(id: number) {
+
+  function increaseCartQuantity(product: IProduct) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+      const itemIndex = currItems.findIndex((item) => item.id === product.id);
+      if (itemIndex === -1) {
+        // Product not in cart, add new
+        return [...currItems, { id: product.id, product, quantity: 1 }];
       } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
+        // Product already in cart, increase quantity
+        return currItems.map((item, index) => {
+          if (index === itemIndex) {
             return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
           }
+          return item;
         });
       }
-    });
-  }
-  function decreaseCartQuantity(id: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-  function removeFromCart(id: number) {
-    setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
     });
   }
 
+  function decreaseCartQuantity(id: number) {
+    setCartItems((currItems) => {
+      const itemIndex = currItems.findIndex((item) => item.id === id);
+      if (itemIndex !== -1 && currItems[itemIndex].quantity === 1) {
+        return currItems.filter((item, index) => index !== itemIndex);
+      } else {
+        return currItems.map((item, index) => {
+          if (index === itemIndex) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        });
+      }
+    });
+  }
+
+  function removeFromCart(id: number) {
+    setCartItems((currItems) => currItems.filter((item) => item.id !== id));
+  }
+  function resetCart() {
+    setCartItems([]);
+    cartQuantity;
+  }
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -84,6 +87,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         removeFromCart,
         cartItems,
         cartQuantity,
+        resetCart,
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import { Providers } from "./providers";
 import { I18nProviderClient } from "../../locales/client";
 import { ReactNode } from "react";
 import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
+
 export const metadata = {
   title: " Store",
   description: "homework",

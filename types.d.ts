@@ -155,3 +155,9 @@ interface IDeleteUserRow extends IUserRowProps {
 interface IEditUserDetails extends IUserRowProps {
   user: IUser;
 }
+
+type CartItem = {
+  id: number;
+  product: IProduct;
+  quantity: number;
+};
