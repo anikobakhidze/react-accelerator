@@ -13,7 +13,7 @@ function ProductList({ products }: IProductsContainer) {
         {products.map((product) => (
           <li
             key={product.id}
-            className="mx-auto shadow-md shadow-[#1c5858] rounded-xl max-h-[410px]"
+            className="mx-auto shadow-md shadow-[#1c5858] rounded-xl max-h-[600px] p-2"
           >
             <ProductCard product={product} addCart={t("addToCart")} />
           </li>

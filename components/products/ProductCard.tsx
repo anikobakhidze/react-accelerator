@@ -1,18 +1,27 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-function ProductCard({
-  product: { id, title, description, price, thumbnail },
-  addCart,
-}: IProductCardContainer) {
+import { useShoppingCart } from "@/context/ShoppingCartContext";
+import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
+interface IProductCardContainer {
+  product: IProduct;
+  addCart: string;
+}
+
+function ProductCard({ product, addCart }: IProductCardContainer) {
+  const { id, title, description, price, thumbnail } = product;
   const routes = useRouter();
+  const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
+  const quantity = getItemQuantity(id);
+
   const handleClick = () => {
     routes.push(`/products/${id}`);
   };
+
   return (
-    <div className=" rounded-xl w-[300px] flex flex-col items-between h-full ">
+    <div className="rounded-xl w-[300px] flex flex-col items-between h-full">
       <div onClick={handleClick}>
-        <div className="w-[300px] h-[150px] relative object-cover ">
+        <div className="w-[300px] h-[150px] relative">
           <Image
             src={thumbnail}
             alt={title}
@@ -31,9 +40,18 @@ function ProductCard({
           {price} USD
         </p>
       </div>
-      <button className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]">
-        {addCart}
-      </button>
+      <div className="mt-auto">
+        {quantity === 0 ? (
+          <button
+            className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
+            onClick={() => increaseCartQuantity(product)}
+          >
+            + {addCart}
+          </button>
+        ) : (
+          <CartQuantityAdjuster product={product} />
+        )}
+      </div>
     </div>
   );
 }
