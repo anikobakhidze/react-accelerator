@@ -1,5 +1,7 @@
 პროდუქტების კალათაში დამატება
 
+<a href="https://react-accelerator-anikobakhidzes-projects.vercel.app/login">https://react-accelerator-anikobakhidzes-projects.vercel.app/login</a>
+
 ## პროექტის გაშვება
 
 1. დაკლონეთ რეპოზიტორი გითჰაბ ბმულიდან
