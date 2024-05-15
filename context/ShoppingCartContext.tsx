@@ -5,6 +5,11 @@ import { useLocalStorage } from "../hook/useLocalStorage";
 type ShoppingCartProviderProps = {
   children: ReactNode;
 };
+type CartItem = {
+  id: number;
+  product: IProduct;
+  quantity: number;
+};
 
 type ShoppingCartContext = {
   getItemQuantity: (id: number) => number;
@@ -23,9 +28,9 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+  const [cartItems, setCartItems] = useLocalStorage(
     "shopping-cart",
-    []
+    [] as CartItem[]
   );
 
   const cartQuantity = cartItems.reduce(
@@ -59,7 +64,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     setCartItems((currItems) => {
       const itemIndex = currItems.findIndex((item) => item.id === id);
       if (itemIndex !== -1 && currItems[itemIndex].quantity === 1) {
-        return currItems.filter((item, index) => index !== itemIndex);
+        return currItems.filter((_, index) => index !== itemIndex);
       } else {
         return currItems.map((item, index) => {
           if (index === itemIndex) {

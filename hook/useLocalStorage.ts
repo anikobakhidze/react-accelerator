@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-export function useLocalStorage(key: string, initialValue?: any) {
+export function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, (value: T | ((prevValue: T) => T)) => void] {
   const [value, setValue] = useState(() => {
     try {
       if (typeof window !== "undefined") {

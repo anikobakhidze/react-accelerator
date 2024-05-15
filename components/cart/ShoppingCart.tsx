@@ -1,4 +1,3 @@
-// import getProducts from "@/api/products/getProducts";
 "use client";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import ShoppingItem from "./ShoppingItem";
