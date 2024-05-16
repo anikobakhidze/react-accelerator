@@ -1,5 +1,5 @@
 "use server";
-import { createUser, deleteUser, updateUser } from "./api";
+import { createUser, deleteUser, updateUser, createCartItem } from "./api";
 import { revalidatePath } from "next/cache";
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
@@ -24,4 +24,9 @@ export async function updateUserAction(formData: FormData) {
   const age = parseInt(formData.get("age") as string, 10);
   await updateUser(id, name, email, age);
   revalidatePath("/admin");
+}
+
+// create Item
+export async function createCartItemAction(userId: number, productId: number) {
+  await createCartItem(userId, productId);
 }

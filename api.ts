@@ -42,3 +42,18 @@ export async function updateUser(
   });
   return response;
 }
+
+// add To cart
+
+export async function createCartItem(userId: number, productId: number) {
+  const response = await fetch(`${BASE_URL}/api/create-cart-item`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, productId }),
+  });
+  console.log(response);
+
+  return response;
+}
