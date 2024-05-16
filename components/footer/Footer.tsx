@@ -1,4 +1,3 @@
-// "use client";
 import footerLogo from "../../public/images/footerLogo.png";
 import { VscArrowCircleRight } from "react-icons/vsc";
 import SocialIcons from "../sharedComponents/UI/SocialIcons";

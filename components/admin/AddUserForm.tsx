@@ -1,9 +1,7 @@
-// import React, { useState } from "react";
 import { createUserAction } from "@/actions";
 import { MdError } from "react-icons/md";
 import { useError } from "@/hook/useError";
 function AddUserForm({ isVisible, setIsVisible }: IUserFormProps) {
-  // const [error, setError] = useState<string | null>(null);
   const { error, handleError, clearError } = useError();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

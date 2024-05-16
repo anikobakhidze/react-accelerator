@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-// import { useTranslation } from "react-i18next";
 import { useI18n } from "../../../locales/client";
 function LogOutBtn() {
   const router = useRouter();

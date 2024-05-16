@@ -11,7 +11,7 @@ declare module "*.webp" {
   export default value;
 }
 
-// if for blogs and prosucts page
+// id for blogs and prosucts page
 type Id = { id: number };
 
 // blog post
@@ -48,7 +48,7 @@ interface BlogsResponse {
 }
 
 // Contact card
-interface IContactProps {}
+
 interface IContactCard {
   data: {
     type: string;
@@ -155,3 +155,21 @@ interface IDeleteUserRow extends IUserRowProps {
 interface IEditUserDetails extends IUserRowProps {
   user: IUser;
 }
+
+// context types
+
+type CartItem = {
+  id: number;
+  product: IProduct;
+  quantity: number;
+};
+
+type ShoppingCartContext = {
+  getItemQuantity: (id: number) => number;
+  increaseCartQuantity: (product: IProduct) => void;
+  decreaseCartQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  cartQuantity: number;
+  cartItems: CartItem[];
+  resetCart: () => void;
+};

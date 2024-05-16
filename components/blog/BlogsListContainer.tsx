@@ -1,7 +1,5 @@
-// "use client";
 import React from "react";
 import BlogCard from "./BlogCard";
-// import { useTranslation } from "react-i18next";
 import { getI18n } from "../../locales/server";
 async function BlogsListContainer({ blogs }: IBlogsContainer) {
   const t = await getI18n();

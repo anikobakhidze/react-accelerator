@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import defaultBlogImage from "../../../public/defaultBlogImage.webp";
 import defaultBlogImage from "../../../../../public/images/defaultBlogImage.webp";
 import getBlogDetails from "../../../../../api/blogs/getBlogDetails";
 import getBlogs from "../../../../../api/blogs/getBlogs";

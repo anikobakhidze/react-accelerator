@@ -4,9 +4,6 @@ import { useRouter } from "next/navigation";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { BsUnlock } from "react-icons/bs";
-import logoPng from "../../public/images/logoPng.png";
-
-import Image from "next/image";
 import { useI18n } from "../../locales/client";
 function LogInForm() {
   const router = useRouter();
@@ -32,7 +29,6 @@ function LogInForm() {
   };
   return (
     <form className="border-b-light-green border-b-2 pb-10">
-      <Image src={logoPng} alt="shopswift logo" height={100} width={200} />
       <p className="text-slate-400">
         To access your account, please sign in below.
       </p>

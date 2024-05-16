@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-// import { useTranslation } from "react-i18next";
 import { useI18n } from "../../locales/client";
 function BlogCardReadMoreBtn({ id }: Id): JSX.Element {
   const routes = useRouter();

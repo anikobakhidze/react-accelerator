@@ -1,8 +1,6 @@
-// "use client";
 import defaultUserImage from "../../public/images/default-user-image.webp";
 import UserProfileInfo from "./UserProfileInfo";
 import Image from "next/image";
-// import { useTranslation } from "react-i18next";
 import { getI18n } from "../../locales/server";
 async function UserProfileSettings() {
   const t = await getI18n();

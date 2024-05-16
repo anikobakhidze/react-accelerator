@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-// import { useTranslation } from "react-i18next";
 import { useI18n } from "../../locales/client";
 function UserProfileInfo() {
   const t = useI18n();

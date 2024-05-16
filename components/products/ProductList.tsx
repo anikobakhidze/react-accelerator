@@ -1,7 +1,5 @@
 "use client";
-
 import ProductCard from "./ProductCard";
-// import { useTranslation } from "react-i18next";
 import { useI18n } from "../../locales/client";
 
 function ProductList({ products }: IProductsContainer) {

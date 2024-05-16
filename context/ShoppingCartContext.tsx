@@ -1,25 +1,6 @@
 "use client";
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, useContext } from "react";
 import { useLocalStorage } from "../hook/useLocalStorage";
-
-type ShoppingCartProviderProps = {
-  children: ReactNode;
-};
-type CartItem = {
-  id: number;
-  product: IProduct;
-  quantity: number;
-};
-
-type ShoppingCartContext = {
-  getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (product: IProduct) => void;
-  decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
-  cartQuantity: number;
-  cartItems: CartItem[];
-  resetCart: () => void;
-};
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
@@ -27,7 +8,7 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+export function ShoppingCartProvider({ children }: IChildrenProps) {
   const [cartItems, setCartItems] = useLocalStorage(
     "shopping-cart",
     [] as CartItem[]
