@@ -1,9 +1,10 @@
 "use client";
 import { FaCartShopping } from "react-icons/fa6";
-import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { useRouter } from "next/navigation";
-function AddToCartBtn() {
-  const { cartQuantity } = useShoppingCart();
+import { useCart } from "../../context/cartProvider";
+function CartBtn() {
+  const { totalQuantity } = useCart();
+
   const routes = useRouter();
   const handleClick = () => {
     routes.push("/cart");
@@ -14,13 +15,13 @@ function AddToCartBtn() {
       onClick={handleClick}
     >
       <FaCartShopping className="dark:text-black" />
-      {cartQuantity > 0 && (
+      {totalQuantity > 0 && (
         <div className="absolute bg-red-700 rounded-full w-6 h-6 -right-2 -bottom-2 text-white">
-          {cartQuantity}
+          {totalQuantity}
         </div>
       )}
     </button>
   );
 }
 
-export default AddToCartBtn;
+export default CartBtn;

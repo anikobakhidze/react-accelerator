@@ -3,7 +3,6 @@ export const BASE_URL = "http://localhost:3000";
 export async function getUsers() {
   const response = await fetch(`${BASE_URL}/api/get-users`);
   const { users } = await response.json();
-  console.log(users);
 
   return users.rows;
 }
@@ -53,7 +52,16 @@ export async function createCartItem(userId: number, productId: number) {
     },
     body: JSON.stringify({ userId, productId }),
   });
-  console.log(response);
 
   return response;
+}
+
+// get cart items
+
+export async function getCartItems(userId: number) {
+  const response = await fetch(`${BASE_URL}/api/get-cart-items/${userId}`, {
+    next: { revalidate: 3600 },
+  });
+  const { cart } = await response.json();
+  return cart.rows;
 }

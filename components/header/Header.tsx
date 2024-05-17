@@ -9,7 +9,7 @@ import Image from "next/image";
 import LogOutBtn from "../sharedComponents/UI/LogOutBtn";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
 import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
-import AddToCartBtn from "../cart/AddToCartBtn";
+import CartBtn from "../cart/CartBtn";
 async function Header() {
   return (
     <header className="flex justify-around items-center h-20 pt-6 ">
@@ -21,7 +21,7 @@ async function Header() {
         <ProfilePageButton />
 
         <ThemeSwitch />
-        <AddToCartBtn />
+        <CartBtn />
         <button className="hidden md:hidden">
           <GiHamburgerMenu />
         </button>
