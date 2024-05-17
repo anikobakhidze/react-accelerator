@@ -11,7 +11,6 @@ function AddUserForm({ isVisible, setIsVisible }: IUserFormProps) {
       await createUserAction(formData);
       setIsVisible(false);
     } catch (error: any) {
-      console.log("Error creating user:", error);
       handleError(error.message);
     }
   };
