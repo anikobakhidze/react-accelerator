@@ -59,9 +59,7 @@ export async function createCartItem(userId: number, productId: number) {
 // get cart items
 
 export async function getCartItems(userId: number) {
-  const response = await fetch(`${BASE_URL}/api/get-cart-items/${userId}`, {
-    next: { revalidate: 3600 },
-  });
+  const response = await fetch(`${BASE_URL}/api/get-cart-items/${userId}`);
   const { cart } = await response.json();
   return cart.rows;
 }
