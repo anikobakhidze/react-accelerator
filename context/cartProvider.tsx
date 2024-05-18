@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { getCartItems } from "../api";
 import { createCartItemAction } from "../actions";
+import { useEffect } from "react";
 
 interface CartContextType {
   totalQuantity: number;
@@ -39,6 +40,11 @@ export const CartProvider = ({ children }: IChildrenProps) => {
       cartItems.find((item: cartItem) => item.productid === id)?.quantity || 0
     );
   }
+  useEffect(() => {
+    const userId = 0;
+    fetchTotalQuantity(userId);
+  }, []);
+
   const increaseCartQuantity = async (productId: number) => {
     try {
       await createCartItemAction(userId, productId);

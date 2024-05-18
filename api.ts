@@ -72,8 +72,24 @@ export async function createCartItem(userId: number, productId: number) {
 
 export async function getCartItems(userId: number) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items/${userId}`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items/${userId}`,
+    {
+      next: { revalidate: 0 },
+    }
   );
   const { cart } = await response.json();
   return cart.rows;
 }
+
+export async function resetCart(userId: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/reset-cart/${userId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  return response;
+}
+
+export const userId = 0; // ==> created manually
