@@ -173,3 +173,9 @@ type ShoppingCartContext = {
   cartItems: CartItem[];
   resetCart: () => void;
 };
+
+// productCard
+interface IProductCardContainer {
+  product: IProduct;
+  addCart?: string;
+}

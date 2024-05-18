@@ -11,7 +11,7 @@ function LogInForm() {
   const [user, setUser] = useState({ username: "", password: "" });
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await fetch("/api/login", {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
