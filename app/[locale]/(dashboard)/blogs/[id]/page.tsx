@@ -2,6 +2,7 @@ import Image from "next/image";
 import defaultBlogImage from "../../../../../public/images/defaultBlogImage.webp";
 import getBlogDetails from "../../../../../api/blogs/getBlogDetails";
 import getBlogs from "../../../../../api/blogs/getBlogs";
+import { setStaticParamsLocale } from "next-international/server";
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   const paths = blogs.map((blog: IBlog) => ({
@@ -12,8 +13,12 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogsDetailPage({
-  params: { id },
-}: IParamsIdProps) {
+  params: { id, locale },
+}: {
+  params: { id: number; locale: string };
+}) {
+  setStaticParamsLocale(locale);
+
   const blog = await getBlogDetails(id);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full py-10 dark:bg-slate-800">

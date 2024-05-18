@@ -32,7 +32,7 @@ function AddToCartBtn({ product, addCart }: IProductCardContainer) {
             </div>
             <button
               className="bg-blue-600 text-white px-4 text-xl py-2 hover:bg-blue-800"
-              // onClick={() => increaseCartQuantity(product)}
+              // onClick={() => increaseCartQuantity(product.id)}
             >
               +
             </button>

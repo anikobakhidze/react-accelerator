@@ -1,5 +1,6 @@
 import Image from "next/image";
 import getProductDetails from "../../../../../api/products/getProductDetails";
+import { setStaticParamsLocale } from "next-international/server";
 
 export async function generateStaticParams() {
   const response = await fetch("https://dummyjson.com/products");
@@ -11,8 +12,12 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductDetailPage({
-  params: { id },
-}: IParamsIdProps) {
+  params: { id, locale },
+}: {
+  params: { id: number; locale: string };
+}) {
+  setStaticParamsLocale(locale);
+
   const product = await getProductDetails(id);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full dark:bg-slate-800">
