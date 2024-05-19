@@ -1,6 +1,6 @@
 პროდუქტების კალათაში დამატება
 
-<a href="https://react-accelerator-anikobakhidzes-projects.vercel.app/login" target="_blank">https://react-accelerator-anikobakhidzes-projects.vercel.app/login</a>
+<a href="https://react-accelerator-anikobakhidzes-projects.vercel.app" target="_blank">https://react-accelerator-anikobakhidzes-projects.vercel.app</a>
 
 ## პროექტის გაშვება
 
