@@ -10,7 +10,7 @@ export default async function LogIn() {
         <div>
           <Image
             src={logIn}
-            alt="girl is shopping"
+            alt="shopping"
             width={500}
             height={500}
             unoptimized

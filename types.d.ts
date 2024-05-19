@@ -10,6 +10,14 @@ declare module "*.webp" {
   const value: string;
   export default value;
 }
+declare module "*.svg" {
+  const value: string;
+  export default value;
+}
+declare module "*.png" {
+  const value: string;
+  export default value;
+}
 
 // id for blogs and prosucts page
 type Id = { id: number };
