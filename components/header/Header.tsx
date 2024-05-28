@@ -1,6 +1,6 @@
 "use server";
 import logo from "../../public/images/logo.svg";
-
+import { getSession } from "@auth0/nextjs-auth0";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ProfilePageButton from "../profile/ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
@@ -10,6 +10,7 @@ import LogOutBtn from "../sharedComponents/UI/LogOutBtn";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
 import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
 import AddToCartBtn from "../cart/AddToCartBtn";
+
 async function Header() {
   return (
     <header className="flex justify-around items-center h-20 pt-6 ">
@@ -27,7 +28,10 @@ async function Header() {
         </button>
       </div>
       <LanguageSwitcher />
-      <LogOutBtn />
+      {/* <a href="/api/auth/login">Login</a> */}
+      <a href="/api/auth/signup">Signup</a>
+      <a href="/api/auth/logout">Logout</a>
+      {/* <LogOutBtn /> */}
     </header>
   );
 }

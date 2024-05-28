@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { AUTH_COOKIE_KEY } from "./constants";
 import { createI18nMiddleware } from "next-international/middleware";
 

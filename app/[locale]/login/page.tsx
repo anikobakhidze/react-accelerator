@@ -6,6 +6,7 @@ export default async function LogIn() {
   return (
     <main className="w-full h-[100vh] flex flex-col items-center justify-around  dark:bg-slate-800 bg-light-green">
       <section className="flex max-w-6xl gap-20  rounded-2xl shadow-2xl p-10 bg-slate-100 dark:bg-slate-700">
+        <a href="/api/auth/login">Login</a>
         <LogInContainer />
         <div>
           <Image
