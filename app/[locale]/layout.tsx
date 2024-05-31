@@ -18,15 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <UserProvider>
-        <body>
-          <Providers>
-            <I18nProviderClient locale={locale}>
+      <body>
+        <Providers>
+          <I18nProviderClient locale={locale}>
+            <UserProvider>
               <ShoppingCartProvider>{children}</ShoppingCartProvider>
-            </I18nProviderClient>
-          </Providers>
-        </body>
-      </UserProvider>
+            </UserProvider>
+          </I18nProviderClient>
+        </Providers>
+      </body>
     </html>
   );
 }

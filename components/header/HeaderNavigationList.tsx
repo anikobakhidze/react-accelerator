@@ -3,9 +3,12 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useI18n } from "../../locales/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 function HeaderNavigationList() {
   const pathname = usePathname();
   const t = useI18n();
+  const { user } = useUser();
   return (
     <nav className="w-[500px]">
       <ul className="flex justify-between ">
@@ -70,19 +73,21 @@ function HeaderNavigationList() {
             {t("blog")}
           </Link>
         </li>
-        <li className="w-24 text-center">
-          {" "}
-          <Link
-            href="/admin"
-            className={`link ${
-              pathname === "/admin"
-                ? "transition-all duration-300 hover:font-bold font-bold"
-                : "transition-all duration-300 hover:font-bold "
-            }`}
-          >
-            {t("admin")}
-          </Link>
-        </li>
+        {user && (
+          <li className="w-24 text-center">
+            {" "}
+            <Link
+              href="/admin"
+              className={`link ${
+                pathname === "/admin"
+                  ? "transition-all duration-300 hover:font-bold font-bold"
+                  : "transition-all duration-300 hover:font-bold "
+              }`}
+            >
+              {t("admin")}
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

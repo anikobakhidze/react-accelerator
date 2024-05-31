@@ -1,20 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AUTH_COOKIE_KEY } from "./constants";
+// import { AUTH_COOKIE_KEY } from "./constants";
 import { createI18nMiddleware } from "next-international/middleware";
 
-const logInRoutes = ["/login", "/ka/login", "/en/login"];
+// const logInRoutes = ["/login", "/ka/login", "/en/login"];
 
 export default async function middleware(request: NextRequest) {
-  const cookie = request.cookies.get(AUTH_COOKIE_KEY);
-  const path = request.nextUrl.pathname;
-
-  const isLogInRoute = logInRoutes.includes(path);
-
-  if (!isLogInRoute && !cookie) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  const cookieStore = request.cookies;
+  const appSessionCookie = cookieStore.get("appSession");
+  const { pathname } = request.nextUrl;
+  if (
+    !appSessionCookie &&
+    (pathname.startsWith("/profile") || pathname.startsWith("/admin"))
+  ) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
-  if (isLogInRoute && cookie) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
+
+  if (appSessionCookie && pathname.startsWith("/login")) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   const defaultLocale = request.headers.get("ka") || "en";

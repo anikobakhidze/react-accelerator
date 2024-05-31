@@ -36,7 +36,7 @@ export default {
     heading: "USER PROFILE",
     about: "About",
     name: "Name",
-    surname: "Surname",
+    nickname: "Nickname",
     email: "Email",
     resetPass: "Reset Password",
     password: "Password",

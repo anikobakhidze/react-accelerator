@@ -9,14 +9,14 @@ async function UserProfileSettings() {
       <h2 className="text-center text-3xl font-bold text-teal-800 mb-12">
         {t("profilePage.heading")}
       </h2>
-      <form className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-between rounded-3xl items-center dark:bg-slate-600">
+      <div className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-around rounded-3xl items-center dark:bg-slate-600">
         <Image
           src={defaultUserImage}
           alt="user"
           className="w-60 h-60 rounded-full"
         />
         <UserProfileInfo />
-      </form>
+      </div>
     </section>
   );
 }

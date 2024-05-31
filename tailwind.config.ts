@@ -16,7 +16,7 @@ module.exports = {
         "48%": "48%",
       },
       colors: {
-        "light-green": "#c7d8dc",
+        "light-green": " ",
         "medium-green": "#4abca9",
         "dark-green": "#1c5858",
         "dark-orange": "var(--orange)",

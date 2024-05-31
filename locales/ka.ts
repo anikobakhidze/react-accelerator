@@ -35,7 +35,7 @@ export default {
     heading: "პროფილი",
     about: "შესახებ",
     name: "სახელი",
-    surname: "გვარი",
+    nickname: "მომხმარებლის სახელი",
     email: "იმეილი",
     resetPass: "პაროლის აღდგენა",
     password: "პაროლი",

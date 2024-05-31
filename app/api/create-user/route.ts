@@ -1,16 +1,37 @@
+import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(request: Request) {
-  const { name, email, age } = await request.json();
+export async function GET(_: NextRequest) {
+  const session = await getSession();
+  const user = session?.user;
+
+  if (!user) {
+    return NextResponse.json(
+      { error: "User not authenticated" },
+      { status: 401 }
+    );
+  }
+
   try {
-    if (!name || !email || !age)
-      throw new Error("Name, email  and age are required");
-    await sql`INSERT INTO users (name, email, age) VALUES (${name}, ${email}, ${age});`;
+    const { picture, name, nickname, email, sub } = user;
+
+    if (!picture || !name || !nickname || !email || !sub) {
+      throw new Error("Image, name, nickname, email, and sub are required");
+    }
+
+    const result = await sql`SELECT * FROM users WHERE sub = ${sub}`;
+
+    if (result.rows.length === 0) {
+      await sql`
+        INSERT INTO users (image, name, nickname, email, sub) 
+        VALUES (${picture}, ${name}, ${nickname}, ${email}, ${sub});
+      `;
+    }
+
+    const users = await sql`SELECT * FROM users;`;
+    return NextResponse.json({ users }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-
-  const users = await sql`SELECT * FROM users;`;
-  return NextResponse.json({ users }, { status: 200 });
 }
