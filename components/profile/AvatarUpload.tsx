@@ -99,7 +99,7 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
           const file = inputFileRef.current.files[0];
           console.log(file.name);
           setLoading(true);
-          setError(null); // Clear previous errors
+          setError(null);
           try {
             const response = await fetch(
               `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,

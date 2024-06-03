@@ -1,7 +1,7 @@
-"use client";
-import { useEffect } from "react";
+// "use client";
+// import { useEffect } from "react";
 import logo from "../../public/images/logo.svg";
-import { useUser } from "@auth0/nextjs-auth0/client";
+// import { useUser } from "@auth0/nextjs-auth0/client";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ProfilePageButton from "../profile/ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
@@ -10,15 +10,18 @@ import Image from "next/image";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
 import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
 import AddToCartBtn from "../cart/AddToCartBtn";
-import { createUser } from "@/api";
+import { getSession } from "@auth0/nextjs-auth0";
+// import { createUser } from "@/api";
 
-function Header() {
-  const { user } = useUser();
-  useEffect(() => {
-    if (user) {
-      createUser();
-    }
-  }, [user]);
+async function Header() {
+  const session = await getSession();
+  const user = session?.user;
+  // const { user } = useUser();
+  // useEffect(() => {
+  //   if (user) {
+  //     createUser();
+  //   }
+  // }, [user]);
 
   return (
     <header className="flex justify-around items-center h-20 pt-6">

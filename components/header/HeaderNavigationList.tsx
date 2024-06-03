@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useI18n } from "../../locales/client";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import AddProductsBtn from "../products/AddProductsBtn";
 
 function HeaderNavigationList() {
   const pathname = usePathname();
@@ -76,7 +77,6 @@ function HeaderNavigationList() {
         </li>
         {user?.email === "admin@gmail.com" && (
           <li className="w-24 text-center">
-            {" "}
             <Link
               href="/admin"
               className={`link ${
@@ -89,6 +89,7 @@ function HeaderNavigationList() {
             </Link>
           </li>
         )}
+        {user && <AddProductsBtn />}
       </ul>
     </nav>
   );

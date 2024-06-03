@@ -51,18 +51,18 @@ export async function updateUser(name: string, nickname: string) {
   );
   return response;
 }
-export async function createUser() {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch user");
-    }
-  } catch (error) {
-    console.error("Error fetching user:", error);
-  }
-}
+// export async function createUser() {
+//   try {
+//     const response = await fetch(
+//       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`
+//     );
+//     if (!response.ok) {
+//       throw new Error("Failed to fetch user");
+//     }
+//   } catch (error) {
+//     console.error("Error fetching user:", error);
+//   }
+// }
 export async function getUser() {
   const session = await getSession();
   const user = session?.user;

@@ -1,7 +1,14 @@
-// app/api/auth/[auth0]/route.js
 import { handleAuth, handleLogin } from "@auth0/nextjs-auth0";
 
 export const GET = handleAuth({
-  login: handleLogin({ authorizationParams: { screen_hint: "/" } }),
-  signup: handleLogin({ authorizationParams: { screen_hint: "signup" } }),
+  login: handleLogin({
+    returnTo: "/api/create-user",
+    authorizationParams: {
+      prompt: "login",
+    },
+  }),
+  signup: handleLogin({
+    returnTo: "/api/create-user",
+    authorizationParams: { prompt: "signup" },
+  }),
 });
