@@ -20,9 +20,6 @@ export async function deleteUserAction(id: number) {
 export async function updateUserAction(formData: FormData) {
   const name = formData.get("name") as string;
   const nickname = formData.get("nickname") as string;
-  const sub = formData.get("age") as string;
-  console.log(name, nickname, sub);
-
   await updateUser(name, nickname);
   revalidatePath("/profile");
 }

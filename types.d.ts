@@ -181,3 +181,27 @@ type ShoppingCartContext = {
   cartItems: CartItem[];
   resetCart: () => void;
 };
+
+// user profile type
+type UserRole = "user" | "admin";
+interface UserInfo {
+  id?: number;
+  role?: UserRole;
+  image?: string;
+  name?: string;
+  nickname?: string;
+  email?: string;
+  sub?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+// contact page
+
+type FormErrors = {
+  name?: string;
+  phone?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+};

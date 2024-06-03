@@ -9,6 +9,7 @@ function HeaderNavigationList() {
   const pathname = usePathname();
   const t = useI18n();
   const { user } = useUser();
+
   return (
     <nav className="w-[500px]">
       <ul className="flex justify-between ">
@@ -73,7 +74,7 @@ function HeaderNavigationList() {
             {t("blog")}
           </Link>
         </li>
-        {user && (
+        {user?.email === "admin@gmail.com" && (
           <li className="w-24 text-center">
             {" "}
             <Link

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 // import { AUTH_COOKIE_KEY } from "./constants";
 import { createI18nMiddleware } from "next-international/middleware";
+// import { getUser } from "./api";
 
 // const logInRoutes = ["/login", "/ka/login", "/en/login"];
 

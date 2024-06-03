@@ -10,24 +10,13 @@ import Image from "next/image";
 import ThemeSwitch from "../sharedComponents/UI/ThemeSwitch";
 import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
 import AddToCartBtn from "../cart/AddToCartBtn";
-
-async function fetchUser() {
-  try {
-    const response = await fetch("/api/create-user");
-    if (!response.ok) {
-      throw new Error("Failed to fetch user");
-    }
-  } catch (error) {
-    console.error("Error fetching user:", error);
-  }
-}
+import { createUser } from "@/api";
 
 function Header() {
   const { user } = useUser();
-
   useEffect(() => {
     if (user) {
-      fetchUser();
+      createUser();
     }
   }, [user]);
 
