@@ -1,5 +1,5 @@
 "use server";
-import { deleteUser, updateUser } from "./api";
+import { deleteUser, sendMessage, updateUser } from "./api";
 import { revalidatePath } from "next/cache";
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
@@ -22,4 +22,13 @@ export async function updateUserAction(formData: FormData) {
   const nickname = formData.get("nickname") as string;
   await updateUser(name, nickname);
   revalidatePath("/profile");
+}
+
+export async function sendMessageAction(formData: FormData) {
+  const name = formData.get("name") as string;
+  const phone = parseInt(formData.get("phone") as string);
+  const email = formData.get("email") as string;
+  const subject = formData.get("subject") as string;
+  const message = formData.get("message") as string;
+  await sendMessage(name, phone, email, subject, message);
 }

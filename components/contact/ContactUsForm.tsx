@@ -1,4 +1,5 @@
 "use client";
+import { sendMessageAction } from "@/actions";
 import { useI18n } from "../../locales/client";
 import { useState } from "react";
 
@@ -10,7 +11,7 @@ function ContactUsForm() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
-
+  const [updateMessage, setUpdateMessage] = useState("");
   const validateForm = () => {
     const newErrors: FormErrors = {};
 
@@ -42,10 +43,22 @@ function ContactUsForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form submitted:", { name, phone, email, subject, message });
+    }
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("phone", phone);
+    formData.append("email", email);
+    formData.append("subject", subject);
+    formData.append("message", message);
+    try {
+      await sendMessageAction(formData);
+      setUpdateMessage("Message Sent");
+    } catch (error) {
+      setUpdateMessage("Ups... Unable to send message");
     }
   };
 
@@ -129,6 +142,7 @@ function ContactUsForm() {
       <button className="h-10 w-48 rounded-xl bg-[#5f8d8f] text-white hover:bg-[#9ec7d0]">
         {t("contactPage.contactUs")}
       </button>
+      {updateMessage && <div>{updateMessage}</div>}
     </form>
   );
 }

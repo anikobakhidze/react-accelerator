@@ -12,14 +12,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const query = `
-      INSERT INTO contact_us (name, phone, email, subject, message, created_at)
-    if (!name || !phone || !email || !subject || !message) {
-        VALUES (${name}, ${phone}, ${email}, ${subject}, ${message}, NOW())
-    `;
-    const values = [name, phone, email, subject, message];
+    await sql`
+    INSERT INTO contact_us (name, phone, email, subject, message)
+    VALUES (${name}, ${phone}, ${email}, ${subject}, ${message});
+  `;
 
-    await sql.query(query, values);
+    // const values = [name, phone, email, subject, message];
+
+    // await sql.query(query, values);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
