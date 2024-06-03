@@ -17,10 +17,6 @@ export async function POST(request: NextRequest) {
     VALUES (${name}, ${phone}, ${email}, ${subject}, ${message});
   `;
 
-    // const values = [name, phone, email, subject, message];
-
-    // await sql.query(query, values);
-
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Error saving contact message:", error);

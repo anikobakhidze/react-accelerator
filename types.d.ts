@@ -205,3 +205,14 @@ type FormErrors = {
   subject?: string;
   message?: string;
 };
+
+// products
+type Product = {
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+  price: string;
+  quantity: string;
+  userSub: string | null | undefined;
+};

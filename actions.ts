@@ -1,5 +1,5 @@
 "use server";
-import { deleteUser, sendMessage, updateUser } from "./api";
+import { deleteUser, sendMessage, updateUser, uploadProduct } from "./api";
 import { revalidatePath } from "next/cache";
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
@@ -31,4 +31,26 @@ export async function sendMessageAction(formData: FormData) {
   const subject = formData.get("subject") as string;
   const message = formData.get("message") as string;
   await sendMessage(name, phone, email, subject, message);
+}
+
+export async function uploadProductAction(product: Product) {
+  try {
+    const price = Number(product.price);
+    const quantity = Number(product.quantity);
+
+    const userSub = product.userSub as string;
+
+    await uploadProduct(
+      product.image,
+      product.title,
+      product.description,
+      price,
+      quantity,
+      product.category,
+      userSub
+    );
+  } catch (error) {
+    console.error("Error uploading product:", error);
+    throw new Error("Error uploading product");
+  }
 }

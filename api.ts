@@ -105,3 +105,40 @@ export async function sendMessage(
     console.error("Error sending message:", error);
   }
 }
+
+export async function uploadProduct(
+  image: string,
+  title: string,
+  description: string,
+  price: number,
+  quantity: number,
+  category: string,
+  userSub: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload-product`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image,
+          title,
+          description,
+          price,
+          quantity,
+          category,
+          userSub,
+        }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to upload product");
+    }
+    return "Product uploaded successfully";
+  } catch (error) {
+    return error;
+  }
+}
