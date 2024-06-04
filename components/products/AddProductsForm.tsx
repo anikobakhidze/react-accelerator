@@ -60,7 +60,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
     quantity,
     userSub,
   };
-  console.log(product);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -74,6 +74,7 @@ interface IProduct {
   description: string;
   price: number;
   category: string;
+  quantity: number;
   image: string;
   usersub: string;
 }
@@ -218,3 +219,12 @@ type Product = {
   quantity: string;
   userSub: string | null | undefined;
 };
+interface IProductDetails {
+  id?: number;
+  image: string;
+  title: string;
+  description: string;
+  price: number;
+  quantity: number;
+  category: string;
+}

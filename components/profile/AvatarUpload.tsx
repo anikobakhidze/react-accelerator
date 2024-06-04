@@ -37,7 +37,7 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
           setError("Failed to update user picture");
         } else {
           console.log("User picture updated successfully");
-          setError(null); // Clear error on success
+          setError(null);
         }
       } catch (error) {
         console.error("Error updating user picture:", error);

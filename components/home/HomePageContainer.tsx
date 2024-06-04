@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
 import ProductList from "../products/ProductList";
 import SearchBar from "../sharedComponents/UI/SearchBar";
-
-import { useState } from "react";
+import React, { useState } from "react";
 function HomePageContainer({ products }: IProductsContainer) {
   const [sortProducts, setSortProducts] = useState(products);
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
