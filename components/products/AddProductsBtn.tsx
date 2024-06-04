@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
-import AddProducts from "./AddProducts";
+import AddProducts from "./AddProductsForm";
 
 const AddProductsBtn = () => {
   const [modal, setModal] = useState(false);

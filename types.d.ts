@@ -73,7 +73,9 @@ interface IProduct {
   title: string;
   description: string;
   price: number;
-  thumbnail: string;
+  category: string;
+  image: string;
+  usersub: string;
 }
 interface IProductCard {
   product: Iproduct;

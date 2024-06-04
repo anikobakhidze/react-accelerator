@@ -142,3 +142,17 @@ export async function uploadProduct(
     return error;
   }
 }
+
+//  get all products
+export async function getProducts() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products`,
+    {
+      cache: "no-store",
+    }
+  );
+  const { products } = await response.json();
+  console.log(products);
+
+  return products.rows;
+}

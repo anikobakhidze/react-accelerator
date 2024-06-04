@@ -1,6 +1,8 @@
-import getProducts from "../../../../api/products/getProducts";
+// import getProducts from "../../../../api/products/getProducts";
+import React from "react";
 import ProductList from "@/components/products/ProductList";
 
+import { getProducts } from "@/api";
 export default async function ProductsPage() {
   const products = await getProducts();
   return (

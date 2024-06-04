@@ -1,15 +1,24 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
-interface IProductCardContainer {
-  product: IProduct;
-  addCart: string;
-}
+import { useUser } from "@auth0/nextjs-auth0/client";
+import EditProductsBtn from "./EditProductsBtn";
 
 function ProductCard({ product, addCart }: IProductCardContainer) {
-  const { id, title, description, price, thumbnail } = product;
+  const { id, title, description, price, image, usersub } = product;
+  const { isLoading } = useUser();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoading(false);
+    }
+  }, [isLoading]);
+
   const routes = useRouter();
   const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
   const quantity = getItemQuantity(id);
@@ -18,12 +27,16 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
     routes.push(`/products/${id}`);
   };
 
+  if (loading && isLoading) {
+    return <div className="loader">Loading...</div>;
+  }
+
   return (
     <div className="rounded-xl w-[300px] flex flex-col items-between h-full">
       <div onClick={handleClick}>
         <div className="w-[300px] h-[150px] relative">
           <Image
-            src={thumbnail}
+            src={image}
             alt={title}
             className="rounded-t-[12px] mb-2"
             fill
@@ -51,6 +64,7 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
         ) : (
           <CartQuantityAdjuster product={product} />
         )}
+        <EditProductsBtn usersub={usersub} />
       </div>
     </div>
   );
