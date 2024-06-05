@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { UpdateProduct } from "@/api";
+import { updateProductAction } from "@/actions";
 
 function EditProductForm({
   productDetails,
@@ -14,6 +14,7 @@ function EditProductForm({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -45,11 +46,14 @@ function EditProductForm({
       setLoading(false);
     }
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
+    setSuccessMessage("");
     try {
-      await UpdateProduct(product);
+      await updateProductAction(product);
       setSuccessMessage("Product updated successfully");
     } catch (error) {
       console.error("Error updating product:", error);
@@ -64,14 +68,7 @@ function EditProductForm({
       <form onSubmit={handleSubmit}>
         {product.image && (
           <div className="mb-4">
-            {product.image && (
-              <Image
-                src={product.image}
-                alt="Uploaded"
-                width={60}
-                height={60}
-              />
-            )}
+            <Image src={product.image} alt="Uploaded" width={60} height={60} />
             <label className="block text-sm font-medium text-gray-700">
               Upload Image
             </label>

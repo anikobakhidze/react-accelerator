@@ -2,6 +2,7 @@
 
 import { getSession } from "@auth0/nextjs-auth0";
 import { revalidatePath, revalidateTag } from "next/cache";
+
 export async function getUsers() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-users`
@@ -134,6 +135,7 @@ export async function uploadProduct(
         }),
       }
     );
+    revalidatePath("/");
     if (!response.ok) {
       throw new Error("Failed to upload product");
     }
@@ -151,7 +153,7 @@ export async function getProducts() {
       cache: "no-store",
     }
   );
-  revalidateTag("/");
+
   const { products } = await response.json();
   return products.rows;
 }
@@ -165,13 +167,12 @@ export async function getProduct(id: number) {
       cache: "no-store",
     }
   );
-
   const productInfo = await response.json();
   const product = productInfo.product.rows[0];
   return product;
 }
 
-export async function UpdateProduct(product: IProductDetails) {
+export async function updateProduct(product: IProductDetails) {
   const { id, image, title, description, price, quantity, category } = product;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product/${id}`,
@@ -192,5 +193,16 @@ export async function UpdateProduct(product: IProductDetails) {
     }
   );
 
+  return response;
+}
+
+//  delete product
+export async function deleteProduct(id: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-product/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
   return response;
 }

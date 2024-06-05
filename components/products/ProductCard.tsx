@@ -6,15 +6,19 @@ import { useShoppingCart } from "@/context/ShoppingCartContext";
 import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin5Line } from "react-icons/ri";
 // import EditProductsBtn from "./EditProductsBtn";
 import Link from "next/link";
 import { hasUserRole } from "../../utils/userRole";
+import DeleteProduct from "./DeleteProduct";
 function ProductCard({ product, addCart }: IProductCardContainer) {
   const { id, title, description, price, image, quantity, category, usersub } =
     product;
   const { user, isLoading } = useUser();
+
   const sub = user?.sub;
   const [loading, setLoading] = useState(true);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     if (!isLoading) {
@@ -81,6 +85,13 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
             Edit
             <FiEdit />
           </Link>
+        )}
+        {(sub === usersub ||
+          (hasUserRole(user) && user.role[0] === "admin")) && (
+          <RiDeleteBin5Line onClick={() => setDeleteModal(true)} />
+        )}
+        {deleteModal && (
+          <DeleteProduct setDeleteModal={setDeleteModal} id={id} />
         )}
       </div>
     </div>

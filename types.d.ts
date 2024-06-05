@@ -228,3 +228,9 @@ interface IProductDetails {
   quantity: number;
   category: string;
 }
+
+// delete products
+interface IDeleteProduct {
+  setDeleteModal: Dispatch<SetStateAction<boolean>>;
+  id: number;
+}

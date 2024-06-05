@@ -1,6 +1,15 @@
 "use server";
-import { deleteUser, sendMessage, updateUser, uploadProduct } from "./api";
-import { revalidatePath } from "next/cache";
+import {
+  deleteUser,
+  getProducts,
+  sendMessage,
+  updateUser,
+  uploadProduct,
+  deleteProduct,
+  updateProduct,
+  getProduct,
+} from "./api";
+import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
   revalidatePath("/admin");
@@ -53,4 +62,26 @@ export async function uploadProductAction(product: Product) {
     console.error("Error uploading product:", error);
     throw new Error("Error uploading product");
   }
+}
+export async function getProductsAction() {
+  const products = await getProducts();
+  revalidatePath("/", "layout");
+  return products;
+}
+
+export async function updateProductAction(product: IProductDetails) {
+  updateProduct(product);
+  revalidatePath("/", "layout");
+}
+
+export async function deleteProductAction(id: number) {
+  await deleteProduct(id);
+  revalidatePath("/");
+}
+// get products action
+export async function getProductAction(id: number) {
+  // const product = await
+  getProduct(id);
+  // revalidatePath("/", "layout");
+  // return product;
 }
