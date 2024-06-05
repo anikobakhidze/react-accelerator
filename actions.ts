@@ -79,9 +79,8 @@ export async function deleteProductAction(id: number) {
   revalidatePath("/");
 }
 // get products action
-export async function getProductAction(id: number) {
-  // const product = await
-  getProduct(id);
-  // revalidatePath("/", "layout");
-  // return product;
+export async function getProductAction(id: number): Promise<IProductDetails> {
+  const product = await getProduct(id);
+  revalidateTag(`/editproduct/${id}`);
+  return product;
 }

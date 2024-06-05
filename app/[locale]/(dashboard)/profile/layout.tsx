@@ -1,6 +1,6 @@
 export const metadata = {
-  title: " Store",
-  description: "homework",
+  title: "Profile",
+  description: "User Profile page with details",
 };
 function ProfileLayout({ children }: IChildrenProps) {
   return <>{children}</>;

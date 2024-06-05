@@ -1,6 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+
+export const revalidate = 0;
 export async function PUT(request: Request) {
   try {
     const { id, image, title, description, price, quantity, category } =
@@ -23,8 +24,6 @@ export async function PUT(request: Request) {
         quantity=${quantity} 
       WHERE id=${id}
     `;
-
-    await revalidatePath("/");
 
     const response = NextResponse.json(
       { message: "Product updated successfully" },

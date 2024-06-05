@@ -1,7 +1,7 @@
 // export const BASE_URL = "http://localhost:3000";
 
 import { getSession } from "@auth0/nextjs-auth0";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function getUsers() {
   const response = await fetch(
@@ -157,21 +157,6 @@ export async function getProducts() {
   const { products } = await response.json();
   return products.rows;
 }
-
-// get selected product
-
-export async function getProduct(id: number) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-product/${id}`,
-    {
-      cache: "no-store",
-    }
-  );
-  const productInfo = await response.json();
-  const product = productInfo.product.rows[0];
-  return product;
-}
-
 export async function updateProduct(product: IProductDetails) {
   const { id, image, title, description, price, quantity, category } = product;
   const response = await fetch(
@@ -194,6 +179,20 @@ export async function updateProduct(product: IProductDetails) {
   );
 
   return response;
+}
+
+// get selected product
+
+export async function getProduct(id: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-product/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const productInfo = await response.json();
+  const product = productInfo.product.rows[0];
+  return product;
 }
 
 //  delete product
