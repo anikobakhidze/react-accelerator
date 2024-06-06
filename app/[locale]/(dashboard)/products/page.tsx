@@ -2,9 +2,8 @@
 import React from "react";
 import ProductList from "@/components/products/ProductList";
 
-// import { getProducts } from "@/api";
 import { getProductsAction } from "@/actions";
-// import { getProductsAction } from "@/actions";
+
 export default async function ProductsPage() {
   const products = await getProductsAction();
   return (

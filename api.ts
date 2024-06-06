@@ -192,6 +192,7 @@ export async function getProduct(id: number) {
   );
   const productInfo = await response.json();
   const product = productInfo.product.rows[0];
+
   return product;
 }
 
@@ -204,4 +205,66 @@ export async function deleteProduct(id: number) {
     }
   );
   return response;
+}
+
+// add to cart
+export async function addToCart(product: IProductDetails, userId: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-to-cart`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product, userId }),
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to add product to cart");
+  }
+
+  const data = await response.json();
+  console.log(data, "product");
+
+  return data;
+}
+
+//  user's selected products quantity
+
+export async function getTotalSelectedQuantity(userId: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/selected-products-quantity`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId }),
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to get total selected quantity");
+  }
+
+  const data = await response.json();
+  return data.totalSelectedQuantity;
+}
+
+//  get selected products
+
+export async function getCartItems() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to get total selected quantity");
+  }
+
+  const cartItems = await response.json();
+
+  return cartItems;
 }

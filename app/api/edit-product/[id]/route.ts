@@ -25,12 +25,15 @@ export async function PUT(request: Request) {
       WHERE id=${id}
     `;
 
-    const response = NextResponse.json(
+    // const response = NextResponse.json(
+    //   { message: "Product updated successfully" },
+    //   { status: 200 }
+    // );
+    // response.headers.set("Cache-Control", "no-store");
+    return NextResponse.json(
       { message: "Product updated successfully" },
       { status: 200 }
     );
-    response.headers.set("Cache-Control", "no-store");
-    return response;
   } catch (error) {
     console.error("Error updating product:", error);
     return NextResponse.json({ error }, { status: 500 });

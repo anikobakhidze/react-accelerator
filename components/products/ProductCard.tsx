@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useShoppingCart } from "@/context/ShoppingCartContext";
-import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
+// import { useShoppingCart } from "@/context/ShoppingCartContext";
+// import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -11,15 +11,15 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import Link from "next/link";
 import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
+import { addToCart } from "@/api";
 function ProductCard({ product, addCart }: IProductCardContainer) {
   const { id, title, description, price, image, quantity, category, usersub } =
     product;
   const { user, isLoading } = useUser();
-
-  const sub = user?.sub;
+  const sub = user?.sub || "";
   const [loading, setLoading] = useState(true);
   const [deleteModal, setDeleteModal] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     if (!isLoading) {
       setLoading(false);
@@ -27,7 +27,7 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
   }, [isLoading]);
 
   const routes = useRouter();
-  const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
+  // const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
   // const quantity = getItemQuantity(id);
 
   const handleClick = () => {
@@ -37,6 +37,16 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
   if (loading && isLoading) {
     return <div className="loader">Loading...</div>;
   }
+  const handleAddToCart = async () => {
+    try {
+      await addToCart(product, sub);
+      router.refresh();
+      // alert("Product added to cart!");
+    } catch (error) {
+      console.error("Failed to add product to cart:", error);
+      alert("Failed to add product to cart.");
+    }
+  };
 
   return (
     <div className="rounded-xl w-[300px] flex flex-col items-between h-full">
@@ -68,12 +78,14 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
       </div>
       <div className="mt-auto">
         {/* {quantity === 0 ? ( */}
-        <button
-          className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
-          onClick={() => increaseCartQuantity(product)}
-        >
-          + {addCart}
-        </button>
+        {user && (
+          <button
+            className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
+            onClick={handleAddToCart}
+          >
+            + {addCart}
+          </button>
+        )}
         {/* ) : (
           <CartQuantityAdjuster product={product} />
         )} */}

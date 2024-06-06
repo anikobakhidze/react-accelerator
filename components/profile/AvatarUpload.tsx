@@ -97,7 +97,7 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
           }
 
           const file = inputFileRef.current.files[0];
-          console.log(file.name);
+
           setLoading(true);
           setError(null);
           try {

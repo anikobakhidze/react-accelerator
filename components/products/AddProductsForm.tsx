@@ -25,7 +25,7 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
       return;
     }
     const file = e.target.files[0];
-    console.log(file);
+
     setLoading(true);
     setError("");
 

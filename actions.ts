@@ -8,6 +8,7 @@ import {
   deleteProduct,
   updateProduct,
   getProduct,
+  getTotalSelectedQuantity,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -82,5 +83,13 @@ export async function deleteProductAction(id: number) {
 export async function getProductAction(id: number): Promise<IProductDetails> {
   const product = await getProduct(id);
   revalidateTag(`/editproduct/${id}`);
+  revalidatePath("/", "layout");
   return product;
+}
+
+//  get selected products quantity
+export async function getQuantityAction(userId: string) {
+  const quantity = await getTotalSelectedQuantity(userId);
+  revalidatePath("/", "layout");
+  return quantity;
 }

@@ -3,7 +3,7 @@ export const metadata = {
   description: "page for editing the specific product",
 };
 function EditProductLayout({ children }: IChildrenProps) {
-  return <>{children}</>;
+  return <main>{children}</main>;
 }
 
 export default EditProductLayout;
