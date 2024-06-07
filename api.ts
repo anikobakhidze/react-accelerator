@@ -226,8 +226,6 @@ export async function addToCart(product: IProductDetails, userId: string) {
   }
 
   const data = await response.json();
-  console.log(data, "product");
-
   return data;
 }
 
@@ -256,15 +254,41 @@ export async function getTotalSelectedQuantity(userId: string) {
 
 //  get selected products
 
-export async function getCartItems() {
+export async function getCartItems(userId: string) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items/${userId}`
   );
   if (!response.ok) {
-    throw new Error("Failed to get total selected quantity");
+    throw new Error("Failed to get selected products");
   }
-
   const cartItems = await response.json();
 
-  return cartItems;
+  return cartItems.products;
+}
+
+// update cart quantity
+
+export async function updateCartQuantity(
+  productId: number,
+  userId: string,
+  action: "increase" | "decrease" | "remove"
+) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/item-quantity`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId, userId, action }),
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to update product quantity in cart");
+  }
+
+  const data = await response.json();
+  return data;
 }

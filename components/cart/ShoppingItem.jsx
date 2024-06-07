@@ -1,30 +1,22 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-
+import CartQuantityAdjuster from "./CartQuantityAdjuster";
 function ShoppingItem({ item }) {
-  const { product, quantity } = item;
-  // const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
-  //   useShoppingCart();
   return (
     <div className="flex">
       <div className="flex-none">
-        <Image
-          src={product.thumbnail}
-          alt={product.title}
-          width={300}
-          height={300}
-        />
+        <Image src={item.image} alt={item.title} width={300} height={300} />
       </div>
       <div className="flex-grow ml-4">
         <h1 className="text-xl font-bold">Title</h1>
-        <h2 className="text-lg">{product.title}</h2>
+        <h2 className="text-lg">{item.title}</h2>
         <p className="font-semibold">Price</p>
-        <p>{product.price}</p>
-        <p className="font-semibold">Rating</p>
-        <p>{product.rating}</p>
+        <p>{item.price}</p>
+        <p className="font-semibold">Category</p>
+        <p>{item.category}</p>
 
-        {/* <CartQuantityAdjuster product={product} /> */}
+        <CartQuantityAdjuster item={item} />
       </div>
     </div>
   );

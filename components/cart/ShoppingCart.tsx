@@ -1,25 +1,44 @@
-// "use client";
-// import { useShoppingCart } from "@/context/ShoppingCartContext";
-// import ShoppingItem from "./ShoppingItem";
 import { getCartItems } from "@/api";
-async function ShoppingCart() {
-  // const { cartQuantity, cartItems, resetCart } = useShoppingCart();
-  const products = await getCartItems();
-  console.log(products);
+import { getSession } from "@auth0/nextjs-auth0";
+import ShoppingItem from "./ShoppingItem";
 
-  return (
-    <div>
-      <p>shoppingCart</p>
-      {/* {cartQuantity === 0 ? (
-        <div> No Products in cart</div>
-      ) : (
-        <button onClick={resetCart}> Reset Cart</button>
-      )}
-      {cartItems.map((item) => (
-        <ShoppingItem key={item.id} item={item} />
-      ))} */}
-    </div>
-  );
+async function ShoppingCart() {
+  const session = await getSession();
+  const user = session?.user;
+  const userId = user?.sub;
+
+  if (!userId) {
+    return (
+      <div>
+        <p>User is not authenticated</p>
+      </div>
+    );
+  }
+
+  try {
+    const products = await getCartItems(userId);
+
+    return (
+      <div>
+        <p>Shopping Cart</p>
+        {products.length === 0 ? (
+          <div>No Products in cart</div>
+        ) : (
+          <div>
+            {products.map((item: ICartProduct) => (
+              <ShoppingItem key={item.id} item={item} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  } catch (error) {
+    return (
+      <div>
+        <p>Failed to fetch cart items</p>
+      </div>
+    );
+  }
 }
 
 export default ShoppingCart;

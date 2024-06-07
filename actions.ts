@@ -9,6 +9,7 @@ import {
   updateProduct,
   getProduct,
   getTotalSelectedQuantity,
+  updateCartQuantity,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -71,8 +72,8 @@ export async function getProductsAction() {
 }
 
 export async function updateProductAction(product: IProductDetails) {
-  updateProduct(product);
-  revalidatePath("/", "layout");
+  await updateProduct(product);
+  revalidatePath("/product", "layout");
 }
 
 export async function deleteProductAction(id: number) {
@@ -92,4 +93,12 @@ export async function getQuantityAction(userId: string) {
   const quantity = await getTotalSelectedQuantity(userId);
   revalidatePath("/", "layout");
   return quantity;
+}
+export async function updateCartQuantityAction(
+  productId: number,
+  userId: string,
+  action: "increase" | "decrease" | "remove"
+) {
+  await updateCartQuantity(productId, userId, action);
+  revalidatePath("/cart");
 }

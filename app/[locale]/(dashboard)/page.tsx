@@ -6,6 +6,6 @@ import HomePageContainer from "../../../components/home/HomePageContainer";
 export default async function Home() {
   // const products = await getProducts();
   const products = await getProductsAction();
-  console.log(products);
+
   return <HomePageContainer products={products} />;
 }

@@ -227,10 +227,16 @@ interface IProductDetails {
   price: number;
   quantity: number;
   category: string;
+  userSub: string | null | undefined;
 }
 
 // delete products
 interface IDeleteProduct {
   setDeleteModal: Dispatch<SetStateAction<boolean>>;
   id: number;
+}
+
+// cart products
+interface ICartProduct extends IProductDetails {
+  selectedQuantity: number;
 }

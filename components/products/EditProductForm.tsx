@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { updateProductAction } from "@/actions";
-
+import { useRouter } from "next/navigation";
 function EditProductForm({
   productDetails,
 }: {
@@ -14,13 +14,13 @@ function EditProductForm({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-
+  const router = useRouter();
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
     }
     const file = e.target.files[0];
-    console.log(file);
+
     setLoading(true);
     setError("");
 
@@ -54,6 +54,7 @@ function EditProductForm({
     setSuccessMessage("");
     try {
       await updateProductAction(product);
+      router.refresh();
       setSuccessMessage("Product updated successfully");
     } catch (error) {
       console.error("Error updating product:", error);
