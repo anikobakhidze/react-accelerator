@@ -2,12 +2,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import { useShoppingCart } from "@/context/ShoppingCartContext";
-// import CartQuantityAdjuster from "../cart/CartQuantityAdjuster";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
-// import EditProductsBtn from "./EditProductsBtn";
 import Link from "next/link";
 import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";

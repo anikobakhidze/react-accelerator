@@ -24,12 +24,6 @@ export async function PUT(request: Request) {
         quantity=${quantity} 
       WHERE id=${id}
     `;
-
-    // const response = NextResponse.json(
-    //   { message: "Product updated successfully" },
-    //   { status: 200 }
-    // );
-    // response.headers.set("Cache-Control", "no-store");
     return NextResponse.json(
       { message: "Product updated successfully" },
       { status: 200 }

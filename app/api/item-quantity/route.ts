@@ -10,7 +10,6 @@ export async function PUT(request: NextRequest) {
     }
     const cartResult =
       await sql`SELECT * FROM carts WHERE user_id = ${userId};`;
-    console.log(cartResult);
 
     if (cartResult.rowCount > 0) {
       const cart = cartResult.rows[0];
