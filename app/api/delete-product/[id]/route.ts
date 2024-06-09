@@ -12,9 +12,6 @@ export async function DELETE(request: NextRequest) {
       SELECT id,
       products FROM carts
     `;
-    console.log(result, "resulttt");
-    console.log(result.rows, "result.rows");
-
     for (let row of result.rows) {
       let productsArray = row.products;
       const updatedProductsArray = productsArray.filter(

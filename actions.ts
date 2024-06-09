@@ -11,6 +11,10 @@ import {
   getTotalSelectedQuantity,
   updateCartQuantity,
   createBlog,
+  getBlogs,
+  editBlog,
+  getBlog,
+  deleteBlog,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -119,4 +123,31 @@ export async function createBlogAction(blog: IBlog) {
     console.error("Error creating blog:", error);
     throw new Error("Error creating blog");
   }
+}
+
+// get blogs action
+export async function getBlogsAction() {
+  const blogs = await getBlogs();
+  revalidatePath("/blogs", "layout");
+  return blogs;
+}
+
+//  edit blog action
+export async function editBlogAction(blog: IBlog) {
+  await editBlog(blog);
+  revalidatePath("/blog", "layout");
+}
+
+// get blog action
+export async function getBlogAction(id: number) {
+  const blog = await getBlog(id);
+  revalidateTag(`/editblog/${id}`);
+  revalidatePath("/", "layout");
+  return blog;
+}
+
+// delete blog action
+export async function deleteBlogAction(id: number) {
+  await deleteBlog(id);
+  revalidatePath("/blog");
 }

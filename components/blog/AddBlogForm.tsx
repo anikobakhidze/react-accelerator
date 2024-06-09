@@ -20,7 +20,6 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
 
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
-      setError("No file selected");
       return;
     }
     const file = e.target.files[0];
@@ -50,17 +49,19 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
       setLoading(false);
     }
   };
-  const blog: IBlog = {
-    image,
-    title,
-    description,
-    category,
-    userSub,
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBlogLoading(true);
+
+    const blog: IBlog = {
+      image,
+      title,
+      description,
+      category,
+      userSub,
+    };
+
     try {
       await createBlogAction(blog);
       closeModal();

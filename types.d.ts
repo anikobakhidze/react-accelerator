@@ -27,21 +27,25 @@ type Id = { id: number };
 interface IBlogPost {
   blog: {
     id: number;
+    image: string;
     title: string;
-    body: string;
-    publicationDate?: string;
+    description: string;
+    category: string;
+    userSub: string | null | undefined;
+    created_at?: string;
   };
 }
 
 // blogs list
 
 interface IBlog {
+  id?: number;
   image: string;
   title: string;
   description: string;
   category: string;
   userSub: string | null | undefined;
-  publicationDate?: string;
+  created_at?: string;
 }
 
 interface IBlogsContainer {

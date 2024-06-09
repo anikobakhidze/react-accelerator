@@ -1,25 +1,14 @@
-import Image from "next/image";
-import defaultBlogImage from "../../../../../public/images/defaultBlogImage.webp";
-import getBlogDetails from "../../../../../api/blogs/getBlogDetails";
-import getBlogs from "../../../../../api/blogs/getBlogs";
-import { setStaticParamsLocale } from "next-international/server";
-export async function generateStaticParams() {
-  const blogs = await getBlogs();
-  const paths = blogs.map((blog: IBlog) => ({
-    id: `${blog.id}`,
-  }));
-
-  return paths;
-}
+import { getBlogAction } from "@/actions";
+import BlogImage from "@/components/blog/BlogImage";
 
 export default async function BlogsDetailPage({
-  params: { id, locale },
+  params: { id },
 }: {
-  params: { id: number; locale: string };
+  params: { id: number };
 }) {
-  setStaticParamsLocale(locale);
+  const blog = await getBlogAction(id);
+  console.log(blog, "blog page");
 
-  const blog = await getBlogDetails(id);
   return (
     <section className="flex flex-1 flex-col  justify-center bg-light-green w-full py-10 dark:bg-slate-800">
       <h2 className="text-dark-green w-4/5 mx-auto text-3xl font-bold mb-10 first-letter:capitalize my-10 dark:text-slate-100">
@@ -28,14 +17,12 @@ export default async function BlogsDetailPage({
 
       <div className="flex flex-col gap-10 w-4/5  mx-auto">
         <div className="w-[500px] h-[500px] relative">
-          <Image
-            src={defaultBlogImage}
-            alt="blog"
-            fill
-            sizes="(max-width: 768px) 100vw, 500px"
-          />
+          <BlogImage image={blog.image} title={blog.title} />
         </div>
-        <p className="font-semibold text-md dark:text-white">{blog.body}</p>
+        <p className="font-semibold text-md dark:text-white">
+          {blog.description}
+        </p>
+        <p className="font-semibold text-md dark:text-white">{blog.category}</p>
       </div>
     </section>
   );

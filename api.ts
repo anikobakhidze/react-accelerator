@@ -328,3 +328,66 @@ export async function createBlog(
     throw new Error("Error creating blog");
   }
 }
+
+// get blogs
+export async function getBlogs() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-blogs`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  const { blogs } = await response.json();
+  return blogs.rows;
+}
+
+// edit blog
+export async function editBlog(blog: IBlog) {
+  const { id, image, title, description, category } = blog;
+  console.log(id, image, title, description, category, "blog edit api");
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-blog/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        image,
+        title,
+        description,
+        category,
+      }),
+    }
+  );
+
+  return response;
+}
+
+// get blog
+export async function getBlog(id: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-blog/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const blogInfo = await response.json();
+  const blog = blogInfo.blog.rows[0];
+
+  return blog;
+}
+
+// delete blog
+export async function deleteBlog(id: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-blog/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+  return response;
+}
