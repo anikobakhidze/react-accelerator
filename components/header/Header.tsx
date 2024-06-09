@@ -38,6 +38,7 @@ async function Header() {
         </button>
       </div>
       <LanguageSwitcher />
+
       {user ? (
         <a href="/api/auth/logout">Logout</a>
       ) : (

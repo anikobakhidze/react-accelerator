@@ -10,6 +10,7 @@ import {
   getProduct,
   getTotalSelectedQuantity,
   updateCartQuantity,
+  createBlog,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -91,7 +92,7 @@ export async function getProductAction(id: number): Promise<IProductDetails> {
 //  get selected products quantity
 export async function getQuantityAction(userId: string) {
   const quantity = await getTotalSelectedQuantity(userId);
-  revalidatePath("/", "layout");
+  // revalidatePath("/", "layout");
   return quantity;
 }
 export async function updateCartQuantityAction(
@@ -101,4 +102,21 @@ export async function updateCartQuantityAction(
 ) {
   await updateCartQuantity(productId, userId, action);
   revalidatePath("/cart");
+}
+
+// create blog action
+export async function createBlogAction(blog: IBlog) {
+  try {
+    const userSub = blog.userSub as string;
+    await createBlog(
+      blog.image,
+      blog.title,
+      blog.description,
+      blog.category,
+      userSub
+    );
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    throw new Error("Error creating blog");
+  }
 }

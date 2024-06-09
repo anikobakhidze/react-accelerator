@@ -36,12 +36,11 @@ interface IBlogPost {
 // blogs list
 
 interface IBlog {
-  id: number;
+  image: string;
   title: string;
-  body: string;
-  userId?: number;
-  tags?: string[];
-  reactions?: number;
+  description: string;
+  category: string;
+  userSub: string | null | undefined;
   publicationDate?: string;
 }
 

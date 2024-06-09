@@ -292,3 +292,39 @@ export async function updateCartQuantity(
   const data = await response.json();
   return data;
 }
+
+// create blog
+export async function createBlog(
+  image: string,
+  title: string,
+  description: string,
+  category: string,
+  userSub: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-blog`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image,
+          title,
+          description,
+          category,
+          userSub,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to create blog");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    throw new Error("Error creating blog");
+  }
+}

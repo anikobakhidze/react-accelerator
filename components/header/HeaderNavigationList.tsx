@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useI18n } from "../../locales/client";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import AddProductsBtn from "../products/AddProductsBtn";
-
+import { hasUserRole } from "@/utils/userRole";
+import AddBlogBtn from "../blog/AddBlogBtn";
 function HeaderNavigationList() {
   const pathname = usePathname();
   const t = useI18n();
@@ -75,19 +76,22 @@ function HeaderNavigationList() {
             {t("blog")}
           </Link>
         </li>
-        {user?.email === "admin@gmail.com" && (
-          <li className="w-24 text-center">
-            <Link
-              href="/admin"
-              className={`link ${
-                pathname === "/admin"
-                  ? "transition-all duration-300 hover:font-bold font-bold"
-                  : "transition-all duration-300 hover:font-bold "
-              }`}
-            >
-              {t("admin")}
-            </Link>
-          </li>
+        {hasUserRole(user) && user.role[0] === "admin" && (
+          <>
+            <li className="w-24 text-center">
+              <Link
+                href="/admin"
+                className={`link ${
+                  pathname === "/admin"
+                    ? "transition-all duration-300 hover:font-bold font-bold"
+                    : "transition-all duration-300 hover:font-bold "
+                }`}
+              >
+                {t("admin")}
+              </Link>
+            </li>
+            <AddBlogBtn />
+          </>
         )}
         {user && <AddProductsBtn />}
       </ul>
