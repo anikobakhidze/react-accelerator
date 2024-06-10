@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getProductAction } from "@/actions";
-
+import ShareOnSocial from "@/components/sharedComponents/UI/ShareOnSocial";
 export default async function ProductDetailPage({
   params: { id },
 }: {
@@ -46,6 +46,7 @@ export default async function ProductDetailPage({
               Category
             </h3>
             <p className="font-semibold text-md">{product.category}</p>
+            <ShareOnSocial product={product} />
           </div>
         </div>
       </div>

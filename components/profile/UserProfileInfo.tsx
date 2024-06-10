@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useI18n } from "../../locales/client";
-import { updateUserAction } from "@/actions";
+import { editUserAction } from "@/actions";
 // import { getUser } from "@/api";
 
 function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
@@ -60,7 +60,7 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
     formData.append("nickname", userProfile.nickname);
 
     try {
-      await updateUserAction(formData);
+      await editUserAction(formData);
       setUpdateMessage("Your profile is updated");
     } catch (error) {
       console.error("Failed to update user profile", error);

@@ -3,14 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { image, title, description, price, quantity, category, userSub } =
+    const { image, title, description, price, category, userSub } =
       await request.json();
     if (
       !image ||
       !title ||
       !description ||
       price == null ||
-      quantity == null ||
       !category ||
       !userSub
     ) {
@@ -21,8 +20,8 @@ export async function POST(request: NextRequest) {
     }
 
     await sql`
-      INSERT INTO products (image, title, description, price, quantity, category, userSub)
-      VALUES (${image}, ${title}, ${description}, ${price}, ${quantity}, ${category}, ${userSub});
+      INSERT INTO products (image, title, description, price, category, userSub)
+      VALUES (${image}, ${title}, ${description}, ${price}, ${category}, ${userSub});
     `;
 
     const products = await sql`SELECT * FROM products ORDER BY id ASC;`;

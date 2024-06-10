@@ -2,8 +2,6 @@
 import dynamic from "next/dynamic";
 import contactData from "../../../../data/contactData";
 import { useI18n } from "../../../../locales/client";
-
-// Dynamic imports to split code
 const ContactUsForm = dynamic(
   () => import("../../../../components/contact/ContactUsForm"),
   { ssr: false }

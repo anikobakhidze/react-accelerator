@@ -54,7 +54,7 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
     e.preventDefault();
     setBlogLoading(true);
 
-    const blog: IBlog = {
+    const blog: IBlogCreate = {
       image,
       title,
       description,

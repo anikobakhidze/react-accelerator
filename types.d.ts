@@ -22,34 +22,32 @@ declare module "*.png" {
 // id for blogs and prosucts page
 type Id = { id: number };
 
-// blog post
-
-interface IBlogPost {
-  blog: {
-    id: number;
-    image: string;
-    title: string;
-    description: string;
-    category: string;
-    userSub: string | null | undefined;
-    created_at?: string;
-  };
-}
-
 // blogs list
-
 interface IBlog {
-  id?: number;
+  id: number;
   image: string;
   title: string;
   description: string;
   category: string;
   userSub: string | null | undefined;
-  created_at?: string;
+  created_at?: string | undefined;
 }
 
 interface IBlogsContainer {
   blogs: IBlog[];
+}
+
+interface IBlogPost {
+  blog: IBlog;
+}
+
+interface IBlogCreate {
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+  userSub: string | null | undefined;
+  created_at?: string | undefined;
 }
 interface BlogsResponse {
   blogs: IBlog[];
@@ -77,7 +75,7 @@ interface IProduct {
   description: string;
   price: number;
   category: string;
-  quantity: number;
+
   image: string;
   usersub: string;
 }
@@ -175,7 +173,6 @@ interface IEditUserDetails extends IUserRowProps {
 type CartItem = {
   id: number;
   product: IProduct;
-  quantity: number;
 };
 
 type ShoppingCartContext = {
@@ -219,7 +216,7 @@ type Product = {
   description: string;
   category: string;
   price: string;
-  quantity: string;
+
   userSub: string | null | undefined;
 };
 interface IProductDetails {
@@ -228,7 +225,7 @@ interface IProductDetails {
   title: string;
   description: string;
   price: number;
-  quantity: number;
+
   category: string;
   userSub: string | null | undefined;
 }

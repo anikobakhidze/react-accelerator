@@ -7,7 +7,7 @@ export const metadata = {
 };
 export default async function DashboardLayout({ children }: IChildrenProps) {
   return (
-    <main className="flex flex-col justify-between min-h-screen dark:bg-slate-800">
+    <main>
       <Header />
       {children}
       <Footer />

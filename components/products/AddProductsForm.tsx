@@ -1,6 +1,6 @@
 "use client";
 
-import { uploadProductAction } from "@/actions";
+import { createProductAction } from "@/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -14,7 +14,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("pottery");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [productLoading, setProductLoading] = useState(false);
   const [productError, setProductError] = useState("");
   const { user } = useUser();
@@ -57,7 +56,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
     description,
     category,
     price,
-    quantity,
     userSub,
   };
 
@@ -65,7 +63,7 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
     e.preventDefault();
     setProductLoading(true);
     try {
-      await uploadProductAction(product);
+      await createProductAction(product);
       closeModal();
     } catch (error) {
       console.error("Error uploading product:", error);
@@ -156,19 +154,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
               required
               onChange={(e) => {
                 setPrice(e.target.value);
-              }}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Quantity
-            </label>
-            <input
-              type="number"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
-              required
-              onChange={(e) => {
-                setQuantity(e.target.value);
               }}
             />
           </div>

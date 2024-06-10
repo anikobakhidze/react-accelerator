@@ -10,8 +10,7 @@ import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
 function ProductCard({ product, addCart }: IProductCardContainer) {
-  const { id, title, description, price, image, quantity, category, usersub } =
-    product;
+  const { id, title, description, price, image, category, usersub } = product;
   const { user, isLoading } = useUser();
   const sub = user?.sub || "";
   const [loading, setLoading] = useState(true);
@@ -66,23 +65,25 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
         <p className="px-8 text-medium-green font-bold my-3 dark:text-white">
           {price} USD
         </p>
-        <p className="px-8 text-medium-green font-bold my-3 dark:text-white">
-          {quantity}
-        </p>
+
         <p className="px-8 text-medium-green font-bold my-3 dark:text-white">
           {category}
         </p>
       </div>
       <div className="mt-auto">
         {/* {quantity === 0 ? ( */}
-        {user && (
-          <button
-            className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
-            onClick={handleAddToCart}
-          >
-            + {addCart}
-          </button>
-        )}
+        {!user
+          ? null
+          : sub !== usersub &&
+            !(hasUserRole(user) && user.role[0] === "admin") && (
+              <button
+                className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
+                onClick={handleAddToCart}
+              >
+                + {addCart}
+              </button>
+            )}
+
         {/* ) : (
           <CartQuantityAdjuster product={product} />
         )} */}

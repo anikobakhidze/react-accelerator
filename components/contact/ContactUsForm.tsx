@@ -1,5 +1,5 @@
 "use client";
-import { sendMessageAction } from "@/actions";
+import { createMessageAction } from "@/actions";
 import { useI18n } from "../../locales/client";
 import { useState } from "react";
 
@@ -55,7 +55,7 @@ function ContactUsForm() {
     formData.append("subject", subject);
     formData.append("message", message);
     try {
-      await sendMessageAction(formData);
+      await createMessageAction(formData);
       setUpdateMessage("Message Sent");
     } catch (error) {
       setUpdateMessage("Ups... Unable to send message");

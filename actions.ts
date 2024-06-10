@@ -1,14 +1,15 @@
 "use server";
 import {
+  createUser,
   deleteUser,
   getProducts,
-  sendMessage,
-  updateUser,
-  uploadProduct,
+  createMessage,
+  editUser,
+  createProduct,
   deleteProduct,
   updateProduct,
   getProduct,
-  getTotalSelectedQuantity,
+  getProductsQuantity,
   updateCartQuantity,
   createBlog,
   getBlogs,
@@ -22,46 +23,44 @@ export async function deleteUserAction(id: number) {
   revalidatePath("/admin");
 }
 
-// export async function createUserAction(formData: FormData) {
-//   const name = formData.get("name") as string;
-//   const email = formData.get("email") as string;
-//   const age = parseInt(formData.get("age") as string, 10);
-//   if (age < 18) {
-//     throw new Error("Age must be at least 18.");
-//   }
-//   await createUser(name, email, age);
-//   revalidatePath("/admin");
-// }
+export async function createUserAction(formData: FormData) {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const age = parseInt(formData.get("age") as string, 10);
+  if (age < 18) {
+    throw new Error("Age must be at least 18.");
+  }
+  await createUser(name, email, age);
+  revalidatePath("/admin");
+}
 
-export async function updateUserAction(formData: FormData) {
+export async function editUserAction(formData: FormData) {
   const name = formData.get("name") as string;
   const nickname = formData.get("nickname") as string;
-  await updateUser(name, nickname);
+  await editUser(name, nickname);
   revalidatePath("/profile");
 }
 
-export async function sendMessageAction(formData: FormData) {
+export async function createMessageAction(formData: FormData) {
   const name = formData.get("name") as string;
   const phone = parseInt(formData.get("phone") as string);
   const email = formData.get("email") as string;
   const subject = formData.get("subject") as string;
   const message = formData.get("message") as string;
-  await sendMessage(name, phone, email, subject, message);
+  await createMessage(name, phone, email, subject, message);
 }
 
-export async function uploadProductAction(product: Product) {
+export async function createProductAction(product: Product) {
   try {
     const price = Number(product.price);
-    const quantity = Number(product.quantity);
-
     const userSub = product.userSub as string;
 
-    await uploadProduct(
+    await createProduct(
       product.image,
       product.title,
       product.description,
       price,
-      quantity,
+
       product.category,
       userSub
     );
@@ -95,7 +94,7 @@ export async function getProductAction(id: number): Promise<IProductDetails> {
 
 //  get selected products quantity
 export async function getQuantityAction(userId: string) {
-  const quantity = await getTotalSelectedQuantity(userId);
+  const quantity = await getProductsQuantity(userId);
   // revalidatePath("/", "layout");
   return quantity;
 }
@@ -109,7 +108,7 @@ export async function updateCartQuantityAction(
 }
 
 // create blog action
-export async function createBlogAction(blog: IBlog) {
+export async function createBlogAction(blog: IBlogCreate) {
   try {
     const userSub = blog.userSub as string;
     await createBlog(

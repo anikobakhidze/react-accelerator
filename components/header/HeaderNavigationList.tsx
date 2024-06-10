@@ -51,6 +51,18 @@ function HeaderNavigationList() {
             {t("about")}
           </Link>
         </li>
+        <li className="w-24 text-center">
+          <Link
+            href="/blogs"
+            className={`link ${
+              pathname === "/blogs"
+                ? "transition-all duration-300 hover:font-bold font-bold"
+                : "transition-all duration-300 hover:font-bold "
+            }`}
+          >
+            {t("blog")}
+          </Link>
+        </li>
 
         <li className="w-24 text-center ">
           <Link
@@ -64,18 +76,7 @@ function HeaderNavigationList() {
             {t("contact")}
           </Link>
         </li>
-        <li className="w-24 text-center">
-          <Link
-            href="/blogs"
-            className={`link ${
-              pathname === "/blogs"
-                ? "transition-all duration-300 hover:font-bold font-bold"
-                : "transition-all duration-300 hover:font-bold "
-            }`}
-          >
-            {t("blog")}
-          </Link>
-        </li>
+
         {hasUserRole(user) && user.role[0] === "admin" && (
           <>
             <li className="w-24 text-center">

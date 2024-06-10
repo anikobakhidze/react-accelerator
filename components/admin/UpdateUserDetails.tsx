@@ -1,5 +1,5 @@
 "use client";
-import { updateUserAction } from "@/actions";
+import { editUserAction } from "@/actions";
 import React, { useState } from "react";
 
 function UpdateUserDetails({ user, setIsVisible }: IEditUserDetails) {
@@ -19,7 +19,7 @@ function UpdateUserDetails({ user, setIsVisible }: IEditUserDetails) {
     const formData = new FormData(event.target as HTMLFormElement);
 
     try {
-      await updateUserAction(formData);
+      await editUserAction(formData);
       setIsVisible();
     } catch (error) {
       console.log(error);

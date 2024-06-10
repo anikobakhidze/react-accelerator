@@ -21,27 +21,27 @@ export async function deleteUser(id: number) {
   return response;
 }
 
-// export async function createUser(name: string, email: string, age: number) {
-//   const response = await fetch(
-//     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`,
-//     {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ name, email, age }),
-//     }
-//   );
+export async function createUser(name: string, email: string, age: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, age }),
+    }
+  );
 
-//   return response;
-// }
+  return response;
+}
 
-export async function updateUser(name: string, nickname: string) {
+export async function editUser(name: string, nickname: string) {
   const session = await getSession();
   const user = session?.user;
   const sub = user?.sub;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/update-user/${sub}`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-user/${sub}`,
     {
       method: "PUT",
       headers: {
@@ -80,7 +80,7 @@ export async function getUser() {
   return userDetail;
 }
 
-export async function sendMessage(
+export async function createMessage(
   name: string,
   phone: number,
   email: string,
@@ -89,7 +89,7 @@ export async function sendMessage(
 ) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/send-message`,
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-message`,
       {
         method: "POST",
         headers: {
@@ -107,18 +107,18 @@ export async function sendMessage(
   }
 }
 
-export async function uploadProduct(
+export async function createProduct(
   image: string,
   title: string,
   description: string,
   price: number,
-  quantity: number,
+
   category: string,
   userSub: string
 ) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload-product`,
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-product`,
       {
         method: "POST",
         headers: {
@@ -129,7 +129,6 @@ export async function uploadProduct(
           title,
           description,
           price,
-          quantity,
           category,
           userSub,
         }),
@@ -158,7 +157,7 @@ export async function getProducts() {
   return products.rows;
 }
 export async function updateProduct(product: IProductDetails) {
-  const { id, image, title, description, price, quantity, category } = product;
+  const { id, image, title, description, price, category } = product;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product/${id}`,
     {
@@ -172,7 +171,7 @@ export async function updateProduct(product: IProductDetails) {
         title,
         description,
         price,
-        quantity,
+
         category,
       }),
     }
@@ -231,9 +230,9 @@ export async function addToCart(product: IProductDetails, userId: string) {
 
 //  user's selected products quantity
 
-export async function getTotalSelectedQuantity(userId: string) {
+export async function getProductsQuantity(userId: string) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/selected-products-quantity`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products-quantity`,
     {
       method: "POST",
       headers: {
@@ -274,7 +273,7 @@ export async function updateCartQuantity(
   action: "increase" | "decrease" | "remove"
 ) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/item-quantity`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product-quantity`,
     {
       method: "PUT",
       headers: {
