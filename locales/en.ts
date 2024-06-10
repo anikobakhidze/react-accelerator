@@ -1,4 +1,13 @@
 export default {
+  languages: {
+    geo: "Geo",
+    eng: "Eng",
+  },
+  auth: {
+    logIn: "LogIn",
+    signUp: "SignUp",
+    logOut: "LogOut",
+  },
   theme: "Change Webpage Theme",
   login: "Login",
   username: "Username",

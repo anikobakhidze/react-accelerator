@@ -225,7 +225,6 @@ interface IProductDetails {
   title: string;
   description: string;
   price: number;
-
   category: string;
   userSub: string | null | undefined;
 }

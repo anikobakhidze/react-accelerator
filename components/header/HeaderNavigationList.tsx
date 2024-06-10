@@ -13,16 +13,16 @@ function HeaderNavigationList() {
   const { user } = useUser();
 
   return (
-    <nav className="w-[500px]">
+    <nav className="h-full flex items-center">
       <ul className="flex justify-between ">
         <li className="w-24 text-center ">
           <Link
             href="/"
             className={`link ${
               pathname === "/"
-                ? " transition-all duration-300 hover:font-bold font-bold"
-                : "w-16 transition-all duration-300 hover:font-bold "
-            }`}
+                ? "w-16  transition-all duration-300 font-bold"
+                : "w-16 transition-all duration-300  "
+            } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
             {t("home")}
           </Link>
@@ -32,9 +32,9 @@ function HeaderNavigationList() {
             href="/products"
             className={`link ${
               pathname === "/products"
-                ? "w-16 transition-all duration-300 hover:font-bold font-bold"
-                : "w-16 transition-all duration-300 hover:font-bold "
-            }`}
+                ? "w-16  transition-all duration-300 font-bold"
+                : "w-16 transition-all duration-300  "
+            } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
             {t("products")}
           </Link>
@@ -44,9 +44,9 @@ function HeaderNavigationList() {
             href="/about"
             className={`link ${
               pathname === "/products"
-                ? " transition-all duration-300 hover:font-bold font-bold"
-                : "transition-all duration-300 hover:font-bold "
-            }`}
+                ? "w-16  transition-all duration-300 font-bold"
+                : "w-16 transition-all duration-300  "
+            } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
             {t("about")}
           </Link>
@@ -56,9 +56,9 @@ function HeaderNavigationList() {
             href="/blogs"
             className={`link ${
               pathname === "/blogs"
-                ? "transition-all duration-300 hover:font-bold font-bold"
-                : "transition-all duration-300 hover:font-bold "
-            }`}
+                ? "w-16  transition-all duration-300 font-bold"
+                : "w-16 transition-all duration-300  "
+            } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
             {t("blog")}
           </Link>
@@ -69,9 +69,9 @@ function HeaderNavigationList() {
             href="/contact"
             className={`link ${
               pathname === "/contact"
-                ? " transition-all duration-300 hover:font-bold font-bold"
-                : "transition-all duration-300 hover:font-bold "
-            }`}
+                ? "w-16  transition-all duration-300 font-bold"
+                : "w-16 transition-all duration-300  "
+            } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
             {t("contact")}
           </Link>
@@ -84,9 +84,9 @@ function HeaderNavigationList() {
                 href="/admin"
                 className={`link ${
                   pathname === "/admin"
-                    ? "transition-all duration-300 hover:font-bold font-bold"
-                    : "transition-all duration-300 hover:font-bold "
-                }`}
+                    ? "w-16  transition-all duration-300 font-bold"
+                    : "w-16 transition-all duration-300  "
+                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
               >
                 {t("admin")}
               </Link>

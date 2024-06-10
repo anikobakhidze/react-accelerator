@@ -1,4 +1,13 @@
 export default {
+  languages: {
+    geo: "ქარ",
+    eng: "ინგ",
+  },
+  auth: {
+    logIn: "შესვლა",
+    signUp: "რეგისტრაცია",
+    logOut: "გასვლა",
+  },
   theme: "შეცვალე თემის ფერი",
   login: "ავტორიზაცია",
   username: "მომხმარებლის სახელი",

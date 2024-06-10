@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --orange: #F47458;
-  --light-orange: #FFF6F4;
-  --medium-orange: #FFD6BA;
+  --cream-color: #eae8e6;
+  --color-btn-primary: #e4986a;
+  --dark-bg-primary: #121212;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
 }
