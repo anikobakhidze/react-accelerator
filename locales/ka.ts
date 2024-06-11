@@ -3,6 +3,12 @@ export default {
     geo: "ქარ",
     eng: "ინგ",
   },
+  coverHeading: {
+    hOne: "გააზიარე სიყვარული",
+    hTwo: "შენი ხელნაკეთი კერამიკის ",
+    hThree: "ნივთების გაყიდვით",
+  },
+  shop: "ყიდვა",
   auth: {
     logIn: "შესვლა",
     signUp: "რეგისტრაცია",

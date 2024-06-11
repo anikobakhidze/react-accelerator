@@ -3,6 +3,12 @@ export default {
     geo: "Geo",
     eng: "Eng",
   },
+  coverHeading: {
+    hOne: "Share your love",
+    hTwo: "By selling handmade",
+    hThree: "Ceramics & Pottery",
+  },
+  shop: "Show Now",
   auth: {
     logIn: "LogIn",
     signUp: "SignUp",
@@ -25,7 +31,7 @@ export default {
   contact: "Contact",
   blog: "Blog",
   logout: "Log Out",
-  heading: "Innovate your life with premium products",
+
   addToCart: "Add To Cart",
   terms: "Terms & Conditions",
   privacy: "Privacy & Policy",

@@ -23,6 +23,15 @@ module.exports = {
         "dark-medium-bg": "var(--medium-dark-bg)",
         "light-green-color": "var(--light-green-color)",
       },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(100px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        fadeInUp: "fadeInUp 1.5s ease-in-out forwards",
+      },
     },
   },
   plugins: [],

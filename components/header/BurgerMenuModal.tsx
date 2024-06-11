@@ -30,14 +30,17 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
+      window.addEventListener("resize", onClose);
     } else {
       document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("resize", onClose);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("resize", onClose);
     };
-  });
+  }, [isOpen, onClose, handleOutsideClick]);
 
   return (
     <div
@@ -47,10 +50,10 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
     >
       <div
         ref={modalRef}
-        className="absolute top-4 right-16 w-40 md:top-8 md:right-24 bg-white p-8 rounded-lg dark:bg-dark-medium-bg shadow-lg  md:w-full max-w-xs mx-auto mt-20"
+        className="absolute top-4 right-16 w-40 md:top-8 md:right-24 bg-white p-4 md:p-8 rounded-lg dark:bg-dark-medium-bg shadow-lg md:w-full max-w-xs mx-auto mt-20"
       >
-        <nav className="flex-1 h-full flex flex-col items-center justify-center space-y-4">
-          <ul className="flex flex-col items-center space-y-6">
+        <nav className="flex-1 h-full flex flex-col items-center justify-center space-y-2 md:space-y-4">
+          <ul className="flex flex-col items-center space-y-4 md:space-y-6">
             <li className="text-center">
               <Link
                 href="/"
@@ -58,7 +61,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                   pathname === "/"
                     ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                     : "transition-all duration-300"
-                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
                 {t("home")}
@@ -71,7 +74,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                   pathname === "/products"
                     ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                     : "transition-all duration-300"
-                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
                 {t("products")}
@@ -84,7 +87,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                   pathname === "/about"
                     ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                     : "transition-all duration-300"
-                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
                 {t("about")}
@@ -97,7 +100,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                   pathname === "/blogs"
                     ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                     : "transition-all duration-300"
-                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
                 {t("blog")}
@@ -110,7 +113,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                   pathname === "/contact"
                     ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                     : "transition-all duration-300"
-                } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
                 {t("contact")}
@@ -124,7 +127,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                     pathname === "/admin"
                       ? "transition-all duration-300 font-bold border-b-2 border-btn-primary-color"
                       : "transition-all duration-300"
-                  } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
+                  } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                   onClick={onClose}
                 >
                   {t("admin")}

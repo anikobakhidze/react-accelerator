@@ -1,9 +1,9 @@
 import { getProductsAction } from "@/actions";
 
-import HomePageContainer from "../../../components/home/HomePageContainer";
+import HomePage from "../../../components/home/HomePage";
 
 export default async function Home() {
   const products = await getProductsAction();
 
-  return <HomePageContainer products={products} />;
+  return <HomePage />;
 }

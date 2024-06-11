@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useI18n } from "@/locales/client";
 import { useRouter } from "next/navigation";
-import AddProductsBtn from "../products/AddProductsBtn";
-import AddBlogBtn from "../blog/AddBlogBtn";
-import { hasUserRole } from "@/utils/userRole";
+import { IoIosLogOut, IoIosLogIn } from "react-icons/io";
+import { LuUser } from "react-icons/lu";
+import { LiaCashRegisterSolid } from "react-icons/lia";
 interface NonAuthModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -36,14 +36,17 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
+      window.addEventListener("resize", onClose);
     } else {
       document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("resize", onClose);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("resize", onClose);
     };
-  });
+  }, [isOpen, onClose]);
 
   return (
     <div
@@ -53,44 +56,44 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
     >
       <div
         ref={modalRef}
-        className="absolute top-20 right-10 md:top-28 md:right-14 lg:right-16 bg-white dark:bg-dark-medium-bg p-8  shadow-lg rounded-lg"
+        className="absolute top-20 right-10 md:top-28 md:right-14 lg:right-16 bg-white dark:bg-dark-medium-bg p-4 md:p-8  shadow-lg rounded-lg"
       >
         {user ? (
-          <div className="flex flex-col gap-4">
-            <div className="xl:hidden">{user && <AddProductsBtn />}</div>
-            <div className="xl:hidden">
-              {hasUserRole(user) && user.role[0] === "admin" && <AddBlogBtn />}
-            </div>
+          <div className="flex flex-col gap-4 p-2  ">
+            <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200">
+              Hello, {user.nickname}
+            </h4>
             <button
               onClick={handleProfileClick}
-              className="relative bg-btn-primary-color py-2 px-4 text-white overflow-hidden group hover:text-btn-primary-color"
+              className="flex items-center gap-2 text-black  hover:opacity-75 transition-colors duration-300"
             >
-              <span className="relative z-10"> {t("profilePage.profile")}</span>
-              <span className="absolute left-0 bottom-0 w-full h-full bg-light-bg-color text-btn-primary-color transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
+              <LuUser className="text-lg" />
+              <span>{t("profilePage.profile")}</span>
             </button>
             <a
               href="/api/auth/logout"
-              className="relative bg-btn-primary-color py-2 px-4 text-white overflow-hidden group hover:text-btn-primary-color"
+              className="flex items-center gap-2   text-btn-primary-color  hover:opacity-75 transition-colors duration-300"
             >
-              <span className="relative z-10">{t("auth.logOut")}</span>
-              <span className="absolute left-0 bottom-0 w-full h-full bg-light-bg-color text-btn-primary-color transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
+              <IoIosLogOut className="text-lg" />
+              <span>{t("auth.logOut")}</span>
             </a>
           </div>
         ) : (
           <div className="flex flex-col gap-4">
             <a
               href="/api/auth/login"
-              className="relative bg-btn-primary-color py-2 px-4 text-white overflow-hidden group hover:text-btn-primary-color"
+              className="flex items-center gap-2 text-black   hover:opacity-75 transition-colors duration-300"
             >
-              <span className="relative z-10">{t("auth.logIn")}</span>
-              <span className="absolute left-0 bottom-0 w-full h-full bg-light-bg-color text-btn-primary-color transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
+              <IoIosLogIn className="text-lg" />
+              <span>{t("auth.logIn")}</span>
             </a>
+
             <a
               href="/api/auth/signup"
-              className="relative bg-light-bg-color py-2 px-4 text-btn-primary-color overflow-hidden group hover:text-white"
+              className="flex items-center gap-2   text-btn-primary-color  hover:opacity-75 transition-colors duration-300"
             >
-              <span className="relative z-10">{t("auth.signUp")}</span>
-              <span className="absolute left-0 bottom-0 w-full h-full bg-btn-primary-color transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
+              <LiaCashRegisterSolid className="text-lg" />
+              <span>{t("auth.signUp")}</span>
             </a>
           </div>
         )}

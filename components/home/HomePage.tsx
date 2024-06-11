@@ -1,7 +1,10 @@
-import React from "react";
-
+import CoverSection from "./CoverSection";
 function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <main className="mt-24 ">
+      <CoverSection />
+    </main>
+  );
 }
 
 export default HomePage;

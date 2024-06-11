@@ -23,7 +23,7 @@ async function AddToCartBtn() {
         >
           <FaCartShopping className="text-white" />
           {quantity > 0 && (
-            <div className="absolute bg-light-green-color rounded-full w-4 h-4 text-[10px] md:text-lg md:w-6 md:h-6 -right-2 -bottom-2 text-white flex justify-center items-center  ">
+            <div className="absolute bg-black dark:bg-white rounded-full w-4 h-4 text-[10px] md:text-lg md:w-6 md:h-6 -right-2 -bottom-2 text-white flex justify-center items-center  ">
               {quantity}
             </div>
           )}

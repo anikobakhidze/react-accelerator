@@ -20,7 +20,7 @@ function BurgerMenu({ user }: { user: any }) {
         onClick={handleButtonClick}
         className="lg:hidden relative flex justify-center items-center bg-btn-primary-color p-2 rounded-full w-6 h-6 md:w-8 md:h-8 hover:opacity-75"
       >
-        <GiHamburgerMenu className="text-white w-4 h-4 md:w-8 md:h-8 " />
+        <GiHamburgerMenu className="text-white w-6 h-6 md:w-8 md:h-8 " />
       </button>
       <BurgerMenuModal isOpen={isOpen} onClose={handleClose} user={user} />
     </>
