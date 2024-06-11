@@ -4,8 +4,13 @@
 
 :root {
   --cream-color: #eae8e6;
+  --dark-cream-color: #b67a55;
   --color-btn-primary: #e4986a;
-  --dark-bg-primary: #121212;
+  --dark-bg-primary: #081217;
+  --light-green-color: #6ab6e4;
+  --purple-color: #6a6de4;
+  --medium-dark-bg: #343434;
+  --light-dark-bg: #0F2029;
 }
 
 select {

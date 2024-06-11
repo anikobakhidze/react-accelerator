@@ -8,6 +8,9 @@ export default {
     signUp: "რეგისტრაცია",
     logOut: "გასვლა",
   },
+  product: {
+    addProduct: "პროდუქტი",
+  },
   theme: "შეცვალე თემის ფერი",
   login: "ავტორიზაცია",
   username: "მომხმარებლის სახელი",
@@ -32,6 +35,7 @@ export default {
   blogsPage: {
     heading: "მიიღეთ უახლესი ბლოგები",
     readMore: "გაიგე მეტი",
+    blog: "ბლოგი",
   },
   contactPage: {
     contactUs: "კონტაქტი",
@@ -49,6 +53,7 @@ export default {
     messageRequired: "გთხოვთ, ჩაწეროთ მესიჯი",
   },
   profilePage: {
+    profile: "პროფილი",
     heading: "პროფილი",
     about: "შესახებ",
     name: "სახელი",

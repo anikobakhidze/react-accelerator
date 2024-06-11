@@ -8,6 +8,9 @@ export default {
     signUp: "SignUp",
     logOut: "LogOut",
   },
+  product: {
+    addProduct: "Product",
+  },
   theme: "Change Webpage Theme",
   login: "Login",
   username: "Username",
@@ -50,6 +53,7 @@ export default {
     messageRequired: "Please enter a message.",
   },
   profilePage: {
+    profile: "Profile",
     heading: "USER PROFILE",
     about: "About",
     name: "Name",

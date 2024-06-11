@@ -3,7 +3,7 @@ import LanguageSwitcher from "../sharedComponents/Language/LanguageSwitcher";
 
 function SettingsPanel() {
   return (
-    <div className="flex flex-row items-center p-2 space-x-2 md:p-4  md:space-x-2 justify-end bg-light-bg-color dark:bg-dark-bg-primary">
+    <div className="flex flex-row justify-center items-center p-2 space-x-2 lg:px-14 xl:px-16 px-2 sm:px-10 md:space-x-2 md:justify-end bg-light-bg-color dark:bg-dark-bg-primary">
       <ThemeSwitch />
       <LanguageSwitcher />
     </div>

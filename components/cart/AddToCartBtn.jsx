@@ -19,11 +19,11 @@ async function AddToCartBtn() {
       {user && (
         <Link
           href="/cart"
-          className="rounded-[50%] w-8 h-8 flex justify-center items-center bg-gray-300 transition-all hover:bg-gray-400 hover:scale-105 dark:bg-white relative"
+          className="rounded-[50%] w-6 h-6 md:w-8 md:h-8 flex justify-center items-center bg-btn-primary-color transition-all hover:opacity-75 hover:scale-105 relative"
         >
-          <FaCartShopping className="dark:text-black" />
+          <FaCartShopping className="text-white" />
           {quantity > 0 && (
-            <div className="absolute bg-red-700 rounded-full w-6 h-6 -right-2 -bottom-2 text-white flex justify-center items-center">
+            <div className="absolute bg-light-green-color rounded-full w-4 h-4 text-[10px] md:text-lg md:w-6 md:h-6 -right-2 -bottom-2 text-white flex justify-center items-center  ">
               {quantity}
             </div>
           )}
