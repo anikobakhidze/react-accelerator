@@ -8,7 +8,7 @@ async function CoverSection() {
   const t = await getI18n();
   return (
     <section className="relative">
-      <div className="relative e w-full h-96 lg:h-[600px] xl:h-[800px] 2xl:h-[1000px]">
+      <div className="relative e w-full h-96 lg:h-[400px] xl:h-[400px] 2xl:h-[600px] 3xl:h-[800px]">
         <Image src={cover} layout="fill" objectFit="cover" alt="ceramics" />
       </div>
       <div className="animate-fadeInUp absolute inset-0  dark:bg-gray-900 dark:bg-opacity-70 flex flex-col justify-center items-center">

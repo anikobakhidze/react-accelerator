@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FaCartShopping } from "react-icons/fa6";
+import { BsEye } from "react-icons/bs";
 import Link from "next/link";
 import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
-function ProductCard({ product, addCart }: IProductCardContainer) {
-  const { id, title, description, price, image, category, usersub } = product;
+function ProductCard({ product }: IProductCard) {
+  const { id, title, price, category, usersub } = product;
   const { user, isLoading } = useUser();
   const sub = user?.sub || "";
   const [loading, setLoading] = useState(true);
@@ -45,63 +47,74 @@ function ProductCard({ product, addCart }: IProductCardContainer) {
   };
 
   return (
-    <div className="rounded-xl w-[300px] flex flex-col items-between h-full">
-      <div onClick={handleClick}>
-        <div className="w-[300px] h-[150px] relative">
-          <Image
-            src={image}
-            alt={title}
-            className="rounded-t-[12px] mb-2"
-            fill
-            sizes="(max-width: 768px) 100vw, 300px"
-          />
-        </div>
-        <h3 className="font-bold text-center text-[#3f3b35] dark:text-white">
-          {title}
-        </h3>
-        <p className="px-8 text-justify text-[#57544c] mt-5 h-[120px] dark:text-white">
-          {description}
-        </p>
-        <p className="px-8 text-medium-green font-bold my-3 dark:text-white">
-          {price} USD
-        </p>
-
-        <p className="px-8 text-medium-green font-bold my-3 dark:text-white">
-          {category}
-        </p>
+    <div className="w-[300px] flex flex-col items-between h-full relative group shadow-lg">
+      <div className="relative">
+        <Image
+          src={product.image}
+          alt={product.description}
+          width={270}
+          height={350}
+          className="mb-4"
+          style={{ height: "350px", objectFit: "cover" }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
       </div>
-      <div className="mt-auto">
-        {/* {quantity === 0 ? ( */}
+      <h3
+        className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+        style={{ minHeight: "30px" }}
+        onClick={handleClick}
+      >
+        {title}
+      </h3>
+      <p className="text-base text-btn-primary-color mb-1 text-center">
+        {category}
+      </p>
+      <p
+        className="text-xl font-bold text-center mb-2"
+        style={{ minHeight: "30px" }}
+      >
+        ${price}
+      </p>
+      <div className="flex items-center justify-center py-2 mt-4 border-t-2 border-t-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {!user
           ? null
           : sub !== usersub &&
             !(hasUserRole(user) && user.role[0] === "admin") && (
               <button
-                className="bg-[#53b1b1] w-full rounded-b-[12px] py-2 text-slate-200 mt-auto transition-all duration-300 hover:bg-[#357070] dark:bg-[#357070] dark:hover:bg-[#53b1b1]"
+                className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-l-2 border-l-gray-200"
                 onClick={handleAddToCart}
               >
-                + {addCart}
+                <FaCartShopping />
               </button>
             )}
-
-        {/* ) : (
-          <CartQuantityAdjuster product={product} />
-        )} */}
-        {/* <EditProductsBtn usersub={usersub} id={id} />
-         */}
+        <button
+          onClick={handleClick}
+          className=" dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+        >
+          <BsEye />
+        </button>
         {(sub === usersub ||
           (hasUserRole(user) && user.role[0] === "admin")) && (
-          <Link href={`/editproduct/${id}`}>
-            Edit
+          <Link
+            href={`/editproduct/${id}`}
+            className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 "
+          >
             <FiEdit />
           </Link>
         )}
         {(sub === usersub ||
           (hasUserRole(user) && user.role[0] === "admin")) && (
-          <RiDeleteBin5Line onClick={() => setDeleteModal(true)} />
+          <button
+            onClick={() => setDeleteModal(true)}
+            className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+          >
+            <RiDeleteBin5Line />
+          </button>
         )}
         {deleteModal && (
-          <DeleteProduct setDeleteModal={setDeleteModal} id={id} />
+          <div>
+            <DeleteProduct setDeleteModal={setDeleteModal} id={id} />
+          </div>
         )}
       </div>
     </div>

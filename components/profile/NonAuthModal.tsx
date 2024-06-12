@@ -82,7 +82,7 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
           <div className="flex flex-col gap-4">
             <a
               href="/api/auth/login"
-              className="flex items-center gap-2 text-black   hover:opacity-75 transition-colors duration-300"
+              className="flex items-center gap-2   hover:opacity-75 transition-colors duration-300"
             >
               <IoIosLogIn className="text-lg" />
               <span>{t("auth.logIn")}</span>

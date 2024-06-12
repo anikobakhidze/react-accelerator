@@ -1,13 +1,11 @@
-import { PacmanLoader } from "react-spinners";
+import React from "react";
 
-export default function Loader() {
+function Loader() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-light-green h-[100vh]  dark:bg-slate-800">
-      <PacmanLoader color="#1c5858" />
-      <p className="text-orange-600 text-lg font-bold mt-6 ">
-        Just a moment, we&apos;re preparing the web page. This may take a few
-        seconds...
-      </p>
+    <div className="fixed inset-0 flex items-center justify-center bg-white dark:bg-black bg-opacity-75 z-50">
+      <div className="loader">Loading...</div>
     </div>
   );
 }
+
+export default Loader;

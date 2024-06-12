@@ -7,17 +7,17 @@ const BlogImage = ({ image, title }: { image: string; title: string }) => {
         <Image
           src={image}
           alt={title}
-          className="rounded-t-xl"
           width={600}
           height={400}
+          style={{ height: "350px", objectFit: "cover" }}
         />
       ) : (
         <Image
           src={defaultBlogImage}
           alt="Default Blog"
-          className="rounded-t-xl"
           width={600}
           height={400}
+          style={{ height: "350px", objectFit: "cover" }}
         />
       )}
     </>

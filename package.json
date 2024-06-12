@@ -20,8 +20,10 @@
     "react-dom": "^18",
     "react-icons": "^5.0.1",
     "react-share": "^5.1.0",
+    "react-slick": "^0.30.2",
     "react-spinners": "^0.13.8",
     "sharp": "^0.33.3",
+    "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4",
     "vercel": "^32.3.0"
   },
