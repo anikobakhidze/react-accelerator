@@ -18,7 +18,7 @@ function ContactCard({ data: { type, title, paragraph, href } }: IContactCard) {
       image = null;
   }
   return (
-    <div className="w-80 rounded-xl odd:bg-medium-green even:bg-light-green p-8">
+    <div className="w-80 rounded-xl even:bg-btn-primary-color odd:bg-light-bg-color p-8 dark:bg-black dark:bg-opacity-50">
       <h3 className="flex items-center justify-center pb-6 font-bold  text-lg gap-3">
         {href ? (
           <a href={href} className="flex items-center gap-3">

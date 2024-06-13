@@ -61,7 +61,7 @@ function HeaderNavigationList() {
                 : "transition-all duration-300"
             } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
-            {t("blog")}
+            {t("blogsPage.blog")}
           </Link>
         </li>
         <li className="text-center">

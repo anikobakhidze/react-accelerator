@@ -3,22 +3,22 @@ const contactData = [
     type: "mobile",
     title: "(+995)577000000",
     paragraph:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, maiores.",
+      "For any inquiries or support, feel free to call us. Our team is available to assist you with all your needs.",
     href: "tel:+995577000000",
   },
   {
     type: "email",
-
-    title: "example@example.com",
+    title: "earthen@earthen.com",
     paragraph:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, maiores.",
-    href: "mailto:example@example.com",
+      "Send us an email for any questions or feedback. We are here to help you with any information you need.",
+    href: "mailto:earthen@earthen.com",
   },
   {
     type: "address",
     title: "123 Street, City, Country",
     paragraph:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, maiores.",
+      "Visit us at our location for an in-person experience. We look forward to welcoming you to our store.",
+    href: "",
   },
 ];
 

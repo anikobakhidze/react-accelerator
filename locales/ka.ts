@@ -33,11 +33,21 @@ export default {
     welcome: "კეთილი იყოს თქვენი მობრძანება",
     heading: "ტრენდული პროდუქტები",
     addProduct: "პროდუქტი",
+    subtitle: "პროდუქტების გვერდი",
+    product: "აღმიოაჩინე კერამიკული ნივთები",
   },
   blogSection: {
     welcome: "ბლოგები",
     heading: "სიახლეები",
+    blogPage: "ბლოგი",
   },
+  subscribe: {
+    heading: "გამოიწერე სიახლეები",
+    label: "შეიყვანეთ მეილი",
+    btn: "გამოწერა",
+  },
+  search: "ძებნა",
+  sort: "ფასი",
   theme: "შეცვალე თემის ფერი",
   login: "ავტორიზაცია",
   username: "მომხმარებლის სახელი",
@@ -57,7 +67,7 @@ export default {
   terms: "წესები  პირობები",
   privacy: "კონფიდენციალობა და პოლიტიკა",
   getUpdates: "მიიღეთ სიახლეები",
-  subscribe: "გამოწერა",
+
   admin: "ადმინი",
   blogsPage: {
     heading: "მიიღეთ უახლესი ბლოგები",

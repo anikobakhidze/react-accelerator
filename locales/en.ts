@@ -33,11 +33,20 @@ export default {
     welcome: "WELCOME TO SHOP",
     heading: "Trending Products",
     addProduct: "Product",
+    subtitle: "Welcome to Products",
+    product: "Discover Our Ceramics",
   },
   blogSection: {
     welcome: "WELCOME TO CERAMICS",
     heading: "Latest News",
   },
+  subscribe: {
+    heading: "Sign up for Newsletter",
+    label: "Enter your email",
+    btn: "Subscribe",
+  },
+  search: "Search",
+  sort: "By Price",
   theme: "Change Webpage Theme",
   login: "Login",
   username: "Username",
@@ -50,14 +59,13 @@ export default {
   products: "Products",
   about: "About",
   contact: "Contact",
-  blog: "Blog",
   logout: "Log Out",
 
   addToCart: "Add To Cart",
   terms: "Terms & Conditions",
   privacy: "Privacy & Policy",
   getUpdates: "Get Newsletter Updates",
-  subscribe: "Subscribe",
+
   admin: "Admin",
   blogsPage: {
     heading: "Stay Updated with the Latest Blogs",

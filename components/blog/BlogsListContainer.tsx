@@ -1,19 +1,35 @@
+"use client";
 import React from "react";
 import BlogCard from "./BlogCard";
-import { getI18n } from "../../locales/server";
-async function BlogsListContainer({ blogs }: IBlogsContainer) {
-  const t = await getI18n();
+import { useState } from "react";
+import Pagination from "../sharedComponents/UI/Pagination";
+function BlogsListContainer({ blogs }: IBlogsContainer) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+
+  const totalPages = Math.ceil(blogs.length / productsPerPage);
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const currentProducts = blogs.slice(startIndex, startIndex + productsPerPage);
   return (
-    <section className="overflow-auto">
-      <h2 className="text-2xl font-bold text-center my-10">
-        {t("blogsPage.heading")}
-      </h2>
-      <div className="w-4/5 grid grid-cols-1 md:w-[90%] md:gap-10 md:grid-cols-2 xl:grid-cols-3 gap-14 mx-auto my-10">
-        {blogs.map((blog) => {
-          return <BlogCard blog={blog} key={blog.id} />;
-        })}
-      </div>
-    </section>
+    <>
+      <ul className="flex flex-wrap justify-center mt-20 max-w-7xl mx-auto gap-6">
+        {currentProducts.map((blog: IBlog) => (
+          <BlogCard blog={blog} key={blog.id} />
+        ))}
+      </ul>
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
+      )}
+    </>
   );
 }
 

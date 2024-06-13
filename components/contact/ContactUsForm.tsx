@@ -74,7 +74,7 @@ function ContactUsForm() {
             placeholder={t("contactPage.name")}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full h-10 outline-none pl-3 placeholder:text-[#5f8d8f] rounded-xl bg-[#c7d8dc]"
+            className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color  dark:text-white dark:bg-brown-700 "
           />
           {errors.name && (
             <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -86,7 +86,7 @@ function ContactUsForm() {
             placeholder={t("contactPage.phone")}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full h-10 outline-none pl-3 placeholder:text-[#5f8d8f] rounded-xl bg-[#c7d8dc]"
+            className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
             onKeyPress={(e) => {
               if (!/[0-9]/.test(e.key)) {
                 e.preventDefault();
@@ -110,7 +110,7 @@ function ContactUsForm() {
           placeholder={t("contactPage.email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-10 outline-none pl-3 placeholder:text-[#5f8d8f] rounded-xl bg-[#c7d8dc]"
+          className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.email && (
           <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -122,7 +122,7 @@ function ContactUsForm() {
           placeholder={t("contactPage.subject")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          className="w-full h-10 outline-none pl-3 placeholder:text-[#5f8d8f] rounded-xl bg-[#c7d8dc]"
+          className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.subject && (
           <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
@@ -133,13 +133,13 @@ function ContactUsForm() {
           placeholder={t("contactPage.message")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full h-24 outline-none pl-3 mb-6 placeholder:text-[#5f8d8f] rounded-xl bg-[#c7d8dc] resize-none"
+          className="w-full h-24 outline-none pl-3 mb-6 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color resize-none"
         />
         {errors.message && (
           <p className="text-red-500 text-sm mt-1">{errors.message}</p>
         )}
       </div>
-      <button className="h-10 w-48 rounded-xl bg-[#5f8d8f] text-white hover:bg-[#9ec7d0]">
+      <button className="h-10 w-48 rounded-xl bg-btn-primary-color text-white hover:opacity-50">
         {t("contactPage.contactUs")}
       </button>
       {updateMessage && <div>{updateMessage}</div>}

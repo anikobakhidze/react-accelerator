@@ -133,9 +133,8 @@ interface ResourcesType {
 
 // searcg bar props
 interface ISearchBarProps {
-  onClick: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>;
-  setSortProducts: setSortProducts;
-  products: IProduct[];
+  setSortProducts?: setSortProducts | IBlogsContainer;
+  products: IProduct[] | IBlog[];
 }
 
 // users
@@ -238,4 +237,10 @@ interface IDeleteProduct {
 // cart products
 interface ICartProduct extends IProductDetails {
   selectedQuantity: number;
+}
+
+// sort function
+interface IClick {
+  onClick: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>;
+  sortOrderAsc: boolean;
 }

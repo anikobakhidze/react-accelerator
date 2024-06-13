@@ -5,13 +5,13 @@ import ProductSection from "./ProductSection";
 import Services from "./Services";
 function HomePage() {
   return (
-    <main className="mt-24 ">
+    <section className="mt-24 ">
       <CoverSection />
       <Services />
       <Category />
       <ProductSection />
       <BlogSection />
-    </main>
+    </section>
   );
 }
 

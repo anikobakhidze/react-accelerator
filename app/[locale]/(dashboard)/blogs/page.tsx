@@ -1,6 +1,6 @@
 import { getBlogsAction } from "@/actions";
-import BlogsListContainer from "../../../../components/blog/BlogsListContainer";
+import BlogsPageContainer from "../../../../components/blog/BlogsPageContainer";
 export default async function Blogs() {
   const blogs = await getBlogsAction();
-  return <BlogsListContainer blogs={blogs} />;
+  return <BlogsPageContainer blogs={blogs} />;
 }

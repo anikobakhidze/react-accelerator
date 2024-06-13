@@ -16,7 +16,7 @@ async function Header() {
   const user = session?.user;
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 dark:bg-dark-bg-primary">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 dark:bg-black">
       <SettingsPanel />
       <div className="flex justify-between items-center h-14 p-2 space-x-2 lg:px-14  md:px-10 px-6 lg:h-20">
         <Link href="/">
