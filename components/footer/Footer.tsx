@@ -7,7 +7,7 @@ async function Footer() {
   const t = await getI18n();
   return (
     <footer className="bg-light-bg-color dark:bg-black dark:bg-opacity-50 py-6">
-      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between">
+      <div className="w-full justify-around  flex flex-col sm:flex-row items-center ">
         <div className="mb-4 sm:mb-0">
           <Link href="/">
             <Image src={logo} alt="logo" width={120} height={80} />

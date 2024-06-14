@@ -22,6 +22,7 @@ module.exports = {
         "dark-bg-primary": "var(--dark-bg-primary)",
         "dark-medium-bg": "var(--medium-dark-bg)",
         "light-green-color": "var(--light-green-color)",
+        "gray-color": "var(--gray-color)",
       },
       keyframes: {
         fadeInUp: {

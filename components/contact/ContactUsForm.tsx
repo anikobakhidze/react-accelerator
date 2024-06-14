@@ -74,10 +74,12 @@ function ContactUsForm() {
             placeholder={t("contactPage.name")}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color  dark:text-white dark:bg-brown-700 "
+            className="w-full h-10 dark:placeholder:text-white outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color  dark:text-white dark:bg-gray-color "
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            <p className="text-dark-cream-color font-semibold  text-sm mt-1">
+              {errors.name}
+            </p>
           )}
         </div>
         <div className="w-48%">
@@ -86,12 +88,7 @@ function ContactUsForm() {
             placeholder={t("contactPage.phone")}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
-            onKeyPress={(e) => {
-              if (!/[0-9]/.test(e.key)) {
-                e.preventDefault();
-              }
-            }}
+            className=" dark:placeholder:text-white dark:bg-gray-color dark:text-white w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color no-spinner"
             onPaste={(e) => {
               const paste = e.clipboardData.getData("text");
               if (!/^\d+$/.test(paste)) {
@@ -99,8 +96,11 @@ function ContactUsForm() {
               }
             }}
           />
+
           {errors.phone && (
-            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            <p className="text-dark-cream-color font-semibold  text-sm mt-1">
+              {errors.phone}
+            </p>
           )}
         </div>
       </div>
@@ -110,10 +110,12 @@ function ContactUsForm() {
           placeholder={t("contactPage.email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
+          className="w-full dark:placeholder:text-white dark:bg-gray-color dark:text-white h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.email && (
-          <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+          <p className="text-dark-cream-color font-semibold text-sm mt-1">
+            {errors.email}
+          </p>
         )}
       </div>
       <div className="w-full">
@@ -122,10 +124,12 @@ function ContactUsForm() {
           placeholder={t("contactPage.subject")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          className="w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
+          className="w-full dark:placeholder:text-white dark:bg-gray-color dark:text-white h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.subject && (
-          <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+          <p className="text-dark-cream-color font-semibold  text-sm mt-1 ">
+            {errors.subject}
+          </p>
         )}
       </div>
       <div className="w-full">
@@ -133,10 +137,12 @@ function ContactUsForm() {
           placeholder={t("contactPage.message")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full h-24 outline-none pl-3 mb-6 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color resize-none"
+          className="w-full dark:bg-gray-color dark:placeholder:text-white dark:text-white h-24 outline-none pl-3  placeholder:text-btn-primary-color rounded-xl bg-light-bg-color resize-none"
         />
         {errors.message && (
-          <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+          <p className="text-dark-cream-color font-semibold text-sm mt-1 mb-3">
+            {errors.message}
+          </p>
         )}
       </div>
       <button className="h-10 w-48 rounded-xl bg-btn-primary-color text-white hover:opacity-50">
