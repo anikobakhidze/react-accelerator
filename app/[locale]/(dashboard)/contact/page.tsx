@@ -1,16 +1,13 @@
 "use client";
 import dynamic from "next/dynamic";
-import contactData from "../../../../data/contactData";
+// import contactData from "../../../../data/contactData";
 import { useI18n } from "../../../../locales/client";
 import Heading from "@/components/sharedComponents/UI/Heading";
 import contactCover from "../../../../public/images/contactBg.webp";
 import Image from "next/image";
+import ContactInfoContainer from "@/components/contact/ContactInfoContainer";
 const ContactUsForm = dynamic(
   () => import("../../../../components/contact/ContactUsForm"),
-  { ssr: false }
-);
-const ContactCard = dynamic(
-  () => import("../../../../components/contact/ContactCard"),
   { ssr: false }
 );
 
@@ -18,9 +15,9 @@ export default function Contact() {
   const t = useI18n();
 
   return (
-    <section className="flex flex-col overflow-auto items-center dark:bg-black  dark:bg-opacity-50 mt-32 ">
+    <section className="flex flex-col overflow-auto items-center dark:bg-black  dark:bg-opacity-50 lg:mt-32 mt-24">
       <div className="flex flex-col justify-center items-center w-full font-bold  pb-10 dark:bg-black dark:bg-opacity-50">
-        <div className="relative w-full h-[300px]  ">
+        <div className="relative w-full h-[200px] md:h-[300px]  lg:h-[400px] ">
           <Image
             src={contactCover}
             layout="fill"
@@ -35,11 +32,7 @@ export default function Contact() {
       </div>
 
       <ContactUsForm />
-      <div className="flex justify-between mt-8 w-1100 mb-10 ">
-        {contactData.map((data) => (
-          <ContactCard key={data.type} data={data} />
-        ))}
-      </div>
+      <ContactInfoContainer />
     </section>
   );
 }

@@ -58,7 +58,7 @@ export default {
   home: "Home ",
   products: "Products",
   about: "About",
-  contact: "Contact",
+
   logout: "Log Out",
 
   addToCart: "Add To Cart",
@@ -73,6 +73,9 @@ export default {
     blog: "Blog",
   },
   contactPage: {
+    contact: "Contact",
+    description:
+      "Reach out to us for any inquiries, support, or feedback. Our team is here to assist you and ensure you have a great experience.",
     contactUs: "Contact Us",
     name: "Name",
     phone: "Phone",
@@ -86,6 +89,12 @@ export default {
     emailInvalid: "The email address is not valid.",
     subjectRequired: "Please enter a subject.",
     messageRequired: "Please enter a message.",
+    mobileP:
+      "For any inquiries or support, feel free to call us. Our team is available to assist you with all your needs.",
+    emailP:
+      "Send us an email for any questions or feedback. We are here to help you with any information you need.",
+    addressP:
+      "Visit us at our location for an in-person experience. We look forward to welcoming you to our store.",
   },
   profilePage: {
     profile: "Profile",
@@ -98,5 +107,10 @@ export default {
     password: "Password",
     confirmPassword: "Confirm Password",
     saveProfile: "Save Profile",
+  },
+  aboutPage: {
+    title: "About Us",
+    description:
+      "Welcome to Earthen, your premier destination for discovering and trading unique handmade ceramics from talented artisans around the world. Whether you are looking to shop for beautifully crafted pottery or sell your own creations, Earthen is the perfect platform for you.",
   },
 } as const;

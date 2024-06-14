@@ -18,10 +18,10 @@ function ContactCard({ data: { type, title, paragraph, href } }: IContactCard) {
       image = null;
   }
   return (
-    <div className="w-80 rounded-xl bg-light-bg-color p-8 dark:bg-gray-color dark:bg-opacity-50">
-      <h3 className="flex items-center justify-center pb-6 font-bold  text-lg gap-3 hover:text-btn-primary-color transition-all duration-300">
+    <div className="w-4/5 lg:w-80 rounded-xl bg-light-bg-color p-6 sm:p-8 dark:bg-gray-color dark:bg-opacity-50">
+      <h3 className="flex items-center justify-center pb-4 sm:pb-6 font-bold text-base sm:text-lg gap-2 sm:gap-3 hover:text-btn-primary-color transition-all duration-300">
         {href ? (
-          <a href={href} className="flex items-center gap-3">
+          <a href={href} className="flex items-center gap-2 sm:gap-3">
             {image} {title}
           </a>
         ) : (
@@ -31,7 +31,7 @@ function ContactCard({ data: { type, title, paragraph, href } }: IContactCard) {
           </>
         )}
       </h3>
-      <p className="text-justify">{paragraph}</p>
+      <p className="text-justify text-sm sm:text-base">{paragraph}</p>
     </div>
   );
 }

@@ -66,6 +66,12 @@ interface IContactCard {
     href?: string;
   };
 }
+interface ContactInfo {
+  type: "mobile" | "email" | "address";
+  title: string;
+  paragraph: string;
+  href?: string;
+}
 
 // product  type
 

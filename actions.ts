@@ -41,13 +41,20 @@ export async function editUserAction(formData: FormData) {
   revalidatePath("/profile");
 }
 
+// create message
 export async function createMessageAction(formData: FormData) {
   const name = formData.get("name") as string;
   const phone = parseInt(formData.get("phone") as string);
   const email = formData.get("email") as string;
   const subject = formData.get("subject") as string;
   const message = formData.get("message") as string;
-  await createMessage(name, phone, email, subject, message);
+
+  try {
+    const response = await createMessage(name, phone, email, subject, message);
+    return response;
+  } catch (error) {
+    throw new Error("Failed to send message");
+  }
 }
 
 export async function createProductAction(product: Product) {

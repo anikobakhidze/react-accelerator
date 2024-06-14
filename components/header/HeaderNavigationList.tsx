@@ -73,7 +73,7 @@ function HeaderNavigationList() {
                 : "transition-all duration-300"
             } px-6 py-2 hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
           >
-            {t("contact")}
+            {t("contactPage.contact")}
           </Link>
         </li>
         {hasUserRole(user) && user.role[0] === "admin" && (

@@ -2,7 +2,7 @@
 import { createMessageAction } from "@/actions";
 import { useI18n } from "../../locales/client";
 import { useState } from "react";
-
+import { PulseLoader } from "react-spinners";
 function ContactUsForm() {
   const t = useI18n();
   const [name, setName] = useState("");
@@ -12,6 +12,7 @@ function ContactUsForm() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [updateMessage, setUpdateMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const validateForm = () => {
     const newErrors: FormErrors = {};
 
@@ -21,7 +22,7 @@ function ContactUsForm() {
 
     if (!phone) {
       newErrors.phone = t("contactPage.phoneRequired");
-    } else if (!/^\d+$/.test(phone)) {
+    } else if (!/^\d+$/.test(phone.toString())) {
       newErrors.phone = t("contactPage.phoneInvalid");
     }
 
@@ -43,38 +44,98 @@ function ContactUsForm() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+    if (errors.name) {
+      setErrors({ ...errors, name: "" });
+    }
+    if (updateMessage) {
+      setUpdateMessage("");
+    }
+  };
+
+  const handleChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+    if (errors.phone) {
+      setErrors({ ...errors, phone: "" });
+    }
+    if (updateMessage) {
+      setUpdateMessage("");
+    }
+  };
+
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (errors.email) {
+      setErrors({ ...errors, email: "" });
+    }
+    if (updateMessage) {
+      setUpdateMessage("");
+    }
+  };
+
+  const handleChangeSubject = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSubject(e.target.value);
+    if (errors.subject) {
+      setErrors({ ...errors, subject: "" });
+    }
+    if (updateMessage) {
+      setUpdateMessage("");
+    }
+  };
+
+  const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+    if (errors.message) {
+      setErrors({ ...errors, message: "" });
+    }
+    if (updateMessage) {
+      setUpdateMessage("");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (validateForm()) {
-      console.log("Form submitted:", { name, phone, email, subject, message });
-    }
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("phone", phone);
-    formData.append("email", email);
-    formData.append("subject", subject);
-    formData.append("message", message);
-    try {
-      await createMessageAction(formData);
-      setUpdateMessage("Message Sent");
-    } catch (error) {
-      setUpdateMessage("Ups... Unable to send message");
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("phone", phone.toString());
+      formData.append("email", email);
+      formData.append("subject", subject);
+      formData.append("message", message);
+      setLoading(true);
+      try {
+        const response = (await createMessageAction(formData)) as any;
+
+        setUpdateMessage(response);
+        setName("");
+        setPhone("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      } catch (error) {
+        console.error("Error sending message:", error);
+        setUpdateMessage("Ups... Unable to send message");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   return (
     <form
-      className="flex flex-col gap-3 max-w-container items-center justify-center w-800"
+      className="flex flex-col gap-3 max-w-container items-center justify-center w-4/5 lg:w-800 px-10"
       onSubmit={handleSubmit}
     >
-      <div className="flex justify-between mt-8 w-full">
-        <div className="w-48%">
+      <div className="flex lg:flex-row flex-col justify-between lg:mt-8 w-full gap-3 lg:gap-0">
+        <div className="lg:w-48% w-full">
           <input
             type="text"
             placeholder={t("contactPage.name")}
             value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full h-10 dark:placeholder:text-white outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color  dark:text-white dark:bg-gray-color "
+            onChange={handleChangeName}
+            className="w-full h-10 dark:placeholder:text-white outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color dark:text-white dark:bg-gray-color"
           />
           {errors.name && (
             <p className="text-dark-cream-color font-semibold  text-sm mt-1">
@@ -82,13 +143,13 @@ function ContactUsForm() {
             </p>
           )}
         </div>
-        <div className="w-48%">
+        <div className="lg:w-48% w-full">
           <input
             type="number"
             placeholder={t("contactPage.phone")}
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className=" dark:placeholder:text-white dark:bg-gray-color dark:text-white w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color no-spinner"
+            onChange={handleChangePhone}
+            className="dark:placeholder:text-white appearance-none dark:bg-gray-color  dark:text-white w-full h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color no-spinner"
             onPaste={(e) => {
               const paste = e.clipboardData.getData("text");
               if (!/^\d+$/.test(paste)) {
@@ -96,7 +157,6 @@ function ContactUsForm() {
               }
             }}
           />
-
           {errors.phone && (
             <p className="text-dark-cream-color font-semibold  text-sm mt-1">
               {errors.phone}
@@ -109,7 +169,7 @@ function ContactUsForm() {
           type="email"
           placeholder={t("contactPage.email")}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleChangeEmail}
           className="w-full dark:placeholder:text-white dark:bg-gray-color dark:text-white h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.email && (
@@ -123,7 +183,7 @@ function ContactUsForm() {
           type="text"
           placeholder={t("contactPage.subject")}
           value={subject}
-          onChange={(e) => setSubject(e.target.value)}
+          onChange={handleChangeSubject}
           className="w-full dark:placeholder:text-white dark:bg-gray-color dark:text-white h-10 outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color"
         />
         {errors.subject && (
@@ -136,8 +196,8 @@ function ContactUsForm() {
         <textarea
           placeholder={t("contactPage.message")}
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full dark:bg-gray-color dark:placeholder:text-white dark:text-white h-24 outline-none pl-3  placeholder:text-btn-primary-color rounded-xl bg-light-bg-color resize-none"
+          onChange={handleChangeMessage}
+          className="w-full dark:bg-gray-color dark:placeholder:text-white dark:text-white pt-2  h-24 outline-none pl-3 pt- placeholder:text-btn-primary-color rounded-xl bg-light-bg-color resize-none"
         />
         {errors.message && (
           <p className="text-dark-cream-color font-semibold text-sm mt-1 mb-3">
@@ -145,10 +205,14 @@ function ContactUsForm() {
           </p>
         )}
       </div>
-      <button className="h-10 w-48 rounded-xl bg-btn-primary-color text-white hover:opacity-50">
-        {t("contactPage.contactUs")}
+      <button className="w-30 h-8 text-sm px-2 lg:text-base lg:h-10 lg:w-48 bg-btn-primary-color text-white hover:opacity-50">
+        {loading ? <PulseLoader /> : t("contactPage.contactUs")}
       </button>
-      {updateMessage && <div>{updateMessage}</div>}
+      {updateMessage && (
+        <div className="animate-fadeInUp text-purple-color text-base lg:text-xl font-bold ">
+          {updateMessage}
+        </div>
+      )}
     </form>
   );
 }

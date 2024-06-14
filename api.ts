@@ -101,9 +101,9 @@ export async function createMessage(
     if (!response.ok) {
       throw new Error("Failed to send message");
     }
-    console.log("Message sent successfully");
+    return "Message sent successfully";
   } catch (error) {
-    console.error("Error sending message:", error);
+    return error;
   }
 }
 

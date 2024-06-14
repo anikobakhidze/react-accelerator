@@ -7,15 +7,15 @@ async function Footer() {
   const t = await getI18n();
   return (
     <footer className="bg-light-bg-color dark:bg-black dark:bg-opacity-50 py-6">
-      <div className="w-full justify-around  flex flex-col sm:flex-row items-center ">
+      <div className="w-full justify-around flex flex-col sm:flex-row items-center ">
         <div className="mb-4 sm:mb-0">
           <Link href="/">
             <Image src={logo} alt="logo" width={120} height={80} />
           </Link>
         </div>
-        <div className="flex flex-col sm:flex-row items-center">
+        <div className="flex flex-col sm:flex-row items-center ">
           <nav>
-            <ul className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+            <ul className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 xl:gap-8">
               <li>
                 <Link
                   href="/"
@@ -34,10 +34,10 @@ async function Footer() {
               </li>
               <li className="my-2 sm:my-0">
                 <Link
-                  href="/"
+                  href="/contact"
                   className="transition-colors duration-300 hover:text-btn-primary-color"
                 >
-                  {t("contact")}
+                  {t("contactPage.contact")}
                 </Link>
               </li>
             </ul>

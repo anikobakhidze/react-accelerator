@@ -20,8 +20,7 @@ module.exports = {
         "dark-cream-color": "var(--dark-cream-color)",
         "btn-primary-color": "var(--color-btn-primary)",
         "dark-bg-primary": "var(--dark-bg-primary)",
-        "dark-medium-bg": "var(--medium-dark-bg)",
-        "light-green-color": "var(--light-green-color)",
+        "purple-color": "var(--purple-color)",
         "gray-color": "var(--gray-color)",
       },
       keyframes: {
