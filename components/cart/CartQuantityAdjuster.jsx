@@ -1,50 +1,69 @@
 "use client";
+import React, { useState } from "react";
 import { updateCartQuantityAction } from "@/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
-
+import Loader from "../sharedComponents/UI/Loader";
+import { ClipLoader } from "react-spinners";
+import { useI18n } from "@/locales/client";
 function CartQuantityAdjuster({ item }) {
+  const t = useI18n();
   const { user } = useUser();
+  const [loading, setLoading] = useState({
+    increase: false,
+    decrease: false,
+    remove: false,
+  });
 
-  const handleIncrease = async () => {
+  const handleAction = async (actionType) => {
     if (user?.sub) {
-      await updateCartQuantityAction(item.id, user.sub, "increase");
+      setLoading({ ...loading, [actionType]: true });
+      try {
+        await updateCartQuantityAction(item.id, user.sub, actionType);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading({ ...loading, [actionType]: false });
+      }
     }
   };
 
-  const handleDecrease = async () => {
-    if (user?.sub) {
-      await updateCartQuantityAction(item.id, user.sub, "decrease");
-    }
-  };
-  const handleRemove = async () => {
-    if (user?.sub) {
-      await updateCartQuantityAction(item.id, user.sub, "remove");
-    }
-  };
   return (
-    <div className="flex flex-col gap-4 w-72">
-      <div className="flex justify-around items-center">
+    <div className="flex flex-col gap-4 w-72 items-center md:items-start">
+      <div className="flex justify-between items-center w-full">
         <button
-          className="bg-blue-600 text-white px-4 text-xl py-2 hover:bg-blue-800"
-          onClick={handleDecrease}
+          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 text-white px-4 text-xl py-2 transition-colors duration-300 ${
+            loading.decrease ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleAction("decrease")}
+          disabled={loading.decrease}
         >
-          -
+          {loading.decrease ? <ClipLoader size={15} color="#e4986a" /> : "-"}
         </button>
-        <div>
+        <div className="px-2">
           <span className="fs-3">{item.selectedQuantity}</span> in cart
         </div>
         <button
-          className="bg-blue-600 text-white px-4 text-xl py-2 hover:bg-blue-800"
-          onClick={handleIncrease}
+          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 text-white px-4 text-xl py-2 transition-colors duration-300 ${
+            loading.increase ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleAction("increase")}
+          disabled={loading.increase}
         >
-          +
+          {loading.increase ? <ClipLoader size={15} color="#e4986a" /> : "+"}
         </button>
       </div>
       <button
-        className="bg-red-600 text-white rounded-xl p-2"
-        onClick={handleRemove}
+        className={`bg-btn-primary-color p-2 text-white transition-colors duration-300 w-full hover:opacity-75 ${
+          loading.remove ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        onClick={() => handleAction("remove")}
+        disabled={loading.remove}
       >
-        Remove
+        {loading.remove ? (
+          <ClipLoader size={20} color="#e4986a" />
+        ) : (
+          t("cartPage.remove")
+        )}
       </button>
     </div>
   );

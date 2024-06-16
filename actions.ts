@@ -16,6 +16,7 @@ import {
   editBlog,
   getBlog,
   deleteBlog,
+  deleteCart,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -156,4 +157,9 @@ export async function getBlogAction(id: number) {
 export async function deleteBlogAction(id: number) {
   await deleteBlog(id);
   revalidatePath("/blog");
+}
+
+export async function deleteCartAction(userId: string) {
+  await deleteCart(userId);
+  revalidatePath("/cart");
 }

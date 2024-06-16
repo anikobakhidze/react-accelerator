@@ -20,8 +20,8 @@ export default function Contact() {
         <div className="relative w-full h-[200px] md:h-[300px]  lg:h-[400px] ">
           <Image
             src={contactCover}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
             alt="ceramics"
           />
           <div className="absolute inset-0  dark:bg-gray-900 dark:bg-opacity-70 flex flex-col justify-center items-center"></div>

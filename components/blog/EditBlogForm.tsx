@@ -49,7 +49,6 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
     setError("");
     setSuccessMessage("");
     try {
-      console.log(blog, "blog");
       await editBlogAction(blog);
       router.refresh();
       setSuccessMessage("Blog updated successfully");

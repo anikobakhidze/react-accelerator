@@ -25,11 +25,16 @@ export default {
     p4: "Cancel Order Anytime",
   },
   category: {
+    title: "Category",
+    description: "Description",
     mugs: "Mugs",
     bowls: "Plates & Bowls",
     decorations: "Decoration",
   },
   product: {
+    title: "Product",
+    description:
+      "This is a high-quality ceramic product, perfect for adding a touch of elegance to your home decor. It is handcrafted with care and attention to detail.",
     welcome: "WELCOME TO SHOP",
     heading: "Trending Products",
     addProduct: "Product",
@@ -58,7 +63,7 @@ export default {
   home: "Home ",
   products: "Products",
   about: "About",
-
+  back: "Go Back",
   logout: "Log Out",
 
   addToCart: "Add To Cart",
@@ -71,6 +76,7 @@ export default {
     heading: "Stay Updated with the Latest Blogs",
     readMore: "Read More",
     blog: "Blog",
+    description: "Read our latest blogs about ceramics, tips, and more.",
   },
   contactPage: {
     contact: "Contact",
@@ -107,10 +113,35 @@ export default {
     password: "Password",
     confirmPassword: "Confirm Password",
     saveProfile: "Save Profile",
+    upload: "Upload",
   },
   aboutPage: {
     title: "About Us",
     description:
-      "Welcome to Earthen, your premier destination for discovering and trading unique handmade ceramics from talented artisans around the world. Whether you are looking to shop for beautifully crafted pottery or sell your own creations, Earthen is the perfect platform for you.",
+      "Learn more about our mission, values, and the community of ceramic enthusiasts at Earthen. Discover our diverse collection of handcrafted ceramics from around the world.",
+    descriptionFirst:
+      "Welcome to Earthen, your premier destination for all things ceramic. We are a passionate community of ceramic enthusiasts, artists, and collectors who believe in the beauty and craftsmanship of ceramic art. Our mission is to connect buyers and sellers from around the world, providing a platform for unique, handcrafted ceramic items.",
+    descriptionSec:
+      "At Earthen, we pride ourselves on offering a wide variety of ceramics, from traditional pottery to modern art pieces. Whether you are looking for a one-of-a-kind vase, a beautifully crafted dinner set, or an exquisite sculpture, you will find it here.",
+    titleSec: "Our Values:",
+    subtitle1: "Quality:",
+    li1: "We ensure that every item listed on our platform meets high-quality standards.",
+    subtitle2: "Diversity:",
+    li2: "Our marketplace features ceramics from different cultures and styles, reflecting the rich diversity of ceramic art.",
+    subtitle3: "Customer Satisfaction:",
+    li3: "We are committed to providing excellent customer service, with 24/7 support and a money-back guarantee on all orders.",
+    descriptionThird:
+      "Join us at Earthen and discover the timeless elegance of ceramics. Whether you are buying or selling, we are here to make your experience enjoyable and rewarding.",
+    descriptionFourth: "Thank you for being a part of the Earthen community.",
+  },
+  cartPage: {
+    title: "Shopping Cart",
+    description:
+      "Review your selected ceramic items, adjust quantities, and proceed to checkout to complete your purchase. Enjoy unique handcrafted ceramics from around the world, available with worldwide shipping and secure payment options.",
+    notAuthenticated: "User is not authenticated",
+    emptyCart: "No Products in cart",
+    fetchError: "Failed to fetch cart items",
+    remove: "Remove",
+    reset: "Reset",
   },
 } as const;

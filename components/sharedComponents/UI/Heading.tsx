@@ -12,7 +12,9 @@ function Heading({ heading }: { heading: string }) {
             height={120}
           />
         </div>
-        <h2 className="absolute text-base lg:text-2xl font-bold">{heading}</h2>
+        <h2 className="absolute text-base lg:text-2xl font-bold first-letter:capitalize ">
+          {heading}
+        </h2>
       </div>
     </div>
   );

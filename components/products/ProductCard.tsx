@@ -11,61 +11,67 @@ import Link from "next/link";
 import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
+import { ClipLoader } from "react-spinners";
 function ProductCard({ product }: IProductCard) {
   const { id, title, price, category, usersub } = product;
   const { user, isLoading } = useUser();
   const sub = user?.sub || "";
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isLoading);
   const [deleteModal, setDeleteModal] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
     if (!isLoading) {
       setLoading(false);
     }
   }, [isLoading]);
 
-  const routes = useRouter();
-  // const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
-  // const quantity = getItemQuantity(id);
-
   const handleClick = () => {
-    routes.push(`/products/${id}`);
+    setLoading(true);
+    router.push(`/products/${id}`);
   };
 
-  if (loading && isLoading) {
-    return <div className="loader">Loading...</div>;
-  }
   const handleAddToCart = async () => {
+    setLoading(true);
     try {
       await addToCart(product, sub);
       router.refresh();
-      // alert("Product added to cart!");
     } catch (error) {
       console.error("Failed to add product to cart:", error);
       alert("Failed to add product to cart.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-white dark:bg-black dakr:bg-opacity-80 bg-opacity-80 flex justify-center items-center z-50">
+        <ClipLoader size={80} color="#e4986a" />
+      </div>
+    );
+  }
   return (
     <div className="w-[300px] flex flex-col items-between h-full relative group shadow-lg">
-      <div className="relative">
-        <Image
-          src={product.image}
-          alt={product.description}
-          width={270}
-          height={350}
-          className="mb-4"
-          style={{ height: "350px", objectFit: "cover" }}
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+      <div onClick={handleClick} className="cursor-pointer">
+        <div className="relative">
+          <Image
+            src={product.image}
+            alt={product.description}
+            width={270}
+            height={350}
+            className="mb-4"
+            style={{ height: "350px", objectFit: "cover" }}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+        </div>
+        <h3
+          className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+          style={{ minHeight: "30px" }}
+        >
+          {title}
+        </h3>
       </div>
-      <h3
-        className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
-        style={{ minHeight: "30px" }}
-        onClick={handleClick}
-      >
-        {title}
-      </h3>
       <p className="text-base text-btn-primary-color mb-1 text-center">
         {category}
       </p>
@@ -83,13 +89,15 @@ function ProductCard({ product }: IProductCard) {
               <button
                 className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-l-2 border-l-gray-200"
                 onClick={handleAddToCart}
+                disabled={loading}
               >
                 <FaCartShopping />
               </button>
             )}
         <button
           onClick={handleClick}
-          className=" dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+          className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+          disabled={loading}
         >
           <BsEye />
         </button>
@@ -97,7 +105,7 @@ function ProductCard({ product }: IProductCard) {
           (hasUserRole(user) && user.role[0] === "admin")) && (
           <Link
             href={`/editproduct/${id}`}
-            className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 "
+            className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300"
           >
             <FiEdit />
           </Link>
@@ -107,6 +115,7 @@ function ProductCard({ product }: IProductCard) {
           <button
             onClick={() => setDeleteModal(true)}
             className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+            disabled={loading}
           >
             <RiDeleteBin5Line />
           </button>

@@ -9,7 +9,7 @@ async function CoverSection() {
   return (
     <section className="relative">
       <div className="relative e w-full h-96 lg:h-[400px] xl:h-[400px] 2xl:h-[600px] 3xl:h-[800px]">
-        <Image src={cover} layout="fill" objectFit="cover" alt="ceramics" />
+        <Image src={cover} fill style={{ objectFit: "cover" }} alt="ceramics" />
       </div>
       <div className="animate-fadeInUp absolute inset-0  dark:bg-gray-900 dark:bg-opacity-70 flex flex-col justify-center items-center">
         <h1 className=" text-base sm:text-2xl md:text-4xl lg:text-6xl text-black dark:text-white font-bold mb-1 md:mb-4">

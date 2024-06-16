@@ -6,13 +6,16 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
 import { FaCamera } from "react-icons/fa";
 import { ImSpinner9 } from "react-icons/im";
+import { useI18n } from "../../locales/client";
 
 export default function AvatarUpload({ userImage }: { userImage: string }) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
   const { user } = useUser();
+  const t = useI18n();
 
   useEffect(() => {
     const updateUser = async () => {
@@ -33,14 +36,12 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
         );
 
         if (!response.ok) {
-          console.error("Failed to update user picture");
           setError("Failed to update user picture");
         } else {
-          console.log("User picture updated successfully");
           setError(null);
+          setSuccess("User picture updated successfully");
         }
       } catch (error) {
-        console.error("Error updating user picture:", error);
         setError("Error updating user picture");
       }
     };
@@ -48,93 +49,91 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
     updateUser();
   }, [blob, user]);
 
+  const handleFileChange = async () => {
+    setError(null);
+    setSuccess(null);
+
+    if (!inputFileRef.current?.files) {
+      setError("No file selected");
+      return;
+    }
+
+    const file = inputFileRef.current.files[0];
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
+        {
+          method: "POST",
+          body: file,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to upload file");
+      }
+
+      const newBlob = (await response.json()) as PutBlobResult;
+      setBlob(newBlob);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      setError("Error uploading file");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <>
+    <div className="flex flex-col gap-4 items-center ">
       <div className="relative rounded-full ">
         {blob ? (
           <Image
             src={blob.url}
             priority={true}
             alt="Person-logo"
-            className="h-auto "
+            className="h-auto rounded-full"
             width={150}
             height={150}
+            sizes="(min-width: 1024px) 250px, 150px"
           />
         ) : (
           <Image
             src={userImage}
             priority={true}
             alt="Person-logo"
-            className="h-auto"
+            className="h-auto rounded-full"
             width={150}
             height={150}
+            sizes="(min-width: 1024px) 250px, 150px"
           />
         )}
-        <p>Upload Image</p>
-        <div className="absolute right-1 bottom-1">
+        <div
+          className="absolute right-1 bottom-1 cursor-pointer"
+          onClick={() => inputFileRef.current?.click()}
+        >
           <FaCamera fontSize={20} />
         </div>
         <input
-          className="text-[10px] hidden"
+          className="hidden"
           name="file"
           ref={inputFileRef}
           type="file"
           id="files"
           required
+          onChange={handleFileChange}
         />
-        <label htmlFor="files" className="absolute right-0 bottom-0 opacity-0">
-          text
-        </label>
       </div>
-      <form
-        className="flex flex-col justify-center items-center gap-3"
-        onSubmit={async (event) => {
-          event.preventDefault();
-
-          if (!inputFileRef.current?.files) {
-            setError("No file selected");
-            return;
-          }
-
-          const file = inputFileRef.current.files[0];
-
-          setLoading(true);
-          setError(null);
-          try {
-            const response = await fetch(
-              `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
-              {
-                method: "POST",
-                body: file,
-              }
-            );
-
-            if (!response.ok) {
-              throw new Error("Failed to upload file");
-            }
-
-            const newBlob = (await response.json()) as PutBlobResult;
-            setBlob(newBlob);
-          } catch (error) {
-            console.error("Error uploading file:", error);
-            setError("Error uploading file");
-          } finally {
-            setLoading(false);
-          }
-        }}
-      >
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        <button
-          className="bg-blue-500 w-32 text-white text-[12px] py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-          type="submit"
-        >
-          {loading ? (
-            <ImSpinner9 fontSize={20} className="animate-spin" />
-          ) : (
-            "Upload"
-          )}
-        </button>
-      </form>
-    </>
+      {loading && <ImSpinner9 fontSize={20} className="animate-spin" />}
+      {error && (
+        <div className="text-dark-cream-color font-bold text-sm animate-fadeInUp">
+          {error}
+        </div>
+      )}
+      {success && (
+        <div className="text-purple-color  dark:text-btn-primary-color font-bold text-sm animate-fadeInUp">
+          {success}
+        </div>
+      )}
+    </div>
   );
 }

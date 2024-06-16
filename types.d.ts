@@ -30,7 +30,7 @@ interface IBlog {
   description: string;
   category: string;
   userSub: string | null | undefined;
-  created_at?: string | undefined;
+  created_at?: string | undefined | Date;
 }
 
 interface IBlogsContainer {

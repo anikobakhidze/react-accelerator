@@ -7,16 +7,28 @@ import {
   TwitterIcon,
   LinkedinIcon,
 } from "react-share";
-function ShareOnSocial({ product }: { product: IProductDetails }) {
+function ShareOnSocial({ product }: { product: IProductDetails | IBlog }) {
   return (
-    <div>
-      <FacebookShareButton url={product.image} title={product.title}>
+    <div className="flex gap-2">
+      <FacebookShareButton
+        url={product.image}
+        title={product.title}
+        className="hover:opacity-75"
+      >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
-      <TwitterShareButton url={product.image} title={product.title}>
+      <TwitterShareButton
+        url={product.image}
+        title={product.title}
+        className="hover:opacity-75"
+      >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
-      <LinkedinShareButton url={product.image} title={product.title}>
+      <LinkedinShareButton
+        url={product.image}
+        title={product.title}
+        className="hover:opacity-75"
+      >
         <LinkedinIcon size={32} round />
       </LinkedinShareButton>
     </div>

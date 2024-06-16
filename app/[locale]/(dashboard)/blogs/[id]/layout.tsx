@@ -1,14 +1,15 @@
-import { ReactElement } from "react";
-import { getStaticParams } from "../../../../../locales/server";
+import { getI18n } from "@/locales/server";
 
-export function generateStaticParams() {
-  return getStaticParams();
+export async function generateMetadata() {
+  const t = await getI18n();
+  return {
+    title: t("blogsPage.blog"),
+    description: t("blogsPage.description"),
+  };
 }
 
-export default function BlogDetailLayout({
-  children,
-}: {
-  children: ReactElement;
-}) {
+function BlogsLayout({ children }: IChildrenProps) {
   return <>{children}</>;
 }
+
+export default BlogsLayout;

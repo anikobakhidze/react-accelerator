@@ -3,13 +3,13 @@ import { getI18n } from "@/locales/server";
 export async function generateMetadata() {
   const t = await getI18n();
   return {
-    title: t("blogsPage.blog"),
-    description: t("blogsPage.description"),
+    title: t("cartPage.title"),
+    description: t("cartPage.description"),
   };
 }
 
-function BlogsLayout({ children }: IChildrenProps) {
+function CartLayout({ children }: IChildrenProps) {
   return <>{children}</>;
 }
 
-export default BlogsLayout;
+export default CartLayout;

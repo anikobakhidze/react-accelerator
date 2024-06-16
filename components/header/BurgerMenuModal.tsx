@@ -21,6 +21,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
   const pathname = usePathname();
   const modalRef = useRef<HTMLDivElement>(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleOutsideClick = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       onClose();
@@ -40,7 +41,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
       document.removeEventListener("mousedown", handleOutsideClick);
       window.removeEventListener("resize", onClose);
     };
-  }, [isOpen, onClose, handleOutsideClick]);
+  }, [handleOutsideClick, isOpen, onClose]);
 
   return (
     <div
@@ -103,7 +104,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                 } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
-                {t("blog")}
+                {t("blogsPage.blog")}
               </Link>
             </li>
             <li className="text-center">
@@ -116,7 +117,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
                 } px-4 py-1 md:px-6 md:py-2 text-sm md:text-base hover:font-bold hover:border-b-2 hover:border-btn-primary-color`}
                 onClick={onClose}
               >
-                {t("contact")}
+                {t("contactPage.contact")}
               </Link>
             </li>
             {hasUserRole(user) && user.role[0] === "admin" && (

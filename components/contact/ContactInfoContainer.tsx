@@ -12,7 +12,7 @@ function ContactInfoContainer() {
     },
     {
       type: "email",
-      title: "earthen@earthen.com",
+      title: "support@earthen.com",
       paragraph: t("contactPage.emailP"),
       href: "mailto:earthen@earthen.com",
     },

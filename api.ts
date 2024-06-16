@@ -1,5 +1,3 @@
-// export const BASE_URL = "http://localhost:3000";
-
 import { getSession } from "@auth0/nextjs-auth0";
 import { revalidatePath } from "next/cache";
 
@@ -386,6 +384,19 @@ export async function deleteBlog(id: number) {
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-blog/${id}`,
     {
       method: "DELETE",
+    }
+  );
+  return response;
+}
+
+// delete cart
+
+export async function deleteCart(userId: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-cart/${userId}`,
+    {
+      method: "DELETE",
+      cache: "no-store",
     }
   );
   return response;

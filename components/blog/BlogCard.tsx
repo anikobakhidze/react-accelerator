@@ -10,7 +10,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import BlogImage from "./BlogImage";
 import { useRouter } from "next/navigation";
 import { useI18n } from "../../locales/client";
-// import Loader from "../sharedComponents/UI/Loader";
+import { ClipLoader } from "react-spinners";
 
 const BlogCard: React.FC<IBlogPost> = ({
   blog: { id, image, title, description, userSub },
@@ -18,17 +18,22 @@ const BlogCard: React.FC<IBlogPost> = ({
   const { user } = useUser();
   const sub = user?.sub;
   const [deleteModal, setDeleteModal] = useState(false);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const routes = useRouter();
   const handleClick = () => {
-    // setLoading(true);
+    setLoading(true);
     routes.push(`/blogs/${id}`);
   };
   const t = useI18n();
-
+  if (loading) {
+    return (
+      <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-60">
+        <ClipLoader size={100} color="#e4986a" />
+      </div>
+    );
+  }
   return (
     <div className="max-w-[300px] h-[500px] flex flex-col shadow-lg relative ">
-      {/* {loading && <Loader />} */}
       <div className="relative">
         <BlogImage image={image} title={title} />
         <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>

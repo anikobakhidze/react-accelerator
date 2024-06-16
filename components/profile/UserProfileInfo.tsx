@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useI18n } from "../../locales/client";
 import { editUserAction } from "@/actions";
-// import { getUser } from "@/api";
 
 function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
   const t = useI18n();
@@ -12,32 +11,12 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
     sub: userInfo.sub || "",
     email: userInfo.email || "",
   });
-  // const [loading, setLoading] = useState(true);
+  const [originalProfile, setOriginalProfile] = useState(userProfile);
   const [updateMessage, setUpdateMessage] = useState("");
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const user = await getUser();
-  //       if (user) {
-  //         setUserProfile({
-  //           name: user.name,
-  //           nickname: user.nickname,
-  //           sub: user.sub,
-  //           email: user.email,
-  //         });
-  //       } else {
-  //         console.error("User not found");
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to fetch user", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchUser();
-  // }, []);
+  useEffect(() => {
+    setOriginalProfile(userProfile);
+  }, []);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserProfile((prevProfile) => ({
@@ -61,6 +40,7 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
 
     try {
       await editUserAction(formData);
+      setOriginalProfile(userProfile);
       setUpdateMessage("Your profile is updated");
     } catch (error) {
       console.error("Failed to update user profile", error);
@@ -68,45 +48,59 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
     }
   };
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  const isSaveDisabled = () => {
+    return (
+      userProfile.name === originalProfile.name &&
+      userProfile.nickname === originalProfile.nickname
+    );
+  };
 
   return (
-    <div>
-      {updateMessage && <div className="text-green-500">{updateMessage}</div>}
-      <form onSubmit={handleSubmit}>
-        <fieldset className="flex flex-col gap-4 w-2/6 h-80">
-          <legend className="text-2xl font-bold text-teal-800 mb-4 w-full">
+    <div className="w-full">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-5 w-full"
+      >
+        <fieldset className="flex flex-col gap-4 w-full md:w-2/3 lg:w-1/2 h-auto">
+          <legend className="text-lg md:text-xl lg:text-2xl font-bold text-btn-primary-color mb-4 w-full">
             {t("profilePage.about")}
           </legend>
-          <label htmlFor="name" className="text-xl font-semibold">
+          <label
+            htmlFor="name"
+            className="text-base md:text-lg lg:text-xl font-semibold"
+          >
             {t("profilePage.name")}
           </label>
           <input
-            className="h-10 text-lg pl-2 rounded-xl outline-none"
+            className=" h-8 md:h-10 text-base  lg:text-lg pl-2 rounded-xl outline-none  dark:bg-gray-800 dark:text-white"
             id="name"
             type="text"
             value={userProfile.name}
             placeholder="Name"
             onChange={handleNameChange}
           />
-          <label htmlFor="nickname" className="text-xl font-semibold">
+          <label
+            htmlFor="nickname"
+            className="text-base md:text-lg lg:text-xl font-semibold"
+          >
             {t("profilePage.nickname")}
           </label>
           <input
-            className="h-10 text-lg pl-2 rounded-xl outline-none"
+            className=" h-8 md:h-10 text-base  lg:text-lg pl-2 rounded-xl outline-none  dark:bg-gray-800 dark:text-white"
             id="nickname"
             type="text"
             value={userProfile.nickname}
             placeholder="Nickname"
             onChange={handleNicknameChange}
           />
-          <label htmlFor="email" className="text-xl font-semibold">
+          <label
+            htmlFor="email"
+            className="text-base md:text-lg lg:text-xl font-semibold"
+          >
             {t("profilePage.email")}
           </label>
           <input
-            className="h-10 text-lg pl-2 rounded-xl outline-none"
+            className=" h-8 md:h-10 text-base  lg:text-lg pl-2 rounded-xl outline-none  dark:bg-gray-800 dark:text-white"
             id="email"
             type="email"
             placeholder="Email"
@@ -115,12 +109,24 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
           />
           <button
             type="submit"
-            className="bg-medium-green text-white h-12 rounded-full text-xl hover:bg-teal-800"
+            className={`bg-btn-primary-color cursor-pointer  text-white h-10 lg:h-12 rounded-full text-base lg:text-xl  hover:text-btn-primary-color hover:opacity-50 dark:text-black  dark:bg-white `}
+            disabled={isSaveDisabled()}
           >
             {t("profilePage.saveProfile")}
           </button>
         </fieldset>
       </form>
+      {updateMessage && (
+        <div
+          className={`text-base pt-4 text-center font-bold ${
+            updateMessage.includes("Failed")
+              ? "text-dark-cream-color"
+              : "text-btn-primary-color"
+          } animate-fadeInUp`}
+        >
+          {updateMessage}
+        </div>
+      )}
     </div>
   );
 }
