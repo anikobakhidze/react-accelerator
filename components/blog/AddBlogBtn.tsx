@@ -14,10 +14,12 @@ const AddBlogBtn = () => {
     <>
       <button
         onClick={handleModal}
-        className=" flex items-center justify-center text-sm rounded-full w-6 h-6 md:w-8 md:h-8  xl:w-fit xl:h-fit xl:rounded-none xl:text-base xl:p-2 bg-black hover:opacity-75 xl:text-white"
+        className=" flex items-center dark:bg-light-bg-color justify-center text-sm rounded-full w-6 h-6 md:w-8 md:h-8  xl:w-fit xl:h-fit xl:rounded-none xl:text-base xl:p-2 bg-black hover:opacity-75 xl:text-white"
       >
-        <MdAddCircleOutline size={20} className=" text-white" />
-        <span className="ml-2 hidden xl:flex">{t("blogsPage.blog")}</span>
+        <MdAddCircleOutline size={20} className=" text-white dark:text-black" />
+        <span className="ml-2 hidden xl:flex dark:text-black">
+          {t("blogsPage.blog")}
+        </span>
       </button>
       {modal && <AddBlogForm closeModal={handleModal} />}
     </>

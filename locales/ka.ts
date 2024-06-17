@@ -144,6 +144,7 @@ export default {
     emptyCart: "კალათაში  არ არის პროდუქტი",
     fetchError: "ვერ მოხდა კალათაში ნივთების წამოღება",
     remove: "წაშლა",
-    reset: "განახლება",
+    reset: "გასუფთავება",
+    totalPrice: "ჯამი",
   },
 } as const;

@@ -143,5 +143,6 @@ export default {
     fetchError: "Failed to fetch cart items",
     remove: "Remove",
     reset: "Reset",
+    totalPrice: "Total Price",
   },
 } as const;

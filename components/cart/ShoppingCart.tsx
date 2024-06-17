@@ -23,6 +23,14 @@ async function ShoppingCart() {
 
   try {
     const products = await getCartItems(userId);
+    const productPrice = products.map(
+      (product: ICartProduct) =>
+        Number(product.price) * Number(product.selectedQuantity)
+    );
+    const total = productPrice.reduce(
+      (price: number, sum: number) => price + sum,
+      0
+    );
 
     return (
       <section className="flex flex-1 flex-col pt-28 mt:pt-32 lg:pt-44 pb-10 bg-light-bg-color dark:bg-black">
@@ -42,6 +50,14 @@ async function ShoppingCart() {
             {products.map((item: ICartProduct) => (
               <ShoppingItem key={item.id} item={item} />
             ))}
+            <div className="flex md:justify-start my-10 lg:ml-20 justify-center">
+              <h4 className="text-btn-primary-color font-bold text:base md:text-xl lg:text-2xl mr-20">
+                {t("cartPage.totalPrice")}
+              </h4>
+              <p className="lg:text-xl md:text-lg text-sm font-semibold ">
+                {total}$
+              </p>
+            </div>
           </div>
         )}
       </section>

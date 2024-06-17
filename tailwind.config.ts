@@ -21,6 +21,7 @@ module.exports = {
         "dark-bg-primary": "var(--dark-bg-primary)",
         "purple-color": "var(--purple-color)",
         "gray-color": "var(--gray-color)",
+        "green-color": "var(--green-color)",
       },
       keyframes: {
         fadeInUp: {

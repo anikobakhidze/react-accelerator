@@ -39,7 +39,7 @@ const BlogCard: React.FC<IBlogPost> = ({
         <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
       </div>
       <div className="p-4 -h-2/3 flex flex-col justify-between">
-        <h2 className="font-bold mb-2 text-lg text-black dark:text-white">
+        <h2 className="font-bold  text-lg text-black dark:text-white h-16">
           {title}
         </h2>
         <div className="flex justify-between mt-4">
