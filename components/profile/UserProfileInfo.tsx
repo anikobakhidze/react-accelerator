@@ -16,7 +16,7 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
 
   useEffect(() => {
     setOriginalProfile(userProfile);
-  }, []);
+  }, [userProfile]);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserProfile((prevProfile) => ({
@@ -56,12 +56,12 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
   };
 
   return (
-    <div className="w-full">
+    <div className="max-980:w-full w-1/2">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center gap-5 w-full"
       >
-        <fieldset className="flex flex-col gap-4 w-full md:w-2/3 lg:w-1/2 h-auto">
+        <fieldset className="flex flex-col gap-4 w-full h-auto">
           <legend className="text-lg md:text-xl lg:text-2xl font-bold text-btn-primary-color mb-4 w-full">
             {t("profilePage.about")}
           </legend>

@@ -125,17 +125,17 @@ function ContactUsForm() {
 
   return (
     <form
-      className="flex flex-col gap-3 max-w-container items-center justify-center w-4/5 lg:w-800 px-10"
+      className="flex flex-col gap-3 max-w-container items-center justify-center w-4/5 xl:w-[1100px] lg:w-800 px-10"
       onSubmit={handleSubmit}
     >
       <div className="flex lg:flex-row flex-col justify-between lg:mt-8 w-full gap-3 lg:gap-0">
-        <div className="lg:w-48% w-full">
+        <div className="lg:w-47% w-full lg:mr-2">
           <input
             type="text"
             placeholder={t("contactPage.name")}
             value={name}
             onChange={handleChangeName}
-            className="w-full h-10 dark:placeholder:text-white outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color dark:text-white dark:bg-gray-color"
+            className="w-full h-10 dark:placeholder:text-white outline-none pl-3 placeholder:text-btn-primary-color rounded-xl bg-light-bg-color dark:text-white dark:bg-gray-color "
           />
           {errors.name && (
             <p className="text-dark-cream-color font-semibold  text-sm mt-1">
@@ -143,7 +143,7 @@ function ContactUsForm() {
             </p>
           )}
         </div>
-        <div className="lg:w-48% w-full">
+        <div className="lg:w-47% w-full">
           <input
             type="number"
             placeholder={t("contactPage.phone")}

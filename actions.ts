@@ -96,7 +96,7 @@ export async function deleteProductAction(id: number) {
 export async function getProductAction(id: number): Promise<IProductDetails> {
   const product = await getProduct(id);
   revalidateTag(`/editproduct/${id}`);
-  revalidatePath("/", "layout");
+  revalidatePath("/");
   return product;
 }
 

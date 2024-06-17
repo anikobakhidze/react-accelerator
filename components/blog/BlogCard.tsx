@@ -13,7 +13,7 @@ import { useI18n } from "../../locales/client";
 import { ClipLoader } from "react-spinners";
 
 const BlogCard: React.FC<IBlogPost> = ({
-  blog: { id, image, title, description, userSub },
+  blog: { id, image, title, userSub },
 }) => {
   const { user } = useUser();
   const sub = user?.sub;
@@ -42,9 +42,6 @@ const BlogCard: React.FC<IBlogPost> = ({
         <h2 className="font-bold mb-2 text-lg text-black dark:text-white">
           {title}
         </h2>
-        <p className="text-gray-600 overflow-hidden italic font-semibold flex-grow">
-          {description}
-        </p>
         <div className="flex justify-between mt-4">
           <div className="flex my-2">
             {user &&

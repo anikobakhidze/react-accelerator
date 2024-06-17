@@ -6,7 +6,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
 import { FaCamera } from "react-icons/fa";
 import { ImSpinner9 } from "react-icons/im";
-import { useI18n } from "../../locales/client";
 
 export default function AvatarUpload({ userImage }: { userImage: string }) {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -15,7 +14,6 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const { user } = useUser();
-  const t = useI18n();
 
   useEffect(() => {
     const updateUser = async () => {
@@ -84,27 +82,27 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center ">
+    <div className="flex flex-col gap-4 items-center md:w-1/2 w-full">
       <div className="relative rounded-full ">
         {blob ? (
           <Image
             src={blob.url}
             priority={true}
-            alt="Person-logo"
-            className="h-auto rounded-full"
-            width={150}
-            height={150}
-            sizes="(min-width: 1024px) 250px, 150px"
+            alt="User Avatar"
+            className="object-cover object-center rounded-full"
+            layout="fixed"
+            width={300}
+            height={300}
           />
         ) : (
           <Image
             src={userImage}
             priority={true}
-            alt="Person-logo"
-            className="h-auto rounded-full"
-            width={150}
-            height={150}
-            sizes="(min-width: 1024px) 250px, 150px"
+            alt="User Avatar"
+            className="object-cover object-center rounded-full"
+            layout="fixed"
+            width={300}
+            height={300}
           />
         )}
         <div

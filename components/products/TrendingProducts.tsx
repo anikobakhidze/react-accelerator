@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
 
 function TrendingProducts({ products }: IProductsContainer) {
   const firstFourProducts = products.slice(0, 4);
@@ -11,7 +10,6 @@ function TrendingProducts({ products }: IProductsContainer) {
   return (
     <div className="flex justify-between items-center py-8 md:pt-20 md:pb-12  mx-auto  md:pl-20 pl-10 md:w-4/5 w-[350px]">
       <Swiper
-        modules={[Pagination]}
         slidesPerView={1}
         spaceBetween={30}
         breakpoints={{
@@ -32,15 +30,14 @@ function TrendingProducts({ products }: IProductsContainer) {
             spaceBetween: 20,
           },
         }}
-        pagination={{ clickable: true }}
-        className="w-full"
+        className="w-full "
       >
         {firstFourProducts.map((product: IProduct) => (
           <SwiperSlide
             key={product.id}
-            className={
+            className={` static ${
               firstFourProducts.length === 1 ? "flex justify-center" : ""
-            }
+            }`}
           >
             <ProductCard product={product} />
           </SwiperSlide>

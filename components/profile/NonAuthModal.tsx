@@ -27,7 +27,6 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleOutsideClick = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       onClose();
@@ -57,23 +56,23 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
     >
       <div
         ref={modalRef}
-        className="absolute top-20 right-10 md:top-28 md:right-14 lg:right-16 bg-white dark:bg-dark-medium-bg p-4 md:p-8  shadow-lg rounded-lg"
+        className="absolute top-20 right-10 md:top-28 md:right-14 lg:right-16 bg-white dark:bg-gray-800  dark:bg-opacity-50 p-4 md:p-8  shadow-lg rounded-lg"
       >
         {user ? (
           <div className="flex flex-col gap-4 p-2  ">
-            <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200">
+            <h4 className="text-base md:text-lg font-semibold text-gray-800  dark:text-white">
               Hello, {user.nickname}
             </h4>
             <button
               onClick={handleProfileClick}
-              className="flex items-center gap-2 text-black  hover:opacity-75 transition-colors duration-300"
+              className="flex items-center gap-2 text-black  hover:opacity-75 transition-colors duration-300 dark:text-white"
             >
               <LuUser className="text-lg" />
               <span>{t("profilePage.profile")}</span>
             </button>
             <a
               href="/api/auth/logout"
-              className="flex items-center gap-2   text-btn-primary-color  hover:opacity-75 transition-colors duration-300"
+              className="flex items-center gap-2   text-btn-primary-color  hover:opacity-75 transition-colors duration-300 "
             >
               <IoIosLogOut className="text-lg" />
               <span>{t("auth.logOut")}</span>

@@ -7,7 +7,7 @@ async function ProductSection() {
   const t = await getI18n();
   const products = await getProductsAction();
   return (
-    <section className=" mt-10 lg:mt-16">
+    <section className="relative mt-10 lg:mt-16">
       <h3 className="text-gray-500 text-center">{t("product.welcome")}</h3>
       <div className="relative flex justify-center items-center mt-4">
         <div>

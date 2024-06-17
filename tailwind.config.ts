@@ -10,10 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      width: {
-        1100: "1100px",
-        800: "800px",
-        "48%": "48%",
+      screens: {
+        "max-980": { max: "980px" },
+        "max-680": { max: "680px" },
       },
       colors: {
         "light-bg-color": "var(--cream-color)",

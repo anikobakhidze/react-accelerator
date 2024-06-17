@@ -12,12 +12,13 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("pottery");
+  const [category, setCategory] = useState("mugs");
   const [price, setPrice] = useState("");
   const [productLoading, setProductLoading] = useState(false);
   const [productError, setProductError] = useState("");
   const { user } = useUser();
   const userSub = user?.sub;
+
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       setError("No file selected");
@@ -137,7 +138,7 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
                 setCategory(e.target.value);
               }}
             >
-              <option value="pottery">Pottery</option>
+              <option value="mugs">Mugs</option>
               <option value="resins">Resins</option>
               <option value="fiber">Fiber</option>
               <option value="catalysis">Catalysis</option>

@@ -3,8 +3,8 @@
 import { createBlogAction } from "@/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
-import { useRef, useState } from "react";
-
+import { useRef, useState, useEffect } from "react";
+import { ImSpinner9 } from "react-icons/im";
 const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
   const [blogError, setBlogError] = useState("");
   const { user } = useUser();
   const userSub = user?.sub;
-
+  const modalRef = useRef<HTMLDivElement>(null);
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -72,10 +72,27 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
       setBlogLoading(false);
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        closeModal();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [closeModal]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-8 rounded shadow-lg w-full max-w-md">
+      <div
+        className="bg-white p-8 rounded shadow-lg w-full max-w-md"
+        ref={modalRef}
+      >
         <h2 className="text-2xl mb-4">Add New Blog Post</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -145,15 +162,24 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md"
+            className="w-full bg-btn-primary-color text-white py-2  hover:opacity-70"
           >
-            {blogLoading ? "Uploading..." : "Add Blog Post"}
+            {blogLoading ? (
+              <ImSpinner9 fontSize={20} className="animate-spin" />
+            ) : (
+              "Add Blog Post"
+            )}
           </button>
           {blogError && (
-            <p className="text-red-500 text-sm mt-2">{blogError}</p>
+            <p className="text-dark-cream-color font-bold text-sm mt-2">
+              {blogError}
+            </p>
           )}
         </form>
-        <button onClick={closeModal} className="mt-4 text-red-500">
+        <button
+          onClick={closeModal}
+          className="mt-4 text-base bg-black dark:bg-white p-2 text-white hover:opacity-70 w-full"
+        >
           Close
         </button>
       </div>
