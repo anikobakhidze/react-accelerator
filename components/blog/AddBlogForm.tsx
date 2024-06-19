@@ -25,7 +25,12 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
   const userSub = user?.sub;
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -141,7 +146,7 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div
-        className="bg-white dark:bg-gray-800 p-8 rounded shadow-lg w-full max-w-md"
+        className="bg-white dark:bg-gray-800 p-8 rounded shadow-lg w-full max-w-md max-h-full overflow-auto"
         ref={modalRef}
       >
         <h2 className="text-lg font-bold text-btn-primary-color lg:text-2xl mb-4">
@@ -243,7 +248,9 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
             className="w-full bg-btn-primary-color text-center text-white py-2 hover:opacity-70 rounded-xl"
           >
             {blogLoading ? (
-              <ImSpinner9 fontSize={20} className="animate-spin" />
+              <div className="text-center">
+                <ImSpinner9 fontSize={20} className="animate-spin" />
+              </div>
             ) : (
               "Add Blog Post"
             )}

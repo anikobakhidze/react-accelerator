@@ -7,7 +7,7 @@ import {
   editUser,
   createProduct,
   deleteProduct,
-  updateProduct,
+  editProduct,
   getProduct,
   getProductsQuantity,
   updateCartQuantity,
@@ -72,6 +72,7 @@ export async function createProductAction(product: Product) {
       product.category,
       userSub
     );
+    revalidatePath("/product");
   } catch (error) {
     console.error("Error uploading product:", error);
     throw new Error("Error uploading product");
@@ -83,9 +84,9 @@ export async function getProductsAction() {
   return products;
 }
 
-export async function updateProductAction(product: IProductDetails) {
-  await updateProduct(product);
-  revalidatePath("/product", "layout");
+export async function editProductAction(product: IProductDetails) {
+  await editProduct(product);
+  revalidatePath("/product");
 }
 
 export async function deleteProductAction(id: number) {

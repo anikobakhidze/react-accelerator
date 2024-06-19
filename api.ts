@@ -1,5 +1,4 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import { revalidatePath } from "next/cache";
 
 export async function getUsers() {
   const response = await fetch(
@@ -130,9 +129,10 @@ export async function createProduct(
           category,
           userSub,
         }),
+        cache: "no-store",
       }
     );
-    revalidatePath("/");
+
     if (!response.ok) {
       throw new Error("Failed to upload product");
     }
@@ -154,7 +154,7 @@ export async function getProducts() {
   const { products } = await response.json();
   return products.rows;
 }
-export async function updateProduct(product: IProductDetails) {
+export async function editProduct(product: IProductDetails) {
   const { id, image, title, description, price, category } = product;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product/${id}`,
@@ -342,8 +342,6 @@ export async function getBlogs() {
 // edit blog
 export async function editBlog(blog: IBlog) {
   const { id, image, title, description, category } = blog;
-  console.log(id, image, title, description, category, "blog edit api");
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-blog/${id}`,
     {

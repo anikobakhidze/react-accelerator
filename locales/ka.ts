@@ -3,6 +3,10 @@ export default {
     geo: "ქარ",
     eng: "ინგ",
   },
+  loading: "გთხოვთ, დაიცადოთ. ვებგვერდი იტვირთება.",
+  mainTitle: "ერთენი",
+  mainDescription:
+    "აღმოაჩინეთ და გაცვალეთ უნიკალური ხელნაკეთი კერამიკა მსოფლიო ოსტატებისგან. შეიძინეთ ან გაყიდეთ ლამაზად დამზადებული თიხის ნაწარმი Earthen-ზე.",
   coverHeading: {
     hOne: "გააზიარე სიყვარული",
     hTwo: "შენი ხელნაკეთი კერამიკის ",
@@ -14,6 +18,7 @@ export default {
     signUp: "რეგისტრაცია",
     logOut: "გასვლა",
   },
+  hello: "გამარჯობა",
   service: {
     h1: "გაყიდვები მთელ მსოფლიოში",
     p1: "გლობალური გაყიდვები",
@@ -39,7 +44,8 @@ export default {
     heading: "ტრენდული პროდუქტები",
     addProduct: "პროდუქტი",
     subtitle: "პროდუქტების გვერდი",
-    product: "აღმიოაჩინე კერამიკული ნივთები",
+    product: "აღმოაჩინე კერამიკული ნივთები",
+    delete: "გინდათ წაშალოთ პროდუქტი",
   },
   blogSection: {
     welcome: "ბლოგები",
@@ -80,7 +86,10 @@ export default {
     blog: "ბლოგი",
     description:
       "წაიკითხეთ ჩვენი უახლესი ბლოგები კერამიკაზე, რჩევებზე და სხვა.",
+    delete: "გინდათ წაშალოთ ბლოგი",
   },
+  yes: "დიახ",
+  no: "არა",
   contactPage: {
     contact: "კონტაქტი",
     description:
@@ -146,5 +155,35 @@ export default {
     remove: "წაშლა",
     reset: "გასუფთავება",
     totalPrice: "ჯამი",
+  },
+  editProduct: {
+    editProduct: "პროდუქტის რედაქტირება",
+    uploadImage: "სურათის ატვირთვა",
+    productTitle: "პროდუქტის დასახელება",
+    description: "აღწერა",
+    category: "კატეგორია",
+    price: "ფასი",
+    saveChange: "ცვლილების შენახვა",
+    uploading: "იტვირთება...",
+    choosePicture: "აირჩიეთ სურათი",
+    successMessage: "პროდუქტი წარმატებით განახლდა",
+    errorMessage: "პროდუქტის განახლება ვერ მოხერხდა",
+    failMessage: "სურათის ატვირთვა ვერ მოხერხდა",
+    close: "დახურვა",
+  },
+  editBlog: {
+    editBlog: "ბლოგის რედაქტირება ",
+    uploadImage: "სურათის ატვირთვა",
+    blogTitle: "ბლოგის დასახელება",
+    description: "აღწერა",
+    category: "კატეგორია",
+    price: "ფასი",
+    saveChange: "ცვლილების შენახვა",
+    uploading: "იტვირთება...",
+    choosePicture: "აირჩიეთ სურათი",
+    successMessage: "ბლოგი წარმატებით განახლდა",
+    errorMessage: "ბლოგის განახლება ვერ მოხერხდა",
+    failMessage: "სურათის ატვირთვა ვერ მოხერხდა",
+    close: "დახურვა",
   },
 } as const;

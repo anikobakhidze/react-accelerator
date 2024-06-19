@@ -8,7 +8,6 @@ export const GET = handleAuth({
     },
   }),
   signup: handleLogin({
-    returnTo: "/api/create-user",
-    authorizationParams: { prompt: "signup" },
+    authorizationParams: { screen_hint: "signup" },
   }),
 });

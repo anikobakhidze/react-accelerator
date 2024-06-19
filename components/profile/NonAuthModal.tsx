@@ -27,6 +27,7 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleOutsideClick = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       onClose();
@@ -61,7 +62,7 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
         {user ? (
           <div className="flex flex-col gap-4 p-2  ">
             <h4 className="text-base md:text-lg font-semibold text-gray-800  dark:text-white">
-              Hello, {user.nickname}
+              {t("hello")}, {user.nickname}
             </h4>
             <button
               onClick={handleProfileClick}

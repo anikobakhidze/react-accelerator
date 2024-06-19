@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { FiEdit } from "react-icons/fi";
@@ -12,6 +12,7 @@ import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
 import { ClipLoader } from "react-spinners";
+import ProductImage from "./ProductImage";
 function ProductCard({ product }: IProductCard) {
   const { id, title, price, category, usersub } = product;
   const { user, isLoading } = useUser();
@@ -55,14 +56,7 @@ function ProductCard({ product }: IProductCard) {
     <div className="w-[300px] flex flex-col items-between h-full relative group shadow-lg">
       <div onClick={handleClick} className="cursor-pointer">
         <div className="relative">
-          <Image
-            src={product.image}
-            alt={product.description}
-            width={270}
-            height={350}
-            className="mb-4"
-            style={{ height: "350px", objectFit: "cover" }}
-          />
+          <ProductImage image={product.image} title={product.title} />
           <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
         </div>
         <h3

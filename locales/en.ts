@@ -3,6 +3,11 @@ export default {
     geo: "Geo",
     eng: "Eng",
   },
+  loading:
+    "Just a moment, we're preparing the web page. This may take a few seconds...",
+  mainTitle: "Earthen",
+  mainDescription:
+    "Discover and trade unique handmade ceramics from artisans around the world. Shop or sell beautifully crafted pottery on Earthen.",
   coverHeading: {
     hOne: "Share your love",
     hTwo: "By selling handmade",
@@ -14,6 +19,7 @@ export default {
     signUp: "SignUp",
     logOut: "LogOut",
   },
+  hello: "Hello",
   service: {
     h1: "Shop Worldwide",
     p1: "Dropship Worldwide",
@@ -40,6 +46,7 @@ export default {
     addProduct: "Product",
     subtitle: "Welcome to Products",
     product: "Discover Our Ceramics",
+    delete: "Do you want to delete product",
   },
   blogSection: {
     welcome: "WELCOME TO CERAMICS",
@@ -77,7 +84,10 @@ export default {
     readMore: "Read More",
     blog: "Blog",
     description: "Read our latest blogs about ceramics, tips, and more.",
+    delete: "Do you want to delete product",
   },
+  yes: "Yes",
+  no: "No",
   contactPage: {
     contact: "Contact",
     description:
@@ -144,5 +154,35 @@ export default {
     remove: "Remove",
     reset: "Reset",
     totalPrice: "Total Price",
+  },
+  editProduct: {
+    editProduct: "Edit Product",
+    uploadImage: "Upload Image",
+    productTitle: "Product Title",
+    description: "Description",
+    category: "Category",
+    price: "Price",
+    saveChange: "Save Change",
+    uploading: "Uploading...",
+    choosePicture: "Choose Picture",
+    successMessage: "Product updated successfully",
+    errorMessage: "Error updating product",
+    failMessage: "Failed to upload file",
+    close: "Close",
+  },
+  editBlog: {
+    editBlog: "Edit Blog",
+    uploadImage: "Upload Image",
+    blogTitle: "Blog Title",
+    description: "Description",
+    category: "Category",
+
+    saveChange: "Save Change",
+    uploading: "Uploading...",
+    choosePicture: "Choose Picture",
+    successMessage: "Blog updated successfully",
+    errorMessage: "Error updating Blog",
+    failMessage: "Failed to upload file",
+    close: "Close",
   },
 } as const;

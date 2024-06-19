@@ -3,11 +3,16 @@ import { Providers } from "./providers";
 import { I18nProviderClient } from "../../locales/client";
 import { ReactNode } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-export const metadata = {
-  title: "Earthen",
-  description:
-    "Discover and trade unique handmade ceramics from artisans around the world. Shop or sell beautifully crafted pottery on Earthen.",
-};
+
+import { getI18n } from "@/locales/server";
+
+export async function generateMetadata() {
+  const t = await getI18n();
+  return {
+    title: t("mainTitle"),
+    description: t("mainDescription"),
+  };
+}
 
 export default function RootLayout({
   params: { locale },

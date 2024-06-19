@@ -4,8 +4,16 @@ import { NextResponse } from "next/server";
 export const revalidate = 0;
 export async function PUT(request: Request) {
   try {
-    const { id, image, title, description, price, quantity, category } =
+    const { id, image, title, description, price, category } =
       await request.json();
+    console.log("editproductt", {
+      id,
+      image,
+      title,
+      description,
+      price,
+      category,
+    });
 
     const productExists = await sql`SELECT * FROM products WHERE id=${id}`;
 
@@ -20,8 +28,7 @@ export async function PUT(request: Request) {
         title=${title}, 
         description=${description}, 
         price=${price}, 
-        category=${category}, 
-        quantity=${quantity} 
+        category=${category}
       WHERE id=${id}
     `;
     return NextResponse.json(
