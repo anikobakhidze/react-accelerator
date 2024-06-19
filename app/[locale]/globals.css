@@ -3,14 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --orange: #F47458;
-  --light-orange: #FFF6F4;
-  --medium-orange: #FFD6BA;
+  --cream-color: #eae8e6;
+  --dark-cream-color: #b67a55;
+  --color-btn-primary: #e4986a;
+  --dark-bg-primary: #081217;
+  --purple-color: #8d94b4;
+  --medium-dark-bg: #343434;
+  --light-dark-bg: #0f2029;
+  --gray-color: #4e535d;
+  --green-color: #59a84d;
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -1,1 +1,1 @@
-export const AUTH_COOKIE_KEY = "auth";
+export const AUTH_COOKIE_KEY = "appSession";

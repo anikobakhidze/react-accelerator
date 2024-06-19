@@ -1,16 +1,28 @@
 import { sql } from "@vercel/postgres";
-import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { getSession } from "@auth0/nextjs-auth0";
+import { redirect } from "next/navigation";
 
-export async function POST(request: Request) {
-  const { name, email, age } = await request.json();
+export async function GET(_: NextRequest) {
   try {
-    if (!name || !email || !age)
-      throw new Error("Name, email  and age are required");
-    await sql`INSERT INTO users (name, email, age) VALUES (${name}, ${email}, ${age});`;
+    const session = await getSession();
+    const user = session?.user;
+    if (user) {
+      const { picture, name, nickname, email, sub } = user;
+
+      const result = await sql`SELECT * FROM users WHERE sub = ${sub}`;
+
+      if (result.rows.length === 0)
+        await sql`
+        INSERT INTO users (image, name, nickname, email, sub)
+        VALUES (${picture}, ${name}, ${nickname}, ${email}, ${sub});
+      `;
+    } else {
+      return redirect("/api/auth/logout");
+    }
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return redirect("/api/auth/logout");
   }
 
-  const users = await sql`SELECT * FROM users;`;
-  return NextResponse.json({ users }, { status: 200 });
+  return redirect("/");
 }

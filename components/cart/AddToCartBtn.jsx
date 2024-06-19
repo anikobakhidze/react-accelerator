@@ -1,25 +1,35 @@
-"use client";
+// "use client";
+import { getSession } from "@auth0/nextjs-auth0";
 import { FaCartShopping } from "react-icons/fa6";
-import { useShoppingCart } from "../../context/ShoppingCartContext";
-import { useRouter } from "next/navigation";
-function AddToCartBtn() {
-  const { cartQuantity } = useShoppingCart();
-  const routes = useRouter();
-  const handleClick = () => {
-    routes.push("/cart");
-  };
+import Link from "next/link";
+import { getQuantityAction } from "@/actions";
+
+async function AddToCartBtn() {
+  const session = await getSession();
+  const user = session?.user;
+  const userId = user?.sub;
+  let quantity = 0;
+
+  if (userId) {
+    quantity = await getQuantityAction(userId);
+  }
+
   return (
-    <button
-      className="rounded-[50%] w-8 h-8 flex justify-center items-center bg-gray-300 transition-all hover:bg-gray-400 hover:scale-105  dark:bg-white relative"
-      onClick={handleClick}
-    >
-      <FaCartShopping className="dark:text-black" />
-      {cartQuantity > 0 && (
-        <div className="absolute bg-red-700 rounded-full w-6 h-6 -right-2 -bottom-2 text-white">
-          {cartQuantity}
-        </div>
+    <>
+      {user && (
+        <Link
+          href="/cart"
+          className="rounded-[50%] w-6 h-6 md:w-8 md:h-8 flex justify-center items-center bg-btn-primary-color transition-all hover:opacity-75 hover:scale-105 relative"
+        >
+          <FaCartShopping className="text-white" />
+          {quantity > 0 && (
+            <div className="absolute bg-black dark:bg-white dark:text-black rounded-full w-4 h-4 text-[10px] md:text-lg md:w-6 md:h-6 -right-2 -bottom-2 text-white flex justify-center items-center  ">
+              {quantity}
+            </div>
+          )}
+        </Link>
       )}
-    </button>
+    </>
   );
 }
 

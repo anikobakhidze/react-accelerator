@@ -1,16 +1,23 @@
 import Header from "../../../components/header/Header";
 import Footer from "../../../components/footer/Footer";
+import Subscribe from "@/components/sharedComponents/UI/Subscribe";
 
-export const metadata = {
-  title: "Store",
-  description: "homework",
-};
-export default async function DashboardLayout({ children }: IChildrenProps) {
+import { getI18n } from "@/locales/server";
+
+export async function generateMetadata() {
+  const t = await getI18n();
+  return {
+    title: t("mainTitle"),
+    description: t("mainDescription"),
+  };
+}
+export default async function DashboardLayout({ children }: LayoutProps) {
   return (
-    <main className="flex flex-col justify-between min-h-screen dark:bg-slate-800">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      {children}
+      <main className="flex-1 flex flex-col ">{children}</main>
+      <Subscribe />
       <Footer />
-    </main>
+    </div>
   );
 }

@@ -22,31 +22,32 @@ declare module "*.png" {
 // id for blogs and prosucts page
 type Id = { id: number };
 
-// blog post
-
-interface IBlogPost {
-  blog: {
-    id: number;
-    title: string;
-    body: string;
-    publicationDate?: string;
-  };
-}
-
 // blogs list
-
 interface IBlog {
   id: number;
+  image: string;
   title: string;
-  body: string;
-  userId?: number;
-  tags?: string[];
-  reactions?: number;
-  publicationDate?: string;
+  description: string;
+  category: string;
+  userSub: string | null | undefined;
+  created_at?: string | undefined | Date;
 }
 
 interface IBlogsContainer {
   blogs: IBlog[];
+}
+
+interface IBlogPost {
+  blog: IBlog;
+}
+
+interface IBlogCreate {
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+  userSub: string | null | undefined;
+  created_at?: string | undefined;
 }
 interface BlogsResponse {
   blogs: IBlog[];
@@ -65,6 +66,12 @@ interface IContactCard {
     href?: string;
   };
 }
+interface ContactInfo {
+  type: "mobile" | "email" | "address";
+  title: string;
+  paragraph: string;
+  href?: string;
+}
 
 // product  type
 
@@ -73,7 +80,10 @@ interface IProduct {
   title: string;
   description: string;
   price: number;
-  thumbnail: string;
+  category: string;
+
+  image: string;
+  usersub: string;
 }
 interface IProductCard {
   product: Iproduct;
@@ -96,7 +106,7 @@ interface ITranslationProps {
 
 // children type
 
-interface IChildrenProps {
+interface LayoutProps {
   children: React.ReactNode;
 }
 
@@ -129,9 +139,8 @@ interface ResourcesType {
 
 // searcg bar props
 interface ISearchBarProps {
-  onClick: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>;
-  setSortProducts: setSortProducts;
-  products: IProduct[];
+  setSortProducts?: setSortProducts | IBlogsContainer;
+  products: IProduct[] | IBlog[];
 }
 
 // users
@@ -169,7 +178,6 @@ interface IEditUserDetails extends IUserRowProps {
 type CartItem = {
   id: number;
   product: IProduct;
-  quantity: number;
 };
 
 type ShoppingCartContext = {
@@ -181,3 +189,64 @@ type ShoppingCartContext = {
   cartItems: CartItem[];
   resetCart: () => void;
 };
+
+// user profile type
+type UserRole = "user" | "admin";
+interface UserInfo {
+  id?: number;
+  role?: UserRole;
+  image?: string;
+  name?: string;
+  nickname?: string;
+  email?: string;
+  sub?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+// contact page
+
+type FormErrors = {
+  name?: string;
+  phone?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+};
+
+// products
+type Product = {
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+  price: string;
+
+  userSub: string | null | undefined;
+};
+interface IProductDetails {
+  id?: number;
+  image: string;
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+  userSub: string | null | undefined;
+}
+
+// delete products
+interface IDeleteProduct {
+  setDeleteModal: Dispatch<SetStateAction<boolean>>;
+  id: number;
+}
+
+// cart products
+interface ICartProduct extends IProductDetails {
+  selectedQuantity: number;
+}
+
+// sort function
+interface IClick {
+  onClick: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>>;
+  sortOrderAsc: boolean;
+}

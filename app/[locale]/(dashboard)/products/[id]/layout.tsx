@@ -1,14 +1,13 @@
-import { ReactElement } from "react";
-import { getStaticParams } from "../../../../../locales/server";
+import { getI18n } from "@/locales/server";
 
-export function generateStaticParams() {
-  return getStaticParams();
+export async function generateMetadata() {
+  const t = await getI18n();
+  return {
+    title: t("product.title"),
+    description: t("product.description"),
+  };
 }
 
-export default function ProductDetailLayout({
-  children,
-}: {
-  children: ReactElement;
-}) {
+export default function ProductDetailLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }

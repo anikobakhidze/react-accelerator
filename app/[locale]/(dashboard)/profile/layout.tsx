@@ -1,8 +1,14 @@
-export const metadata = {
-  title: " Store",
-  description: "homework",
-};
-function ProfileLayout({ children }: IChildrenProps) {
+import { getI18n } from "@/locales/server";
+
+export async function generateMetadata() {
+  const t = await getI18n();
+  return {
+    title: t("mainTitle"),
+    description: t("mainDescription"),
+  };
+}
+
+function ProfileLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }
 

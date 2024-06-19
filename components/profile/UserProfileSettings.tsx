@@ -1,22 +1,24 @@
-import defaultUserImage from "../../public/images/default-user-image.webp";
 import UserProfileInfo from "./UserProfileInfo";
-import Image from "next/image";
 import { getI18n } from "../../locales/server";
+import AvatarUpload from "./AvatarUpload";
+import { getUser } from "@/api";
+import Heading from "../sharedComponents/UI/Heading";
+
 async function UserProfileSettings() {
   const t = await getI18n();
+  const userInfo = await getUser();
+  const userImage = userInfo.image;
+
   return (
-    <section className="flex  flex-1 flex-col bg-light-green py-14 dark:bg-slate-800">
-      <h2 className="text-center text-3xl font-bold text-teal-800 mb-12">
-        {t("profilePage.heading")}
-      </h2>
-      <form className="text-medium-green w-1100 mx-auto flex bg-slate-100 p-16 justify-between rounded-3xl items-center dark:bg-slate-600">
-        <Image
-          src={defaultUserImage}
-          alt="user"
-          className="w-60 h-60 rounded-full"
-        />
-        <UserProfileInfo />
-      </form>
+    <section className="flex  flex-1 flex-col  py-14 dark:bg-black">
+      <div className="lg:mt-32 md:mt-28 mt-24">
+        {" "}
+        <Heading heading={t("profilePage.heading")} />
+      </div>
+      <div className="text-medium-green w-2/3 mx-auto flex flex-col lg:flex-row bg-light-bg-color p-10 md:justify-center  rounded-3xl items-center dark:bg-black dark:opacity-70">
+        <AvatarUpload userImage={userImage} />
+        <UserProfileInfo userInfo={userInfo} />
+      </div>
     </section>
   );
 }

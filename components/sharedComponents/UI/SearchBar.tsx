@@ -1,21 +1,17 @@
-"use client";
 import React, { useState, useEffect } from "react";
-function SearchBar({ onClick, setSortProducts, products }: ISearchBarProps) {
+import { useI18n } from "@/locales/client";
+
+function SearchBar({ setSortProducts, products }: ISearchBarProps) {
   const [searchInput, setSearchInput] = useState("");
+  const t = useI18n();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const searchProduct = searchInput.split(" ").join("").toLowerCase();
+      const searchProduct = searchInput.trim().toLowerCase();
       setSortProducts(
-        searchProduct
-          ? [...products].filter((product) =>
-              product.title
-                .split(" ")
-                .join("")
-                .toLowerCase()
-                .includes(searchProduct)
-            )
-          : [...products]
+        products.filter((product) =>
+          product.title.toLowerCase().includes(searchProduct)
+        )
       );
     }, 1000);
 
@@ -25,28 +21,23 @@ function SearchBar({ onClick, setSortProducts, products }: ISearchBarProps) {
   }, [searchInput, setSortProducts, products]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearchInput = e.target.value;
-    setSearchInput((prevSearchInput) =>
-      newSearchInput !== prevSearchInput ? newSearchInput : prevSearchInput
-    );
+    setSearchInput(e.target.value);
   };
 
   return (
-    <form className="w-full flex justify-center items-center my-6 ">
-      <input
-        onChange={handleChange}
-        type="text"
-        value={searchInput}
-        placeholder="Search"
-        className="w-[50%] bg-slate-100 border-solid border-2 rounded-l-xl h-8 text-sm border-slate-300 focus:outline-none pl-2 border-r-0 dark:text-black"
-      />
-      <button
-        onClick={onClick}
-        className="bg-[#1c5858] transition-all duration-500 hover:bg-[#2e8181] text-white flex justify-center items-center h-8 px-1 rounded-r-xl text-center"
-      >
-        Sort Products
-      </button>
-    </form>
+    <div className="rounded-lg p-4">
+      <form className="max-w-7xl mx-auto">
+        <div className="flex items-center border-b border-btn-primary-color py-2">
+          <input
+            onChange={handleChange}
+            type="text"
+            value={searchInput}
+            placeholder={t("search")}
+            className="flex-grow px-2 py-1 bg-transparent text-sm outline-none placeholder-text-black dark:text-black"
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 

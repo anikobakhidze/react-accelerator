@@ -10,18 +10,37 @@ module.exports = {
   ],
   theme: {
     extend: {
-      width: {
-        1100: "1100px",
-        800: "800px",
-        "48%": "48%",
+      screens: {
+        "max-980": { max: "980px" },
+        "max-680": { max: "680px" },
       },
       colors: {
-        "light-green": "#c7d8dc",
-        "medium-green": "#4abca9",
-        "dark-green": "#1c5858",
-        "dark-orange": "var(--orange)",
-        "medium-orange": "var(--medium-orange)",
-        "light-orange": "var(--light-orange)",
+        "light-bg-color": "var(--cream-color)",
+        "dark-cream-color": "var(--dark-cream-color)",
+        "btn-primary-color": "var(--color-btn-primary)",
+        "dark-bg-primary": "var(--dark-bg-primary)",
+        "purple-color": "var(--purple-color)",
+        "gray-color": "var(--gray-color)",
+        "green-color": "var(--green-color)",
+      },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(100px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeRightIn: {
+          "0%": { opacity: "0", transform: "translateX(-100px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        fadeLeftIn: {
+          "0%": { opacity: "0", transform: "translateX(100px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        fadeInUp: "fadeInUp 1.5s ease-in-out forwards",
+        fadeRightIn: "fadeRightIn 1.5s ease-in-out forwards",
+        fadeLeftIn: "fadeLeftIn 1.5s ease-in-out forwards",
       },
     },
   },

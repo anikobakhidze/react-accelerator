@@ -1,26 +1,40 @@
+"use client";
 import React from "react";
 import BlogCard from "./BlogCard";
-import { getI18n } from "../../locales/server";
-async function BlogsListContainer({ blogs }: IBlogsContainer) {
-  const t = await getI18n();
+import { useState } from "react";
+import Pagination from "../sharedComponents/UI/Pagination";
+function BlogsListContainer({ blogs }: IBlogsContainer) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+
+  const totalPages = Math.ceil(blogs.length / productsPerPage);
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const currentProducts = blogs.slice(startIndex, startIndex + productsPerPage);
   return (
-    <section className="overflow-auto">
-      <h2 className="text-2xl font-bold text-center my-10">
-        {t("blogsPage.heading")}
-      </h2>
-      <ul className="w-4/5 grid grid-cols-1 md:w-[90%] md:gap-10 md:grid-cols-2 xl:grid-cols-3 gap-14 mx-auto my-10">
-        {blogs.map((blog) => {
-          return (
-            <li
-              key={blog.id}
-              className="rounded-xl  shadow-teal-800 shadow-2xl"
-            >
-              <BlogCard blog={blog} />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <div className="flex flex-col items-center w-full py-10">
+      <div className="w-11/12 max-w-7xl mx-auto">
+        <ul
+          className="grid max-680:grid-cols-1 max-980:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-20 
+         place-items-center"
+        >
+          {currentProducts.map((blog: IBlog) => (
+            <BlogCard blog={blog} key={blog.id} />
+          ))}
+        </ul>
+      </div>
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
+      )}
+    </div>
   );
 }
 

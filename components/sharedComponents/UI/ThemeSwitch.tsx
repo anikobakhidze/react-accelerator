@@ -34,19 +34,16 @@ export default function ThemeSwitch() {
     setTheme(newTheme);
   };
 
-  return resolvedTheme === "dark" ? (
-    <div className="w-8 h-8 rounded-full bg-slate-200 dark flex justify-center items-center">
-      <FiSun
-        className="text-medium-green w-5 h-5 cursor-pointer"
-        onClick={toggleTheme}
-      />
-    </div>
-  ) : (
-    <div className="w-8 h-8 rounded-full bg-slate-200 dark flex justify-center items-center">
-      <FiMoon
-        className="text-[#4abca9] w-5 h-5 cursor-pointer"
-        onClick={toggleTheme}
-      />
+  return (
+    <div
+      className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-btn-primary-color flex justify-center items-center hover:opacity-75 transition-opacity duration-300 cursor-pointer"
+      onClick={toggleTheme}
+    >
+      {resolvedTheme === "dark" ? (
+        <FiSun className="text-white w-4 h-4 md:w-5 md:h-5" />
+      ) : (
+        <FiMoon className="text-white w-4 h-4 md:w-5 md:h-5" />
+      )}
     </div>
   );
 }
