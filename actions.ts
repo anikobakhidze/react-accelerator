@@ -17,6 +17,7 @@ import {
   getBlog,
   deleteBlog,
   deleteCart,
+  createRating,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -80,7 +81,7 @@ export async function createProductAction(product: Product) {
 }
 export async function getProductsAction() {
   const products = await getProducts();
-  revalidatePath("/", "layout");
+  revalidatePath("/");
   return products;
 }
 
@@ -136,21 +137,21 @@ export async function createBlogAction(blog: IBlogCreate) {
 // get blogs action
 export async function getBlogsAction() {
   const blogs = await getBlogs();
-  revalidatePath("/blogs", "layout");
+  revalidatePath("/blogs");
   return blogs;
 }
 
 //  edit blog action
 export async function editBlogAction(blog: IBlog) {
   await editBlog(blog);
-  revalidatePath("/blog", "layout");
+  revalidatePath("/blog");
 }
 
 // get blog action
 export async function getBlogAction(id: number) {
   const blog = await getBlog(id);
   revalidateTag(`/editblog/${id}`);
-  revalidatePath("/", "layout");
+  revalidatePath("/");
   return blog;
 }
 
@@ -163,4 +164,14 @@ export async function deleteBlogAction(id: number) {
 export async function deleteCartAction(userId: string) {
   await deleteCart(userId);
   revalidatePath("/cart");
+}
+
+// create rating action
+export async function createRatingAction(
+  rating: number | null,
+  product_id: number,
+  user_sub: string
+) {
+  await createRating(rating, product_id, user_sub);
+  revalidatePath("/");
 }

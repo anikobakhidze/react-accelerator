@@ -12,6 +12,7 @@ import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
 import { ClipLoader } from "react-spinners";
+import Rating from "./Rating";
 import ProductImage from "./ProductImage";
 function ProductCard({ product }: IProductCard) {
   const { id, title, price, category, usersub } = product;
@@ -75,6 +76,14 @@ function ProductCard({ product }: IProductCard) {
       >
         ${price}
       </p>
+      <div className="flex justify-center items-center ">
+        {!user
+          ? null
+          : sub !== usersub &&
+            !(hasUserRole(user) && user.role[0] === "admin") && (
+              <Rating product_id={id} user_sub={sub} />
+            )}
+      </div>
       <div className="flex items-center justify-center py-2 mt-4 border-t-2 border-t-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {!user
           ? null
@@ -95,6 +104,7 @@ function ProductCard({ product }: IProductCard) {
         >
           <BsEye />
         </button>
+
         {(sub === usersub ||
           (hasUserRole(user) && user.role[0] === "admin")) && (
           <Link
