@@ -106,7 +106,7 @@ interface ITranslationProps {
 
 // children type
 
-interface IChildrenProps {
+interface LayoutProps {
   children: React.ReactNode;
 }
 

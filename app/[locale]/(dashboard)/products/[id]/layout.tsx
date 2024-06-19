@@ -8,6 +8,6 @@ export async function generateMetadata() {
   };
 }
 
-export default function ProductDetailLayout({ children }: IChildrenProps) {
+export default function ProductDetailLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }

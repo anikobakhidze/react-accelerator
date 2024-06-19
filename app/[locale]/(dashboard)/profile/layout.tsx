@@ -8,7 +8,7 @@ export async function generateMetadata() {
   };
 }
 
-function ProfileLayout({ children }: IChildrenProps) {
+function ProfileLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }
 

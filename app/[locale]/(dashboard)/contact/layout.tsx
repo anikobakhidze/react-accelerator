@@ -8,7 +8,7 @@ export async function generateMetadata() {
   };
 }
 
-function ContactLayout({ children }: IChildrenProps) {
+function ContactLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }
 

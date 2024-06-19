@@ -8,7 +8,7 @@ export async function generateMetadata() {
   };
 }
 
-function EditProductLayout({ children }: IChildrenProps) {
+function EditProductLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }
 

@@ -27,14 +27,16 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      onClose();
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
     if (isOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
       window.addEventListener("resize", onClose);
@@ -47,7 +49,7 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
       document.removeEventListener("mousedown", handleOutsideClick);
       window.removeEventListener("resize", onClose);
     };
-  }, [isOpen, onClose, handleOutsideClick]);
+  }, [isOpen, onClose]);
 
   return (
     <div

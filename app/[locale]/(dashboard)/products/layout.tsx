@@ -7,7 +7,7 @@ export async function generateMetadata() {
     description: t("product.description"),
   };
 }
-function ProductsLayout({ children }: IChildrenProps) {
+function ProductsLayout({ children }: LayoutProps) {
   return <>{children}</>;
 }
 

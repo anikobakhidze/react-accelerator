@@ -11,7 +11,7 @@ export async function generateMetadata() {
     description: t("mainDescription"),
   };
 }
-export default async function DashboardLayout({ children }: IChildrenProps) {
+export default async function DashboardLayout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />

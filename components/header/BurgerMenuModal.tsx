@@ -21,14 +21,16 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
   const pathname = usePathname();
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      onClose();
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
     if (isOpen) {
       document.addEventListener("mousedown", handleOutsideClick);
       window.addEventListener("resize", onClose);
@@ -41,7 +43,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
       document.removeEventListener("mousedown", handleOutsideClick);
       window.removeEventListener("resize", onClose);
     };
-  }, [handleOutsideClick, isOpen, onClose]);
+  }, [isOpen, onClose]);
 
   return (
     <div
