@@ -193,4 +193,15 @@ export default {
   postReview: "Post a review",
   writeReview: "Write a review",
   send: "Send",
+  checkoutPage: {
+    checkout: "Checkout",
+    submitButton: "Submit",
+    addressPlaceholder: "Enter Your Address",
+    addressLabel: "Address",
+    orders: "Orders",
+    title: "Product",
+    quantity: "Quantity",
+    price: "Price",
+    totalPrice: "ToTal",
+  },
 } as const;

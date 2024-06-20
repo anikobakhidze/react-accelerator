@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useI18n } from "../../locales/client";
 import { editUserAction } from "@/actions";
 
@@ -11,12 +11,11 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
     sub: userInfo.sub || "",
     email: userInfo.email || "",
   });
-  const [originalProfile, setOriginalProfile] = useState(userProfile);
+  const [originalProfile, setOriginalProfile] = useState({
+    name: userInfo.name || "",
+    nickname: userInfo.nickname || "",
+  });
   const [updateMessage, setUpdateMessage] = useState("");
-
-  useEffect(() => {
-    setOriginalProfile(userProfile);
-  }, [userProfile]);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserProfile((prevProfile) => ({
@@ -40,7 +39,10 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
 
     try {
       await editUserAction(formData);
-      setOriginalProfile(userProfile);
+      setOriginalProfile({
+        name: userProfile.name,
+        nickname: userProfile.nickname,
+      });
       setUpdateMessage("Your profile is updated");
     } catch (error) {
       console.error("Failed to update user profile", error);
@@ -109,7 +111,11 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
           />
           <button
             type="submit"
-            className={`bg-btn-primary-color cursor-pointer  text-white h-10 lg:h-12 rounded-full text-base lg:text-xl  hover:text-btn-primary-color hover:opacity-50 dark:text-black  dark:bg-white `}
+            className={`h-10 lg:h-12 rounded-full text-base lg:text-xl text-white ${
+              isSaveDisabled()
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-btn-primary-color cursor-pointer hover:bg-black hover:text-white dark:bg-btn-primary-color dark:text-white dark:hover:bg-white dark:hover:text-black"
+            }`}
             disabled={isSaveDisabled()}
           >
             {t("profilePage.saveProfile")}

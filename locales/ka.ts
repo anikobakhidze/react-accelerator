@@ -194,4 +194,15 @@ export default {
   postReview: "შეაფასე პროდუქტი",
   writeReview: "შეფასება",
   send: "გაგზავნა",
+  checkoutPage: {
+    checkout: "გაგრძელება",
+    submitButton: "შენახვა",
+    addressPlaceholder: "შეიყვანეთ მისამართი",
+    addressLabel: "მისამართი",
+    orders: "შეკვეთა",
+    title: "პროდუქტი",
+    quantity: "რაოდენობა",
+    price: "ფასი",
+    totalPrice: "ჯამი",
+  },
 } as const;

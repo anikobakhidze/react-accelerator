@@ -46,13 +46,10 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
     setError("");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
-        {
-          method: "POST",
-          body: file,
-        }
-      );
+      const response = await fetch(`/api/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to upload file");
