@@ -153,7 +153,8 @@ export default {
     fetchError: "Failed to fetch cart items",
     remove: "Remove",
     reset: "Reset",
-    totalPrice: "Total Price",
+    totalPrice: "Total Cost",
+    checkout: "Checkout",
   },
   editProduct: {
     editProduct: "Edit Product",
@@ -185,4 +186,11 @@ export default {
     failMessage: "Failed to upload file",
     close: "Close",
   },
+  title: "Title",
+  description: "Description",
+  reviews: "Reviews",
+  noReviews: "No Reviews",
+  postReview: "Post a review",
+  writeReview: "Write a review",
+  send: "Send",
 } as const;

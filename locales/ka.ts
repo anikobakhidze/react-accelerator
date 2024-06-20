@@ -155,6 +155,7 @@ export default {
     remove: "წაშლა",
     reset: "გასუფთავება",
     totalPrice: "ჯამი",
+    checkout: "გაგრძელება",
   },
   editProduct: {
     editProduct: "პროდუქტის რედაქტირება",
@@ -186,4 +187,11 @@ export default {
     failMessage: "სურათის ატვირთვა ვერ მოხერხდა",
     close: "დახურვა",
   },
+  title: "სათაური",
+  description: "აღწერა",
+  reviews: "შეფასებები",
+  noReviews: "არ არის შეფასებები",
+  postReview: "შეაფასე პროდუქტი",
+  writeReview: "შეფასება",
+  send: "გაგზავნა",
 } as const;
