@@ -473,3 +473,30 @@ export async function checkUserRating(
     return false;
   }
 }
+
+//  createorder checkout
+export async function createCheckout(
+  userId: string,
+  products: ICartProduct[],
+  deliveryAddress: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-checkout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, products, deliveryAddress }),
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to create rating");
+    }
+    return "You rated successfully";
+  } catch (error) {
+    return error;
+  }
+}

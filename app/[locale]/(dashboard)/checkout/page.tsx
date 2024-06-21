@@ -6,8 +6,15 @@ async function CheckoutPage() {
   const session = await getSession();
   const user = session?.user;
   const userId = user?.sub;
+  const userEmail = user?.email;
   const products = await getCartItems(userId);
-  return <CheckoutDetails userId={userId} products={products} />;
+  return (
+    <CheckoutDetails
+      userId={userId}
+      products={products}
+      userEmail={userEmail}
+    />
+  );
 }
 
 export default CheckoutPage;

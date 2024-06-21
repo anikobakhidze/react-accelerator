@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const productsJson = JSON.stringify(products);
 
     await sql`
-      INSERT INTO checkout (UserID, Products, DeliveryAddress)
+      INSERT INTO checkout (userId, products, deliveryAddress)
       VALUES (${userId}, ${productsJson}, ${deliveryAddress});
     `;
 

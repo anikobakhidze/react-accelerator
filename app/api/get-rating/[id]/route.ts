@@ -14,7 +14,6 @@ export async function GET(request: NextRequest) {
     }
     const sumOfRatings = ratingsArray.reduce((acc, rate) => acc + rate, 0);
     const averageRating = sumOfRatings / ratingsArray.length;
-    console.log(averageRating.toFixed(2), "averageRating");
 
     return NextResponse.json({ averageRating }, { status: 200 });
   } catch (error) {

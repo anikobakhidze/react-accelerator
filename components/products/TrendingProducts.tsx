@@ -19,13 +19,13 @@ function TrendingProducts({ products }: IProductsContainer) {
           },
           768: {
             slidesPerView: firstFourProducts.length < 3 ? 1 : 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
-          900: {
+          950: {
             slidesPerView: firstFourProducts.length < 4 ? 1 : 3,
             spaceBetween: 10,
           },
-          1500: {
+          1600: {
             slidesPerView: 4,
             spaceBetween: 20,
           },

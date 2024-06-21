@@ -195,7 +195,7 @@ export default {
   send: "Send",
   checkoutPage: {
     checkout: "Checkout",
-    submitButton: "Submit",
+    buy: "Buy",
     addressPlaceholder: "Enter Your Address",
     addressLabel: "Address",
     orders: "Orders",
@@ -203,5 +203,15 @@ export default {
     quantity: "Quantity",
     price: "Price",
     totalPrice: "ToTal",
+  },
+  successPage: {
+    paymentSuccess: "Your Payment was Successful",
+    thankYou: "Thank you for your payment",
+    proceedHome: "Proceed To Home",
+  },
+  canceledPage: {
+    paymentCanceled: "Your Payment was Canceled",
+    sorry: "We are sorry, your payment was not successful",
+    tryAgain: "Try Again",
   },
 } as const;

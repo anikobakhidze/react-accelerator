@@ -196,7 +196,7 @@ export default {
   send: "გაგზავნა",
   checkoutPage: {
     checkout: "გაგრძელება",
-    submitButton: "შენახვა",
+    buy: "ყიდვა",
     addressPlaceholder: "შეიყვანეთ მისამართი",
     addressLabel: "მისამართი",
     orders: "შეკვეთა",
@@ -204,5 +204,15 @@ export default {
     quantity: "რაოდენობა",
     price: "ფასი",
     totalPrice: "ჯამი",
+  },
+  successPage: {
+    paymentSuccess: "წარმატებული გადახდა",
+    thankYou: " მადლობა ნდობისთვის",
+    proceedHome: "მთავარი გვერდი",
+  },
+  canceledPage: {
+    paymentCanceled: "თქვენი გადახდა გაუქმდა",
+    sorry: "ვწუხვართ, თქვენი გადახდა არ იყო წარმატებული",
+    tryAgain: "სცადეთ ისევ",
   },
 } as const;

@@ -48,41 +48,43 @@ function ProductCard({ product }: IProductCard) {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-white dark:bg-black dakr:bg-opacity-80 bg-opacity-80 flex justify-center items-center z-50">
+      <div className="fixed inset-0 bg-white dark:bg-black dakr:bg-opacity-80 bg-opacity-80 flex justify-center items-center z-60">
         <ClipLoader size={80} color="#e4986a" />
       </div>
     );
   }
   return (
-    <div className="w-[300px] flex flex-col items-between h-full relative group shadow-lg">
-      <div onClick={handleClick} className="cursor-pointer">
-        <div className="relative">
-          <ProductImage image={product.image} title={product.title} />
-          <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+    <div className="w-[310px] flex flex-col items-between h-full relative group shadow-lg">
+      <div className="h-[480px]">
+        <div onClick={handleClick} className="cursor-pointer">
+          <div className="relative">
+            <ProductImage image={product.image} title={product.title} />
+            <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+          </div>
+          <h3
+            className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+            style={{ minHeight: "30px" }}
+          >
+            {title}
+          </h3>
         </div>
-        <h3
-          className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+        <p className="text-base text-btn-primary-color mb-1 text-center">
+          {category}
+        </p>
+        <p
+          className="text-xl font-bold text-center mb-2"
           style={{ minHeight: "30px" }}
         >
-          {title}
-        </h3>
-      </div>
-      <p className="text-base text-btn-primary-color mb-1 text-center">
-        {category}
-      </p>
-      <p
-        className="text-xl font-bold text-center mb-2"
-        style={{ minHeight: "30px" }}
-      >
-        ${price}
-      </p>
-      <div className="flex justify-center items-center ">
-        {!user
-          ? null
-          : sub !== usersub &&
-            !(hasUserRole(user) && user.role[0] === "admin") && (
-              <Rating product_id={id} user_sub={sub} />
-            )}
+          ${price}
+        </p>
+        <div className="flex justify-center items-center ">
+          {!user
+            ? null
+            : sub !== usersub &&
+              !(hasUserRole(user) && user.role[0] === "admin") && (
+                <Rating product_id={id} user_sub={sub} />
+              )}
+        </div>
       </div>
       <div className="flex items-center justify-center py-2 mt-4 border-t-2 border-t-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {!user
