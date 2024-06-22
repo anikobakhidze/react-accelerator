@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function ProductList({ products }: IProductsContainer) {
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 10;
+  const productsPerPage = 12;
 
   const totalPages = Math.ceil(products.length / productsPerPage);
 

@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import React, { useState } from "react";
 import { hasUserRole } from "@/utils/userRole";
@@ -59,7 +58,7 @@ const BlogCard: React.FC<IBlogPost> = ({
               )}
           </div>
           <button
-            className="text-btn-primary-color font-semibold hover:opacity-75 transition-opacity duration-300"
+            className="text-btn-primary-color hover:scale-105 font-semibold hover:opacity-75 transition-all duration-300"
             onClick={handleClick}
           >
             {t("blogsPage.readMore")}

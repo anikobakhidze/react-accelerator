@@ -19,19 +19,16 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
     const updateUser = async () => {
       if (!blob || !user) return;
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload-user-image`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              blobUrl: blob.url,
-              sub: user.sub,
-            }),
-          }
-        );
+        const response = await fetch(`/api/upload-user-image`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            blobUrl: blob.url,
+            sub: user.sub,
+          }),
+        });
 
         if (!response.ok) {
           setError("Failed to update user picture");
@@ -59,13 +56,10 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
     const file = inputFileRef.current.files[0];
     setLoading(true);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
-        {
-          method: "POST",
-          body: file,
-        }
-      );
+      const response = await fetch(`/api/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to upload file");

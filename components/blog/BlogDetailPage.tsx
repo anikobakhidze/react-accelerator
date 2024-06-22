@@ -25,7 +25,7 @@ async function BlogDetailPage({ blog }: { blog: IBlog }) {
             <h4 className="text-lg font-semibold text-btn-primary-color  md:hidden ">
               {t("category.description")}
             </h4>
-            <p className="font-semibold text-md dark:text-white md:hidden ">
+            <p className="font-semibold text-md dark:text-white md:hidden text-justify">
               {blog.description}
             </p>
             <div className="flex items-center gap-4 mt-4">
@@ -50,7 +50,7 @@ async function BlogDetailPage({ blog }: { blog: IBlog }) {
           <h4 className="text-lg font-semibold text-btn-primary-color hidden md:block">
             {t("category.description")}
           </h4>
-          <p className="font-semibold text-md dark:text-white   hidden md:block">
+          <p className="font-semibold text-md dark:text-white  text-justify hidden md:block mt-5">
             {blog.description}
           </p>
         </div>

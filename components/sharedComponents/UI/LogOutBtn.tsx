@@ -4,7 +4,7 @@ import { useI18n } from "../../../locales/client";
 function LogOutBtn() {
   const router = useRouter();
   const handleClick = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/logout`, {
+    await fetch(`/api/logout`, {
       method: "GET",
     });
 

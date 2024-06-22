@@ -49,18 +49,7 @@ export async function editUser(name: string, nickname: string) {
   );
   return response;
 }
-// export async function createUser() {
-//   try {
-//     const response = await fetch(
-//       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`
-//     );
-//     if (!response.ok) {
-//       throw new Error("Failed to fetch user");
-//     }
-//   } catch (error) {
-//     console.error("Error fetching user:", error);
-//   }
-// }
+
 export async function getUser() {
   const session = await getSession();
   const user = session?.user;
@@ -398,4 +387,121 @@ export async function deleteCart(userId: string) {
     }
   );
   return response;
+}
+
+// create rating
+export async function createRating(
+  rating: number | null,
+  product_id: number,
+  user_sub: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-rating`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ rating, product_id, user_sub }),
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to create rating");
+    }
+    return "You rated successfully";
+  } catch (error) {
+    return error;
+  }
+}
+// getRating
+
+export async function getRating(product_id: number): Promise<number> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-rating/${product_id}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch rating");
+    }
+
+    const data = await response.json();
+
+    return data.averageRating;
+  } catch (error) {
+    console.error("Error fetching rating:", error);
+    return 0;
+  }
+}
+
+// check user rating
+
+export async function checkUserRating(
+  product_id: number,
+  user_sub: string
+): Promise<boolean> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/check-user-rating?product_id=${product_id}&user_sub=${user_sub}`,
+      {
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to check user rating");
+    }
+    const data = await response.json();
+    return data.hasRated;
+  } catch (error) {
+    console.error("Error checking user rating:", error);
+    return false;
+  }
+}
+
+//  createorder checkout
+export async function createCheckout(
+  userId: string,
+  products: ICartProduct[],
+  deliveryAddress: string
+) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-checkout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, products, deliveryAddress }),
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to create rating");
+    }
+    return "You rated successfully";
+  } catch (error) {
+    return error;
+  }
+}
+
+// get my products
+export async function getMyProducts() {
+  const session = await getSession();
+  const user = session?.user;
+  const id = user?.sub;
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-my-products/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const products = await response.json();
+  return products;
 }

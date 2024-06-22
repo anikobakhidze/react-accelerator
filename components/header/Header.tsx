@@ -1,5 +1,4 @@
 import logo from "../../public/images/logo.avif";
-// import ProfilePageButton from "../profile/ProfilePageButton";
 import HeaderNavigationList from "./HeaderNavigationList";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,10 +10,11 @@ import BurgerMenu from "./BurgerMenu";
 import AddProductsBtn from "../products/AddProductsBtn";
 import AddBlogBtn from "../blog/AddBlogBtn";
 import { hasUserRole } from "@/utils/userRole";
+import { getUser } from "@/api";
 async function Header() {
   const session = await getSession();
   const user = session?.user;
-
+  const userInfo = await getUser();
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 dark:bg-black">
       <SettingsPanel />
@@ -29,9 +29,7 @@ async function Header() {
           />
         </Link>
         <HeaderNavigationList />
-        <div className="flex items-center space-x-4">
-          {/* {user && <ProfilePageButton />} */}
-        </div>
+        <div className="flex items-center space-x-4"></div>
         <div className="flex items-center space-x-2 md:space-x-4 w-92">
           {hasUserRole(user) && user.role[0] === "admin" && (
             <div className="xl:hidden">
@@ -41,7 +39,7 @@ async function Header() {
           <div className="xl:hidden">{user && <AddProductsBtn />}</div>
           {user && <AddToCartBtn />}
           <BurgerMenu user={user} />
-          <AuthButtons user={user} />
+          <AuthButtons user={userInfo} />
         </div>
       </div>
     </header>

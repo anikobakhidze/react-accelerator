@@ -12,6 +12,7 @@ import { hasUserRole } from "../../utils/userRole";
 import DeleteProduct from "./DeleteProduct";
 import { addToCart } from "@/api";
 import { ClipLoader } from "react-spinners";
+import Rating from "./Rating";
 import ProductImage from "./ProductImage";
 function ProductCard({ product }: IProductCard) {
   const { id, title, price, category, usersub } = product;
@@ -45,82 +46,93 @@ function ProductCard({ product }: IProductCard) {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 bg-white dark:bg-black dakr:bg-opacity-80 bg-opacity-80 flex justify-center items-center z-50">
-        <ClipLoader size={80} color="#e4986a" />
-      </div>
-    );
-  }
   return (
-    <div className="w-[300px] flex flex-col items-between h-full relative group shadow-lg">
-      <div onClick={handleClick} className="cursor-pointer">
-        <div className="relative">
-          <ProductImage image={product.image} title={product.title} />
-          <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+    <>
+      {loading && (
+        <div className="fixed inset-0 bg-white dark:bg-black dark:bg-opacity-80 bg-opacity-80 flex justify-center items-center z-[1000]">
+          <ClipLoader size={80} color="#e4986a" />
         </div>
-        <h3
-          className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+      )}
+      <div className=" items-between h-full  dark:bg-black dark:bg-opacity-80 relative group  p-4 flex flex-col  justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-all duration-300  sm:hover:scale-105">
+        <div onClick={handleClick} className="cursor-pointer">
+          <div className="relative flex justify-center items-center mb-3">
+            <ProductImage image={product.image} title={product.title} />
+
+            <div className="absolute inset-0 bg-black bg-opacity-50 dark:block hidden"></div>
+          </div>
+          <h3
+            className="cursor-pointer hover:text-btn-primary-color duration-300 transition-all text-base md:text-lg font-bold  text-center align-middle text-gray-600 dark:text-white"
+            style={{ minHeight: "30px" }}
+          >
+            {title}
+          </h3>
+        </div>
+        <p className="text-base text-btn-primary-color mb-1 text-center first-letter:uppercase">
+          {category}
+        </p>
+        <p
+          className="text-xl font-bold text-center mb-2"
           style={{ minHeight: "30px" }}
         >
-          {title}
-        </h3>
-      </div>
-      <p className="text-base text-btn-primary-color mb-1 text-center">
-        {category}
-      </p>
-      <p
-        className="text-xl font-bold text-center mb-2"
-        style={{ minHeight: "30px" }}
-      >
-        ${price}
-      </p>
-      <div className="flex items-center justify-center py-2 mt-4 border-t-2 border-t-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        {!user
-          ? null
-          : sub !== usersub &&
-            !(hasUserRole(user) && user.role[0] === "admin") && (
-              <button
-                className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-l-2 border-l-gray-200"
-                onClick={handleAddToCart}
-                disabled={loading}
-              >
-                <FaCartShopping />
-              </button>
-            )}
-        <button
-          onClick={handleClick}
-          className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
-          disabled={loading}
-        >
-          <BsEye />
-        </button>
-        {(sub === usersub ||
-          (hasUserRole(user) && user.role[0] === "admin")) && (
-          <Link
-            href={`/editproduct/${id}`}
-            className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300"
-          >
-            <FiEdit />
-          </Link>
-        )}
-        {(sub === usersub ||
-          (hasUserRole(user) && user.role[0] === "admin")) && (
+          ${price}
+        </p>
+        <div className="flex justify-center items-center ">
+          {!user
+            ? null
+            : sub !== usersub &&
+              !(hasUserRole(user) && user.role[0] === "admin") && (
+                <Rating product_id={id} user_sub={sub} />
+              )}
+        </div>
+
+        <div className="flex items-center justify-center py-2 mt-4 border-t-2 border-t-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {!user
+            ? null
+            : sub !== usersub &&
+              !(hasUserRole(user) && user.role[0] === "admin") && (
+                <button
+                  className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-l-2 border-l-gray-200"
+                  onClick={handleAddToCart}
+                  disabled={loading}
+                >
+                  <FaCartShopping />
+                </button>
+              )}
           <button
-            onClick={() => setDeleteModal(true)}
+            onClick={handleClick}
             className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
             disabled={loading}
           >
-            <RiDeleteBin5Line />
+            <BsEye />
           </button>
-        )}
-        {deleteModal && (
-          <div>
-            <DeleteProduct setDeleteModal={setDeleteModal} id={id} />
-          </div>
-        )}
+
+          {(sub === usersub ||
+            (hasUserRole(user) && user.role[0] === "admin")) && (
+            <Link
+              href={`/editproduct/${id}`}
+              className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300"
+            >
+              <FiEdit />
+            </Link>
+          )}
+          {(sub === usersub ||
+            (hasUserRole(user) && user.role[0] === "admin")) && (
+            <button
+              onClick={() => setDeleteModal(true)}
+              className="dark:text-white dark:hover:text-btn-primary-color w-10 h-10 text-black flex items-center justify-center font-bold text-lg hover:text-btn-primary-color transition-all duration-300 border-x-2 border-x-gray-200"
+              disabled={loading}
+            >
+              <RiDeleteBin5Line />
+            </button>
+          )}
+          {deleteModal && (
+            <div>
+              <DeleteProduct setDeleteModal={setDeleteModal} id={id} />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

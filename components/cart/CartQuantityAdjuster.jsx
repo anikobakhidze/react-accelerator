@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { updateCartQuantityAction } from "@/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Loader from "../sharedComponents/UI/Loader";
 import { ClipLoader } from "react-spinners";
 import { useI18n } from "@/locales/client";
 function CartQuantityAdjuster({ item }) {
@@ -31,7 +30,7 @@ function CartQuantityAdjuster({ item }) {
     <div className="flex flex-col gap-4 w-72 items-center md:items-start">
       <div className="flex justify-between items-center w-full">
         <button
-          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 text-white px-4 text-xl py-2 transition-colors duration-300 ${
+          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 rounded-full text-white px-4 text-xl py-2 transition-colors duration-300 ${
             loading.decrease ? "opacity-50 cursor-not-allowed" : ""
           }`}
           onClick={() => handleAction("decrease")}
@@ -43,7 +42,7 @@ function CartQuantityAdjuster({ item }) {
           <span className="fs-3">{item.selectedQuantity}</span> in cart
         </div>
         <button
-          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 text-white px-4 text-xl py-2 transition-colors duration-300 ${
+          className={`bg-black dark:bg-white dark:text-black hover:opacity-75 rounded-full text-white px-4 text-xl py-2 transition-colors duration-300 ${
             loading.increase ? "opacity-50 cursor-not-allowed" : ""
           }`}
           onClick={() => handleAction("increase")}

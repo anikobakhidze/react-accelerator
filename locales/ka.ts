@@ -155,6 +155,7 @@ export default {
     remove: "წაშლა",
     reset: "გასუფთავება",
     totalPrice: "ჯამი",
+    checkout: "გაგრძელება",
   },
   editProduct: {
     editProduct: "პროდუქტის რედაქტირება",
@@ -185,5 +186,47 @@ export default {
     errorMessage: "ბლოგის განახლება ვერ მოხერხდა",
     failMessage: "სურათის ატვირთვა ვერ მოხერხდა",
     close: "დახურვა",
+  },
+  title: "სათაური",
+  description: "აღწერა",
+  reviews: "შეფასებები",
+  noReviews: "არ არის შეფასებები",
+  postReview: "შეაფასე პროდუქტი",
+  writeReview: "შეფასება",
+  send: "გაგზავნა",
+  checkoutPage: {
+    checkout: "გაგრძელება",
+    buy: "ყიდვა",
+    addressPlaceholder: "შეიყვანეთ მისამართი",
+    addressLabel: "მისამართი",
+    orders: "შეკვეთა",
+    title: "პროდუქტი",
+    quantity: "რაოდენობა",
+    price: "ფასი",
+    totalPrice: "ჯამი",
+  },
+  successPage: {
+    title: "წარმატება",
+    paymentSuccess: "წარმატებული გადახდა",
+    thankYou: " მადლობა ნდობისთვის",
+    proceedHome: "მთავარი გვერდი",
+  },
+  canceledPage: {
+    title: "გაუქმება",
+    paymentCanceled: "თქვენი გადახდა გაუქმდა",
+    sorry: "ვწუხვართ, თქვენი გადახდა არ იყო წარმატებული",
+    tryAgain: "სცადეთ ისევ",
+  },
+  adminPage: {
+    title: "ადმინი",
+    description:
+      "ეს არის ადმინისტრატორის გვერდი, სადაც შეგიძლიათ მართოთ მომხმარებლები, ნახოთ სტატისტიკა და დააკონფიგურიროთ პარამეტრები.",
+  },
+  myProducts: {
+    title: "ჩემი პროდუქტები",
+    description:
+      "ეს არის ჩემი პროდუქტების გვერდი, სადაც თქვენს მიერ დამატებულ პროდუქტებს იხილავთ",
+    products: "პროდუქტები",
+    noProducts: " პროდუქტები არ გაქვთ დამატებული",
   },
 } as const;

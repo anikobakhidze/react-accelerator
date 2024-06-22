@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      textAlign: {
+        justify: "justify",
+      },
       screens: {
         "max-980": { max: "980px" },
         "max-680": { max: "680px" },
@@ -36,11 +39,16 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateX(100px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
+        fadeUpIn: {
+          "0%": { opacity: "0", transform: "translateY(-100px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         fadeInUp: "fadeInUp 1.5s ease-in-out forwards",
         fadeRightIn: "fadeRightIn 1.5s ease-in-out forwards",
         fadeLeftIn: "fadeLeftIn 1.5s ease-in-out forwards",
+        fadeUpIn: "fadeUpIn 1.5s ease-in-out forwards",
       },
     },
   },

@@ -33,13 +33,10 @@ function EditProductForm({
     setError("");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
-        {
-          method: "POST",
-          body: file,
-        }
-      );
+      const response = await fetch(`/api/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
       if (!response.ok) {
         throw new Error(t("editProduct.failMessage"));
@@ -84,11 +81,13 @@ function EditProductForm({
   };
 
   return (
-    <section className="p-4 rounded-lg max-w-[1100px] mx-auto lg:mt-44 md:mt-32 mt-24 mb-10">
+    <section className="p-4 rounded-lg w-4/5 lg:w-[1000px] mx-auto mt-24 lg:mt-44 md:mt-32 mb-10">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <ProductImage image={product.image} title={product.title} />
-          <label className="block text-sm font-medium text-gray-color dark:text-white mb-2">
+          <div className="flex justify-center items-center">
+            <ProductImage image={product.image} title={product.title} />
+          </div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
             {t("editProduct.uploadImage")}
           </label>
           <div className="relative">
@@ -111,7 +110,7 @@ function EditProductForm({
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-color dark:text-white mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
             {t("editProduct.productTitle")}
           </label>
           <input
@@ -145,17 +144,17 @@ function EditProductForm({
               setProduct({ ...product, category: e.target.value })
             }
           >
-            <option value="pottery" className="text-btn-primary-color">
-              Pottery
+            <option value="mugs" className="text-btn-primary-color">
+              Mugs
             </option>
-            <option value="resins" className="text-btn-primary-color">
-              Resins
+            <option value="decorations" className="text-btn-primary-color">
+              Decorations
             </option>
-            <option value="fiber" className="text-btn-primary-color">
-              Fiber
+            <option value="plates" className="text-btn-primary-color">
+              Plates & Bowls
             </option>
-            <option value="catalysis" className="text-btn-primary-color">
-              Catalysis
+            <option value="other" className="text-btn-primary-color">
+              other
             </option>
           </select>
         </div>
@@ -173,14 +172,17 @@ function EditProductForm({
           />
         </div>
 
-        <div className="flex justify-center items-center gap-10">
+        <div className="flex justify-center items-center gap-4">
           <button
             type="submit"
-            className="bg-black dark:bg-btn-primary-color text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50"
+            className="bg-btn-primary-color text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50 "
             disabled={!isChanged() || loading}
           >
             {loading ? (
-              <ImSpinner9 fontSize={20} className="animate-spin" />
+              <div className="flex justify-center items-center w-full">
+                {" "}
+                <ImSpinner9 fontSize={20} className="animate-spin" />
+              </div>
             ) : (
               t("editProduct.saveChange")
             )}
@@ -191,6 +193,7 @@ function EditProductForm({
           <SuccessModalPages
             close={t("editProduct.close")}
             success={successMessage}
+            href="/myproducts"
           />
         )}
         {error && (

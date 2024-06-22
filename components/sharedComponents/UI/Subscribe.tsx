@@ -24,11 +24,11 @@ async function Subscribe() {
           <input
             type="email"
             placeholder="email@example.com"
-            className="h-8 md:h-10 w-64 md:w-80 py-2 px-3 outline-none"
+            className="h-8 md:h-10 w-64 md:w-80 py-2 px-3 outline-none  "
           />
           <button
             type="submit"
-            className="mt-2 sm:mt-0 h-8 md:h-10 w-20 md:w-32 bg-black k dark:bg-white dark:text-black text-white hover:opacity-75 transition-opacity duration-300"
+            className="mt-2 sm:mt-0   h-8 md:h-10 w-20 md:w-32 bg-black k dark:bg-white dark:text-black text-white hover:opacity-75 transition-opacity duration-300"
           >
             {t("subscribe.btn")}
           </button>

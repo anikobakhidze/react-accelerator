@@ -46,13 +46,10 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
     setError("");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/upload?filename=${file.name}`,
-        {
-          method: "POST",
-          body: file,
-        }
-      );
+      const response = await fetch(`/api/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to upload file");
@@ -177,15 +174,11 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
         <SuccessMessage success={success} closeModal={closeModal} />
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            {image && (
-              <Image
-                src={image}
-                alt="Uploaded"
-                className="rounded-full"
-                width={150}
-                height={150}
-              />
-            )}
+            <div className="flex justify-center items-center">
+              {image && (
+                <Image src={image} alt="Uploaded" width={150} height={150} />
+              )}
+            </div>
             <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
               Upload Image
             </label>
@@ -254,14 +247,14 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
               <option value="mugs" className="text-btn-primary-color">
                 Mugs
               </option>
-              <option value="resins" className="text-btn-primary-color">
-                Resins
+              <option value="decorations" className="text-btn-primary-color">
+                Decorations
               </option>
-              <option value="fiber" className="text-btn-primary-color">
-                Fiber
+              <option value="plates" className="text-btn-primary-color">
+                Plates & Bowls
               </option>
-              <option value="catalysis" className="text-btn-primary-color">
-                Catalysis
+              <option value="other" className="text-btn-primary-color">
+                other
               </option>
             </select>
           </div>
@@ -287,7 +280,9 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
             className="w-full bg-btn-primary-color text-center text-white py-2 hover:opacity-70 rounded-xl"
           >
             {productLoading ? (
-              <ImSpinner9 fontSize={20} className="animate-spin" />
+              <div className="w-full flex justify-center items-center">
+                <ImSpinner9 fontSize={20} className="animate-spin" />
+              </div>
             ) : (
               "Add Product"
             )}
