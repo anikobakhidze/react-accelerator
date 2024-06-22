@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import Heading from "../sharedComponents/UI/Heading";
 import BackButton from "../sharedComponents/UI/BackBtn";
 import { useI18n } from "@/locales/client";
 import { createCheckout } from "@/api";
+import React, { useState } from "react";
+import Heading from "../sharedComponents/UI/Heading";
 
 function CheckoutDetails({
   userId,
