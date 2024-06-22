@@ -1,6 +1,6 @@
 import { PacmanLoader } from "react-spinners";
 import { getI18n } from "@/locales/server";
-export default async function EditBlogFormLoading() {
+export default async function EditProductFormLoading() {
   const t = await getI18n();
   return (
     <div className="flex  flex-col items-center justify-center  h-screen dark:bg-black ">

@@ -1,4 +1,4 @@
-import defaultBlogImage from "../../public/images/defaultBlogImage.webp";
+import defaultProductImage from "../../public/images/defaultProductImage.webp";
 import Image from "next/image";
 const ProductImage = ({ image, title }: { image: string; title: string }) => {
   return (
@@ -7,17 +7,17 @@ const ProductImage = ({ image, title }: { image: string; title: string }) => {
         <Image
           src={image}
           alt={title}
-          width={600}
-          height={400}
-          style={{ height: "350px", objectFit: "cover" }}
+          width={200}
+          height={250}
+          className="w-[200px] h-[250px] object-cover rounded-t-lg"
         />
       ) : (
         <Image
-          src={defaultBlogImage}
+          src={defaultProductImage}
           alt="Default Blog"
-          width={600}
-          height={400}
-          style={{ height: "350px", objectFit: "cover" }}
+          width={200}
+          height={250}
+          className="w-[200px] h-[250px] object-cover rounded-t-lg"
         />
       )}
     </>

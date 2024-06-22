@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      textAlign: {
+        justify: "justify",
+      },
       screens: {
         "max-980": { max: "980px" },
         "max-680": { max: "680px" },

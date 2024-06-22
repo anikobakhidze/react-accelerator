@@ -49,18 +49,7 @@ export async function editUser(name: string, nickname: string) {
   );
   return response;
 }
-// export async function createUser() {
-//   try {
-//     const response = await fetch(
-//       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`
-//     );
-//     if (!response.ok) {
-//       throw new Error("Failed to fetch user");
-//     }
-//   } catch (error) {
-//     console.error("Error fetching user:", error);
-//   }
-// }
+
 export async function getUser() {
   const session = await getSession();
   const user = session?.user;
@@ -442,7 +431,7 @@ export async function getRating(product_id: number): Promise<number> {
     }
 
     const data = await response.json();
-    console.log(data, "apiRating");
+
     return data.averageRating;
   } catch (error) {
     console.error("Error fetching rating:", error);
@@ -499,4 +488,20 @@ export async function createCheckout(
   } catch (error) {
     return error;
   }
+}
+
+// get my products
+export async function getMyProducts() {
+  const session = await getSession();
+  const user = session?.user;
+  const id = user?.sub;
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-my-products/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const products = await response.json();
+  return products;
 }

@@ -21,7 +21,7 @@ export default async function CancelPage() {
       </p>
       <Link
         href="/cart"
-        className="bg-btn-primary-color px-5 py-3 rounded-full hover:opacity-70 transition-all duration-300 text-white hover:shadow-lg mt-6"
+        className="bg-btn-primary-color px-3 py-2 rounded-sm hover:opacity-70 transition-all duration-300 text-white hover:shadow-lg mt-6"
       >
         {t("canceledPage.tryAgain")}
       </Link>

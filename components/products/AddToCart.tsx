@@ -42,14 +42,16 @@ function AddToCart({ product }: { product: IProductDetails }) {
         : sub !== userSub &&
           !(hasUserRole(user) && user.role[0] === "admin") && (
             <button
-              className="relative bg-black dark:bg-white dark:text-black py-2 px-2 text-white w-28 overflow-hidden group"
+              className="relative bg-black dark:bg-white  dark:text-black py-2 px-2 text-white w-28 overflow-hidden group"
               onClick={handleAddToCart}
               disabled={loading}
             >
               <span className="relative z-10 w-full h-full flex justify-center items-center">
                 {" "}
                 <CiSquarePlus />
-                <span className="ml-2">{t("product.addProduct")}</span>
+                <span className="ml-1 text-sm lg:ml-2 lg:text-base">
+                  {t("product.addProduct")}
+                </span>
               </span>
               <span className="absolute left-0 bottom-0 w-full h-full bg-btn-primary-color transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
             </button>

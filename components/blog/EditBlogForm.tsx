@@ -44,7 +44,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
       console.error("Error uploading image:", error);
       setError(t("editBlog.errorMessage"));
     } finally {
-      setImageLoading(true);
+      setImageLoading(false);
     }
   };
 
@@ -143,7 +143,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
         <div className="flex justify-center items-center gap-10">
           <button
             type="submit"
-            className="bg-black dark:bg-btn-primary-color text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50"
+            className="bg-black dark:bg-btn-primary-color rounded-full text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50"
             disabled={!isChanged() || loading}
           >
             {loading ? (
@@ -158,6 +158,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
           <SuccessModalPages
             close={t("editBlog.close")}
             success={successMessage}
+            href="/blogs"
           />
         )}
         {error && (

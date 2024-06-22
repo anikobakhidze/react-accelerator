@@ -1,15 +1,11 @@
 "use client";
-import dynamic from "next/dynamic";
-// import contactData from "../../../../data/contactData";
+
 import { useI18n } from "../../../../locales/client";
 import Heading from "@/components/sharedComponents/UI/Heading";
 import contactCover from "../../../../public/images/contactBg.webp";
 import Image from "next/image";
 import ContactInfoContainer from "@/components/contact/ContactInfoContainer";
-const ContactUsForm = dynamic(
-  () => import("../../../../components/contact/ContactUsForm"),
-  { ssr: false }
-);
+import ContactUsForm from "../../../../components/contact/ContactUsForm";
 
 export default function Contact() {
   const t = useI18n();

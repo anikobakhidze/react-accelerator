@@ -1,4 +1,3 @@
-// "use client";
 import { getSession } from "@auth0/nextjs-auth0";
 import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";

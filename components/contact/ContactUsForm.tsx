@@ -205,7 +205,7 @@ function ContactUsForm() {
           </p>
         )}
       </div>
-      <button className="w-30 h-8 text-sm px-2 lg:text-base lg:h-10 lg:w-48 bg-btn-primary-color text-white hover:opacity-50">
+      <button className="w-30 h-8 text-sm px-2 lg:text-base rounded-sm lg:h-10 lg:w-48 bg-btn-primary-color text-white hover:opacity-50">
         {loading ? <PulseLoader /> : t("contactPage.contactUs")}
       </button>
       {updateMessage && (

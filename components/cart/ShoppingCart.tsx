@@ -14,9 +14,11 @@ async function ShoppingCart() {
 
   if (!userId) {
     return (
-      <div className="mt-32 md:mt-44">
+      <div className="mt-32 md:mt-44 flex justify-center flex-1 items-center flex-col">
+        <p className="text-sm md:text-lg lg:text-xl font-semibold mb-10 md:mt-0">
+          {t("cartPage.notAuthenticated")}{" "}
+        </p>
         <BackButton />
-        <p>{t("cartPage.notAuthenticated")} </p>
       </div>
     );
   }
@@ -64,7 +66,7 @@ async function ShoppingCart() {
               <div className="mt-4 md:mt-2 flex justify-center md:justify-end">
                 <Link
                   href="/checkout"
-                  className="bg-black text-white font-bold py-2 px-4  hover:bg-opacity-70 transition duration-300"
+                  className="bg-black dark:bg-white dark:text-black dark:hover:opacity-70 text-white font-bold py-2 px-4  hover:bg-opacity-70 transition duration-300"
                 >
                   {t("cartPage.checkout")}
                 </Link>

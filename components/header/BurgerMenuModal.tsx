@@ -53,7 +53,7 @@ const BurgerMenuModal: React.FC<BurgerMenuModalProps> = ({
     >
       <div
         ref={modalRef}
-        className="absolute top-4 right-16 w-40 md:top-8 md:right-24 bg-white p-4 md:p-8 rounded-lg dark:bg-dark-medium-bg shadow-lg md:w-full max-w-xs mx-auto mt-20"
+        className="absolute dark:bg-gray-color top-4 right-16 w-40 md:top-8 md:right-24 bg-white p-4 md:p-8 rounded-lg dark:bg-dark-medium-bg shadow-lg md:w-full max-w-xs mx-auto mt-20"
       >
         <nav className="flex-1 h-full flex flex-col items-center justify-center space-y-2 md:space-y-4">
           <ul className="flex flex-col items-center space-y-4 md:space-y-6">

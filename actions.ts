@@ -92,7 +92,7 @@ export async function editProductAction(product: IProductDetails) {
 
 export async function deleteProductAction(id: number) {
   await deleteProduct(id);
-  revalidatePath("/");
+  revalidatePath("/product");
 }
 // get products action
 export async function getProductAction(id: number): Promise<IProductDetails> {

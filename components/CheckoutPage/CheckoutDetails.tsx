@@ -133,7 +133,7 @@ function CheckoutDetails({
           )}
           <button
             type="submit"
-            className="relative bg-black dark:bg-white dark:text-black py-2 px-6 rounded-full text-white overflow-hidden group"
+            className="relative bg-black dark:bg-white dark:text-black py-2 px-6  text-white overflow-hidden group"
           >
             <span className="relative z-10 w-full h-full flex justify-center items-center">
               {t("checkoutPage.buy")}
