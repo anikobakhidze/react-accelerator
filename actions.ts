@@ -19,7 +19,7 @@ import {
   deleteCart,
   createRating,
 } from "./api";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
   revalidatePath("/admin");
@@ -97,15 +97,13 @@ export async function deleteProductAction(id: number) {
 // get products action
 export async function getProductAction(id: number): Promise<IProductDetails> {
   const product = await getProduct(id);
-  revalidateTag(`/editproduct/${id}`);
-  revalidatePath("/");
+  revalidatePath("/products");
   return product;
 }
 
 //  get selected products quantity
 export async function getQuantityAction(userId: string) {
   const quantity = await getProductsQuantity(userId);
-  // revalidatePath("/", "layout");
   return quantity;
 }
 export async function updateCartQuantityAction(
@@ -150,8 +148,7 @@ export async function editBlogAction(blog: IBlog) {
 // get blog action
 export async function getBlogAction(id: number) {
   const blog = await getBlog(id);
-  revalidateTag(`/editblog/${id}`);
-  revalidatePath("/");
+  revalidatePath(`/editblog/${id}`);
   return blog;
 }
 
