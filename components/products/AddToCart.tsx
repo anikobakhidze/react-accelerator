@@ -21,7 +21,6 @@ function AddToCart({ product }: { product: IProductDetails }) {
       await addToCart(product, sub);
       router.refresh();
     } catch (error) {
-      console.error("Failed to add product to cart:", error);
       alert("Failed to add product to cart.");
     } finally {
       setLoading(false);

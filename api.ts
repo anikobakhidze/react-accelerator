@@ -1,29 +1,34 @@
 import { getSession } from "@auth0/nextjs-auth0";
-export const Host =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : "https://react-accelerator-chi.vercel.app";
+
 export async function getUsers() {
-  const response = await fetch(`${Host}/api/get-users`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-users`
+  );
   const { users } = await response.json();
   return users.rows;
 }
 
 export async function deleteUser(id: number) {
-  const response = await fetch(`${Host}/api/delete-user/${id}`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-user/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
   return response;
 }
 
 export async function createUser(name: string, email: string, age: number) {
-  const response = await fetch(`${Host}/api/create-user`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, email, age }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-user`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, age }),
+    }
+  );
 
   return response;
 }
@@ -32,13 +37,16 @@ export async function editUser(name: string, nickname: string) {
   const session = await getSession();
   const user = session?.user;
   const sub = user?.sub;
-  const response = await fetch(`${Host}/api/edit-user/${sub}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, nickname, sub }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-user/${sub}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, nickname, sub }),
+    }
+  );
   return response;
 }
 
@@ -47,9 +55,12 @@ export async function getUser() {
   const user = session?.user;
   const id = user?.sub;
 
-  const response = await fetch(`${Host}/api/get-user/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-user/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const userInfo = await response.json();
   const userDetail = userInfo.user.rows[0];
   return userDetail;
@@ -63,13 +74,16 @@ export async function createMessage(
   message: string
 ) {
   try {
-    const response = await fetch(`${Host}/api/create-message`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, phone, email, subject, message }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-message`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, phone, email, subject, message }),
+      }
+    );
     if (!response.ok) {
       throw new Error("Failed to send message");
     }
@@ -89,21 +103,24 @@ export async function createProduct(
   userSub: string
 ) {
   try {
-    const response = await fetch(`${Host}/api/create-product`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        image,
-        title,
-        description,
-        price,
-        category,
-        userSub,
-      }),
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-product`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image,
+          title,
+          description,
+          price,
+          category,
+          userSub,
+        }),
+        cache: "no-store",
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to upload product");
@@ -116,30 +133,36 @@ export async function createProduct(
 
 //  get all products
 export async function getProducts() {
-  const response = await fetch(`${Host}/api/get-products`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products`,
+    {
+      cache: "no-store",
+    }
+  );
 
   const { products } = await response.json();
   return products.rows;
 }
 export async function editProduct(product: IProductDetails) {
   const { id, image, title, description, price, category } = product;
-  const response = await fetch(`${Host}/api/edit-product/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id,
-      image,
-      title,
-      description,
-      price,
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        image,
+        title,
+        description,
+        price,
 
-      category,
-    }),
-  });
+        category,
+      }),
+    }
+  );
 
   return response;
 }
@@ -147,9 +170,12 @@ export async function editProduct(product: IProductDetails) {
 // get selected product
 
 export async function getProduct(id: number) {
-  const response = await fetch(`${Host}/api/get-product/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-product/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const productInfo = await response.json();
   const product = productInfo.product.rows[0];
 
@@ -158,22 +184,28 @@ export async function getProduct(id: number) {
 
 //  delete product
 export async function deleteProduct(id: number) {
-  const response = await fetch(`${Host}/api/delete-product/${id}`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-product/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
   return response;
 }
 
 // add to cart
 export async function addToCart(product: IProductDetails, userId: string) {
-  const response = await fetch(`${Host}/api/add-to-cart`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ product, userId }),
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-to-cart`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product, userId }),
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to add product to cart");
@@ -186,14 +218,17 @@ export async function addToCart(product: IProductDetails, userId: string) {
 //  user's selected products quantity
 
 export async function getProductsQuantity(userId: string) {
-  const response = await fetch(`${Host}/api/get-products-quantity`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ userId }),
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products-quantity`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId }),
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to get total selected quantity");
@@ -206,7 +241,9 @@ export async function getProductsQuantity(userId: string) {
 //  get selected products
 
 export async function getCartItems(userId: string) {
-  const response = await fetch(`${Host}/api/get-cart-items/${userId}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items/${userId}`
+  );
   if (!response.ok) {
     throw new Error("Failed to get selected products");
   }
@@ -222,14 +259,17 @@ export async function updateCartQuantity(
   userId: string,
   action: "increase" | "decrease" | "remove"
 ) {
-  const response = await fetch(`${Host}/api/edit-product-quantity`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ productId, userId, action }),
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-product-quantity`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId, userId, action }),
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to update product quantity in cart");
@@ -248,19 +288,22 @@ export async function createBlog(
   userSub: string
 ) {
   try {
-    const response = await fetch(`${Host}/api/create-blog`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        image,
-        title,
-        description,
-        category,
-        userSub,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-blog`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image,
+          title,
+          description,
+          category,
+          userSub,
+        }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to create blog");
@@ -274,9 +317,12 @@ export async function createBlog(
 
 // get blogs
 export async function getBlogs() {
-  const response = await fetch(`${Host}/api/get-blogs`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-blogs`,
+    {
+      cache: "no-store",
+    }
+  );
 
   const { blogs } = await response.json();
   return blogs.rows;
@@ -285,28 +331,34 @@ export async function getBlogs() {
 // edit blog
 export async function editBlog(blog: IBlog) {
   const { id, image, title, description, category } = blog;
-  const response = await fetch(`${Host}/api/edit-blog/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id,
-      image,
-      title,
-      description,
-      category,
-    }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-blog/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        image,
+        title,
+        description,
+        category,
+      }),
+    }
+  );
 
   return response;
 }
 
 // get blog
 export async function getBlog(id: number) {
-  const response = await fetch(`${Host}/api/get-blog/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-blog/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const blogInfo = await response.json();
   const blog = blogInfo.blog.rows[0];
 
@@ -315,19 +367,25 @@ export async function getBlog(id: number) {
 
 // delete blog
 export async function deleteBlog(id: number) {
-  const response = await fetch(`${Host}/api/delete-blog/${id}`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-blog/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
   return response;
 }
 
 // delete cart
 
 export async function deleteCart(userId: string) {
-  const response = await fetch(`${Host}/api/delete-cart/${userId}`, {
-    method: "DELETE",
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-cart/${userId}`,
+    {
+      method: "DELETE",
+      cache: "no-store",
+    }
+  );
   return response;
 }
 
@@ -338,14 +396,17 @@ export async function createRating(
   user_sub: string
 ) {
   try {
-    const response = await fetch(`${Host}/api/create-rating`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ rating, product_id, user_sub }),
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-rating`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ rating, product_id, user_sub }),
+        cache: "no-store",
+      }
+    );
     if (!response.ok) {
       throw new Error("Failed to create rating");
     }
@@ -358,9 +419,12 @@ export async function createRating(
 
 export async function getRating(product_id: number): Promise<number> {
   try {
-    const response = await fetch(`${Host}/api/get-rating/${product_id}`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-rating/${product_id}`,
+      {
+        cache: "no-store",
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch rating");
@@ -383,7 +447,7 @@ export async function checkUserRating(
 ): Promise<boolean> {
   try {
     const response = await fetch(
-      `${Host}/api/check-user-rating?product_id=${product_id}&user_sub=${user_sub}`,
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/check-user-rating?product_id=${product_id}&user_sub=${user_sub}`,
       {
         cache: "no-store",
       }
@@ -406,14 +470,17 @@ export async function createCheckout(
   deliveryAddress: string
 ) {
   try {
-    const response = await fetch(`${Host}/api/create-checkout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId, products, deliveryAddress }),
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/create-checkout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, products, deliveryAddress }),
+        cache: "no-store",
+      }
+    );
     if (!response.ok) {
       throw new Error("Failed to create rating");
     }
@@ -429,9 +496,12 @@ export async function getMyProducts() {
   const user = session?.user;
   const id = user?.sub;
 
-  const response = await fetch(`${Host}/api/get-my-products/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-my-products/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const products = await response.json();
   return products;
 }

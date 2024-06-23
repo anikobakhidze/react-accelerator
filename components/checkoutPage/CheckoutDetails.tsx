@@ -1,10 +1,10 @@
 "use client";
 import BackButton from "../sharedComponents/UI/BackBtn";
 import { useI18n } from "@/locales/client";
-import { Host, createCheckout } from "@/api";
 import React, { useState } from "react";
 import Heading from "../sharedComponents/UI/Heading";
 import { ClipLoader } from "react-spinners";
+import { createCheckout } from "@/api";
 function CheckoutDetails({
   userId,
   products,
@@ -28,13 +28,16 @@ function CheckoutDetails({
   };
   const buy = async (products: ICartProduct[], userId: string) => {
     try {
-      const response = await fetch(`${Host}/api/buy`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ products, userId, userEmail }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/buy`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ products, userId, userEmail }),
+        }
+      );
       const data = await response.json();
       if (data.url) {
         window.location.href = data.url;
@@ -131,7 +134,7 @@ function CheckoutDetails({
             } focus:ring-2 focus:ring-btn-primary-color outline-none dark:bg-gray-color dark:text-white`}
           />
           {addressError && (
-            <span className="text-xs md:text-sm lg:text-base font-bold  animate-fadeInUp transition-all duration-300 text-dark-cream-color">
+            <span className="text-xs md:text-sm lg:text-base font-bold  transition-all duration-300 text-dark-cream-color">
               {addressError}
             </span>
           )}
