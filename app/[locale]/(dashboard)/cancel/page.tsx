@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function CancelPage() {
   const t = await getI18n();
   return (
-    <div className="flex justify-center items-center flex-1 flex-col p-4">
+    <div className="flex justify-center items-center flex-1 flex-col pb-10 md:py-24 mt-44 md:mt-28">
       <Image
         src={decline}
         width={200}
