@@ -57,7 +57,6 @@ function CheckoutDetails({
       await createCheckout(userId, products, address);
       await buy(products, userId);
     } catch (error) {
-      console.error("Failed to complete checkout", error);
       setUpdateMessage("Failed to complete checkout");
     }
   };
@@ -70,7 +69,6 @@ function CheckoutDetails({
     (price: number, sum: number) => price + sum,
     0
   );
-  console.log(products, userId);
 
   return (
     <div className="flex-1 flex">

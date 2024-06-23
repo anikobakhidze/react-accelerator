@@ -6,14 +6,6 @@ export async function PUT(request: Request) {
   try {
     const { id, image, title, description, price, category } =
       await request.json();
-    console.log("editproductt", {
-      id,
-      image,
-      title,
-      description,
-      price,
-      category,
-    });
 
     const productExists = await sql`SELECT * FROM products WHERE id=${id}`;
 

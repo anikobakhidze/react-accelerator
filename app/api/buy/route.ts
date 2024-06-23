@@ -66,7 +66,5 @@ export const POST = async (request: any) => {
     cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/checkOut`,
   });
 
-  console.log("Stripe Session:", session);
-
   return NextResponse.json({ url: session.url });
 };

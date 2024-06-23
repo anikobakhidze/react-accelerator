@@ -13,24 +13,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log("Inserting blog:", {
-      image,
-      title,
-      description,
-      category,
-      userSub,
-    });
-
-    const insertResult = await sql`
+    await sql`
       INSERT INTO blog (image, title, description, category, user_id)
       VALUES (${image || ""}, ${title}, ${description}, ${category}, ${userSub})
       RETURNING *;
     `;
 
-    console.log("Insert result:", insertResult);
-
     const blogs = await sql`SELECT * FROM blog ORDER BY id ASC;`;
-    console.log("Blogs retrieved:", blogs);
 
     return NextResponse.json({ blogs }, { status: 200 });
   } catch (error) {
