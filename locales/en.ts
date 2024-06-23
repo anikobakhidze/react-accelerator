@@ -228,4 +228,6 @@ export default {
     products: "Products",
     noProducts: "No added products",
   },
+  previous: "Previous",
+  next: "Next",
 } as const;

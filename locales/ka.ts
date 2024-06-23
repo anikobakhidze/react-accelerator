@@ -229,4 +229,6 @@ export default {
     products: "პროდუქტები",
     noProducts: "პროდუქტები არ გაქვთ დამატებული",
   },
+  previous: "წინა",
+  next: "შემდეგი",
 } as const;
