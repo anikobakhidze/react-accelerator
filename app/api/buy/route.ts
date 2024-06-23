@@ -1,3 +1,4 @@
+import { Host } from "@/api";
 import { NextResponse } from "next/server";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
@@ -62,8 +63,8 @@ export const POST = async (request: any) => {
         id: userId,
       },
     },
-    success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/success`,
-    cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/checkOut`,
+    success_url: `${Host}/success`,
+    cancel_url: `${Host}/checkOut`,
   });
 
   return NextResponse.json({ url: session.url });

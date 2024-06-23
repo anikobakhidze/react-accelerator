@@ -226,6 +226,6 @@ export default {
     description:
       "This is my products page where you can see your added products",
     products: "Products",
-    noProducts: "No Products",
+    noProducts: "No added products",
   },
 } as const;

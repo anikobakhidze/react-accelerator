@@ -1,10 +1,10 @@
 "use client";
 import BackButton from "../sharedComponents/UI/BackBtn";
 import { useI18n } from "@/locales/client";
-import { createCheckout } from "@/api";
+import { Host, createCheckout } from "@/api";
 import React, { useState } from "react";
 import Heading from "../sharedComponents/UI/Heading";
-
+import { ClipLoader } from "react-spinners";
 function CheckoutDetails({
   userId,
   products,
@@ -18,7 +18,7 @@ function CheckoutDetails({
   const [address, setAddress] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
   const [addressError, setAddressError] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const handleAddressChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setAddress(e.target.value);
     setUpdateMessage("");
@@ -28,16 +28,13 @@ function CheckoutDetails({
   };
   const buy = async (products: ICartProduct[], userId: string) => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/buy`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ products, userId, userEmail }),
-        }
-      );
+      const response = await fetch(`${Host}/api/buy`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ products, userId, userEmail }),
+      });
       const data = await response.json();
       if (data.url) {
         window.location.href = data.url;
@@ -49,8 +46,10 @@ function CheckoutDetails({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     if (!address) {
       setAddressError("Address is required");
+      setLoading(false);
       return;
     }
     try {
@@ -58,6 +57,8 @@ function CheckoutDetails({
       await buy(products, userId);
     } catch (error) {
       setUpdateMessage("Failed to complete checkout");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,6 +73,11 @@ function CheckoutDetails({
 
   return (
     <div className="flex-1 flex">
+      {loading && (
+        <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-60">
+          <ClipLoader size={100} color="#e4986a" />
+        </div>
+      )}
       <div className="bg-light-bg-color dark:bg-black w-full max-w-4xl mt-24 sm:mt-24 md:mt-24 mx-auto  lg:my-44 p-4 md:p-8 rounded-lg shadow-lg ">
         <Heading heading={t("checkoutPage.orders")} />
 
@@ -125,7 +131,7 @@ function CheckoutDetails({
             } focus:ring-2 focus:ring-btn-primary-color outline-none dark:bg-gray-color dark:text-white`}
           />
           {addressError && (
-            <span className="text-xs md:text-sm lg:text-base text-dark-cream-color">
+            <span className="text-xs md:text-sm lg:text-base font-bold  animate-fadeInUp transition-all duration-300 text-dark-cream-color">
               {addressError}
             </span>
           )}
@@ -142,7 +148,7 @@ function CheckoutDetails({
         </form>
         {updateMessage && (
           <div
-            className={`text-sm pt-4 text-center font-bold ${
+            className={`text-base pt-4  text-center font-bold ${
               updateMessage.includes("Failed")
                 ? "text-dark-cream-color"
                 : "text-green-color"

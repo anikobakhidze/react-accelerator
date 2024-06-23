@@ -75,7 +75,6 @@ export async function createProductAction(product: Product) {
     );
     revalidatePath("/product");
   } catch (error) {
-    console.error("Error uploading product:", error);
     throw new Error("Error uploading product");
   }
 }
