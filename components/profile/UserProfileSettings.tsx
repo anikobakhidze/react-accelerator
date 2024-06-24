@@ -1,7 +1,7 @@
 import UserProfileInfo from "./UserProfileInfo";
 import { getI18n } from "../../locales/server";
 import AvatarUpload from "./AvatarUpload";
-import { getUser } from "@/api";
+import { getUser } from "@/actions";
 import Heading from "../sharedComponents/UI/Heading";
 import { getSession } from "@auth0/nextjs-auth0";
 

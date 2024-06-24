@@ -52,18 +52,6 @@ export async function editUser(name: string, nickname: string) {
   return response;
 }
 
-export async function getUser(id: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-user/${id}`,
-    {
-      cache: "no-store",
-    }
-  );
-  const userInfo = await response.json();
-  const userDetail = userInfo.user.rows[0];
-  return userDetail;
-}
-
 export async function createMessage(
   name: string,
   phone: number,

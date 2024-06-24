@@ -1,8 +1,11 @@
 import { sql } from "@vercel/postgres";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 export const revalidate = 0;
-export async function GET(request: NextRequest) {
-  const id = request.nextUrl.pathname.replace("/api/get-user/", "");
+export async function GET(
+  _request: Request,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
   try {
     const user = await sql`SELECT * FROM users WHERE sub = ${id}`;
     return NextResponse.json({ user }, { status: 200 });

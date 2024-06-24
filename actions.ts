@@ -190,3 +190,17 @@ export async function emptyUserCart(id: string) {
   const data = await response.json();
   return data.response;
 }
+
+// get user
+export async function getUser(id: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-user/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  revalidatePath("/profile");
+  const userInfo = await response.json();
+  const userDetail = userInfo.user.rows[0];
+  return userDetail;
+}
