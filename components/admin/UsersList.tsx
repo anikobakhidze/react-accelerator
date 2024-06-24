@@ -8,14 +8,13 @@ async function UsersList() {
       <div className="flex font-bold border-b-2 border-medium-green justify-around">
         <li className="w-28 text-center text-dark-green">Name</li>
         <li className="w-56 text-center text-dark-green">Email</li>
-        <li className="w-28 text-center text-dark-green">Age</li>
         <li className="w-28 text-center text-dark-green">Edit user</li>
         <li className="w-28 text-center text-dark-green">Remove User</li>
       </div>
       {users.map((user: IUser) => (
         <li
           key={user.id}
-          className="flex border-medium-green border-b-2 justify-around items-center py-2 b hover:bg-medium-green"
+          className="flex border-medium-green border-b-2 justify-around items-center py-2  hover:bg-medium-green"
         >
           <UserTableRow user={user} />
         </li>

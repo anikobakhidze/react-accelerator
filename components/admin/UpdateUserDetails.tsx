@@ -11,7 +11,6 @@ function UpdateUserDetails({ user, setIsVisible }: IEditUserDetails) {
     id: user.id,
     name: user.name,
     email: user.email,
-    age: user.age,
   });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -76,24 +75,6 @@ function UpdateUserDetails({ user, setIsVisible }: IEditUserDetails) {
               value={updateUser.email}
               onChange={(e) =>
                 setUpdateUser({ ...updateUser, email: e.target.value })
-              }
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medium-green focus:border-medium-green"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="age"
-              className="block text-sm font-medium text-dark-green"
-            >
-              Age
-            </label>
-            <input
-              type="number"
-              name="age"
-              id="age"
-              value={updateUser.age.toString()}
-              onChange={(e) =>
-                setUpdateUser({ ...updateUser, age: parseInt(e.target.value) })
               }
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medium-green focus:border-medium-green"
             />

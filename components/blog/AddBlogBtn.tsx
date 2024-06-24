@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
 import AddBlogForm from "./AddBlogForm";
 import { useI18n } from "@/locales/client";
+import { useRouter } from "next/navigation";
 const AddBlogBtn = () => {
   const [modal, setModal] = useState(false);
   const t = useI18n();
+  const router = useRouter();
   const handleModal = () => {
     setModal((prev) => !prev);
+    router.push("/blogs");
   };
 
   return (

@@ -21,16 +21,15 @@ function UserTableRow({ user }: { user: IUser }) {
     <>
       <p className="w-28 text-center text-dark-green">{user.name}</p>
       <p className="w-56 text-center text-dark-green">{user.email}</p>
-      <p className="w-28 text-center text-dark-green">{user.age}</p>
       <button
-        className="w-28 text-center bg-dark-green hover:bg-medium-green border-2 border-transparent hover:border-dark-green text-white rounded transition duration-300 ease-in-out"
+        className="w-28 text-center bg-black dark:bg-white dark:text-black hover:opacity-70 border-b-2 border-transparent text-white rounded transition duration-300 ease-in-out"
         onClick={handleEditButton}
       >
         Edit
       </button>
 
       <button
-        className="w-28 text-center bg-red-600 hover:bg-red-700 border-2 border-transparent text-white rounded transition duration-300 ease-in-out"
+        className="w-28 text-center bg-btn-primary-color hover:opacity-70 border-2 border-transparent text-white rounded transition duration-300 ease-in-out"
         onClick={handleDeleteButton}
       >
         Delete

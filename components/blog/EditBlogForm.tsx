@@ -143,7 +143,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
         <div className="flex justify-center items-center gap-10">
           <button
             type="submit"
-            className="bg-black dark:bg-btn-primary-color rounded-full text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50"
+            className="bg-black dark:bg-btn-primary-color  text-center my-2 text-white py-2 hover:opacity-70 p-2 disabled:opacity-50"
             disabled={!isChanged() || loading}
           >
             {loading ? (

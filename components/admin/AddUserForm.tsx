@@ -27,8 +27,8 @@ function AddUserForm({ isVisible, setIsVisible }: IUserFormProps) {
     <section className="absolute inset-0 w-full h-full bg-light-green bg-opacity-75 z-10 flex items-center justify-center ">
       <div className="flex flex-col w-4/5 max-w-md mx-auto rounded-lg gap-4 bg-white p-10 shadow-lg border border-medium-green">
         {error && (
-          <div className="flex items-center space-x-2 bg-red-100 text-red-800 p-2 rounded-md ">
-            <MdError className="text-red-500" />
+          <div className="flex items-center space-x-2 bg-red-100 text-dark-cream-color p-2 rounded-md ">
+            <MdError className="text-dark-cream-color" />
             <p>{error}</p>
           </div>
         )}
@@ -56,14 +56,7 @@ function AddUserForm({ isVisible, setIsVisible }: IUserFormProps) {
             onChange={handleInputChange}
             className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medium-green focus:border-medium-green"
           />
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            required
-            onChange={handleInputChange}
-            className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medium-green focus:border-medium-green"
-          />
+
           <div className="flex justify-between items-center">
             <button
               type="submit"
@@ -73,7 +66,7 @@ function AddUserForm({ isVisible, setIsVisible }: IUserFormProps) {
             </button>
             <button
               onClick={handleClose}
-              className="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded-md transition duration-300 ease-in-out"
+              className="px-4 py-2 bg-gray-500  hover:bg-gray-700 text-white font-bold rounded-md transition duration-300 ease-in-out"
             >
               Cancel
             </button>

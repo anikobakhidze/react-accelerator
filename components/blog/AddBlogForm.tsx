@@ -245,7 +245,7 @@ const AddBlogForm = ({ closeModal }: { closeModal: () => void }) => {
             className="w-full bg-btn-primary-color text-center text-white py-2 hover:opacity-70 rounded-xl"
           >
             {blogLoading ? (
-              <div className="text-center">
+              <div className="flex justify-center items-center w-full">
                 <ImSpinner9 fontSize={20} className="animate-spin" />
               </div>
             ) : (
