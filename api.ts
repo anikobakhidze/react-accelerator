@@ -516,8 +516,6 @@ export async function getUserCart(userId: string) {
     }
   );
   const carts = await response.json();
-
-  const [cart] = carts.carts.rows;
-
-  return cart.products;
+  const cart = carts.carts.rows;
+  return cart.length > 0 ? cart[0].products : [];
 }

@@ -3,9 +3,12 @@ import { deleteCartAction } from "@/actions";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { FaCartShopping } from "react-icons/fa6";
-function ResetCart({ heading, userId }: { heading: string; userId: string }) {
+import { useUser } from "@auth0/nextjs-auth0/client";
+function ResetCart({ heading }: { heading: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { user } = useUser();
+  const userId = user?.sub!;
 
   const handleClick = async () => {
     setLoading(true);
