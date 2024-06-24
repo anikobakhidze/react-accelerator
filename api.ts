@@ -442,7 +442,6 @@ export async function getRating(product_id: number): Promise<number> {
     }
 
     const data = await response.json();
-    console.log(data, "apiRating");
     return data.averageRating;
   } catch (error) {
     console.error("Error fetching rating:", error);
