@@ -178,3 +178,15 @@ export async function getMyProductsAction() {
   revalidatePath("/myproducts");
   return myProducts;
 }
+
+export async function emptyUserCart(id: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/delete-cart-test/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
+  revalidatePath("/cart");
+  const data = await response.json();
+  return data.response;
+}

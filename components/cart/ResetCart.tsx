@@ -1,5 +1,5 @@
 "use client";
-import { deleteCartAction } from "@/actions";
+import { emptyUserCart } from "@/actions";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { FaCartShopping } from "react-icons/fa6";
@@ -14,7 +14,7 @@ function ResetCart({ heading }: { heading: string }) {
     setLoading(true);
     setError("");
     try {
-      await deleteCartAction(userId);
+      await emptyUserCart(userId);
     } catch (error) {
       setError("Failed to delete cart");
     } finally {
