@@ -506,3 +506,18 @@ export async function getMyProducts() {
   const { rows: products } = getMyProducts;
   return products;
 }
+
+// get test cart item
+export async function getUserCart(userId: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items-test/${userId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const carts = await response.json();
+
+  const [cart] = carts.carts.rows;
+
+  return cart;
+}
