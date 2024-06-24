@@ -1,7 +1,6 @@
 "use client";
 
 import { createProductAction } from "@/actions";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
@@ -23,8 +22,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [priceError, setPriceError] = useState("");
-  const { user } = useUser();
-  const userSub = user?.sub;
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -97,7 +94,6 @@ const AddProductsForm = ({ closeModal }: { closeModal: () => void }) => {
       description,
       category,
       price,
-      userSub,
     };
 
     try {

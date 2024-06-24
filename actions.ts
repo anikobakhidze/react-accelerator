@@ -1,4 +1,5 @@
 "use server";
+import { getSession } from "@auth0/nextjs-auth0";
 import {
   createUser,
   deleteUser,
@@ -61,16 +62,16 @@ export async function createMessageAction(formData: FormData) {
 }
 
 export async function createProductAction(product: Product) {
+  const session = await getSession();
+  const userSub = session?.user.sub;
   try {
     const price = Number(product.price);
-    const userSub = product.userSub as string;
 
     await createProduct(
       product.image,
       product.title,
       product.description,
       price,
-
       product.category,
       userSub
     );

@@ -222,7 +222,7 @@ type Product = {
   category: string;
   price: string;
 
-  userSub: string | null | undefined;
+  userSub?: string | null | undefined;
 };
 interface IProductDetails {
   id?: number;
