@@ -519,5 +519,5 @@ export async function getUserCart(userId: string) {
 
   const [cart] = carts.carts.rows;
 
-  return cart;
+  return cart.products;
 }

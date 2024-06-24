@@ -1,4 +1,4 @@
-// import { getCartItems } from "@/api";
+import { getUserCart } from "@/api";
 import { getSession } from "@auth0/nextjs-auth0";
 import ShoppingItem from "./ShoppingItem";
 import Heading from "../sharedComponents/UI/Heading";
@@ -7,7 +7,7 @@ import BackButton from "../sharedComponents/UI/BackBtn";
 import ResetCart from "./ResetCart";
 import Link from "next/link";
 
-const ShoppingCart = async ({ products }: any) => {
+const ShoppingCart = async () => {
   const t = await getI18n();
 
   const session = await getSession();
@@ -26,6 +26,7 @@ const ShoppingCart = async ({ products }: any) => {
   }
 
   try {
+    const products = await getUserCart(userId);
     const productPrice = products.map(
       (product: ICartProduct) =>
         Number(product.price) * Number(product.selectedQuantity)
