@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-// import { AUTH_COOKIE_KEY } from "./constants";
 import { createI18nMiddleware } from "next-international/middleware";
-// import { getUser } from "./api";
-
-// const logInRoutes = ["/login", "/ka/login", "/en/login"];
 
 export default async function middleware(request: NextRequest) {
   const cookieStore = request.cookies;
@@ -14,7 +10,12 @@ export default async function middleware(request: NextRequest) {
     (pathname.startsWith("/profile") ||
       pathname.startsWith("/admin") ||
       pathname.startsWith("/editblog") ||
-      pathname.startsWith("/editproduct"))
+      pathname.startsWith("/editproduct") ||
+      pathname.startsWith("/success") ||
+      pathname.startsWith("/cancel") ||
+      pathname.startsWith("/checkout") ||
+      pathname.startsWith("/cart") ||
+      pathname.startsWith("/myproducts"))
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
@@ -41,7 +42,6 @@ export default async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/((?!api|_next/static|_next/image|.*\\.png$).*)",
     "/",
     "/(ka|en)/:path*",
   ],
