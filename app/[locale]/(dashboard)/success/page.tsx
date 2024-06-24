@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { deleteCartAction, emptyUserCart } from "@/actions";
+import { emptyUserCart } from "@/actions";
 import { useI18n } from "@/locales/client";
 
 export default function Success() {
