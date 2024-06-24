@@ -24,7 +24,7 @@ async function ShoppingCart() {
     );
   }
 
-  const products = userId ? await getCartItems(userId) : [];
+  const products = await getCartItems();
 
   if (!products || products.length === 0) {
     return (

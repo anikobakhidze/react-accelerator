@@ -242,7 +242,10 @@ export async function getProductsQuantity(userId: string) {
 
 //  get selected products
 
-export async function getCartItems(userId: string) {
+export async function getCartItems() {
+  const session = await getSession();
+  const user = session?.user;
+  const userId = user?.sub;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart-items/${userId}`
   );
