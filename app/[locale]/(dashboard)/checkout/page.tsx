@@ -7,7 +7,7 @@ async function CheckoutPage() {
   const user = session?.user;
   const userId = user?.sub;
   const userEmail = user?.email;
-  const products = await getCartItems();
+  const products = await getCartItems(userId);
   return (
     <CheckoutDetails
       userId={userId}
