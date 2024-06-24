@@ -1,9 +1,8 @@
 "use client";
 import type { PutBlobResult } from "@vercel/blob";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { useEffect } from "react";
 import { FaCamera } from "react-icons/fa";
 import { ImSpinner9 } from "react-icons/im";
 
@@ -13,6 +12,7 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [currentImage, setCurrentImage] = useState(userImage);
   const { user } = useUser();
 
   useEffect(() => {
@@ -43,6 +43,10 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
 
     updateUser();
   }, [blob, user]);
+
+  useEffect(() => {
+    setCurrentImage(userImage);
+  }, [userImage]);
 
   const handleFileChange = async () => {
     setError(null);
@@ -90,7 +94,7 @@ export default function AvatarUpload({ userImage }: { userImage: string }) {
           />
         ) : (
           <Image
-            src={userImage}
+            src={currentImage}
             priority={true}
             alt="User Avatar"
             className="object-cover object-center rounded-full"

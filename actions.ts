@@ -40,8 +40,8 @@ export async function createUserAction(formData: FormData) {
 export async function editUserAction(formData: FormData) {
   const name = formData.get("name") as string;
   const nickname = formData.get("nickname") as string;
-  await editUser(name, nickname);
   revalidatePath("/profile");
+  await editUser(name, nickname);
 }
 
 // create message

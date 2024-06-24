@@ -41,12 +41,14 @@ export async function editUser(name: string, nickname: string) {
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-user/${sub}`,
     {
       method: "PUT",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, nickname, sub }),
     }
   );
+
   return response;
 }
 // export async function createUser() {
