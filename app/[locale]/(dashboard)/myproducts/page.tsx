@@ -1,11 +1,11 @@
-import { getMyProducts } from "@/api";
+import { getMyProductsAction } from "@/actions";
 import Heading from "@/components/sharedComponents/UI/Heading";
 import { getI18n } from "@/locales/server";
 import ProductList from "@/components/products/ProductList";
 import BackButton from "@/components/sharedComponents/UI/BackBtn";
 
 async function MyProductsPage() {
-  const myProducts = await getMyProducts();
+  const myProducts = await getMyProductsAction();
   const t = await getI18n();
 
   return (

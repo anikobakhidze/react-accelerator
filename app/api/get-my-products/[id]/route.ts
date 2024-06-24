@@ -1,13 +1,15 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(request: NextRequest) {
-  const id = request.nextUrl.pathname
-    .replace("/api/get-my-products/", "")
-    .trim();
-
+interface IProps {
+  params: {
+    id: string;
+  };
+}
+export const revalidate = 0;
+export async function GET(_: NextRequest, { params: { id } }: IProps) {
   try {
-    const { rows: products } = await sql`
+    const products = await sql`
     SELECT * FROM products WHERE usersub = ${id}
   `;
 

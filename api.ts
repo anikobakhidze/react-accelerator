@@ -41,12 +41,14 @@ export async function editUser(name: string, nickname: string) {
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/edit-user/${sub}`,
     {
       method: "PUT",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, nickname, sub }),
     }
   );
+
   return response;
 }
 
@@ -431,7 +433,6 @@ export async function getRating(product_id: number): Promise<number> {
     }
 
     const data = await response.json();
-
     return data.averageRating;
   } catch (error) {
     console.error("Error fetching rating:", error);
@@ -489,7 +490,6 @@ export async function createCheckout(
     return error;
   }
 }
-
 // get my products
 export async function getMyProducts() {
   const session = await getSession();
@@ -502,6 +502,7 @@ export async function getMyProducts() {
       cache: "no-store",
     }
   );
-  const products = await response.json();
+  const getMyProducts = await response.json();
+  const { rows: products } = getMyProducts;
   return products;
 }

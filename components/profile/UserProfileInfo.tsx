@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useI18n } from "../../locales/client";
 import { editUserAction } from "@/actions";
 
 function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
   const t = useI18n();
+
   const [userProfile, setUserProfile] = useState({
     name: userInfo.name || "",
     nickname: userInfo.nickname || "",
@@ -16,6 +17,19 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
     nickname: userInfo.nickname || "",
   });
   const [updateMessage, setUpdateMessage] = useState("");
+
+  useEffect(() => {
+    setUserProfile({
+      name: userInfo.name || "",
+      nickname: userInfo.nickname || "",
+      sub: userInfo.sub || "",
+      email: userInfo.email || "",
+    });
+    setOriginalProfile({
+      name: userInfo.name || "",
+      nickname: userInfo.nickname || "",
+    });
+  }, [userInfo]);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserProfile((prevProfile) => ({

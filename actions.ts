@@ -18,6 +18,7 @@ import {
   deleteBlog,
   deleteCart,
   createRating,
+  getMyProducts,
 } from "./api";
 import { revalidatePath } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -39,8 +40,8 @@ export async function createUserAction(formData: FormData) {
 export async function editUserAction(formData: FormData) {
   const name = formData.get("name") as string;
   const nickname = formData.get("nickname") as string;
-  await editUser(name, nickname);
   revalidatePath("/profile");
+  await editUser(name, nickname);
 }
 
 // create message
@@ -170,4 +171,10 @@ export async function createRatingAction(
 ) {
   await createRating(rating, product_id, user_sub);
   revalidatePath("/");
+}
+// get my products
+export async function getMyProductsAction() {
+  const myProducts = await getMyProducts();
+  revalidatePath("/myproducts");
+  return myProducts;
 }
