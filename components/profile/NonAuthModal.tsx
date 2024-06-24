@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { useI18n } from "@/locales/client";
 import { useRouter } from "next/navigation";
@@ -6,21 +7,17 @@ import { LuUser } from "react-icons/lu";
 import { LiaCashRegisterSolid } from "react-icons/lia";
 import { BsBox2Heart } from "react-icons/bs";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0/client";
 interface NonAuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  user: any;
 }
 
-const NonAuthModal: React.FC<NonAuthModalProps> = ({
-  isOpen,
-  onClose,
-  user,
-}) => {
+const NonAuthModal: React.FC<NonAuthModalProps> = ({ isOpen, onClose }) => {
   const t = useI18n();
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
-
+  const { user } = useUser();
   const handleProfileClick = () => {
     if (user) {
       router.push("/profile");

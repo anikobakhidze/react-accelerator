@@ -36,8 +36,8 @@ const AuthButtons = ({ user }: any) => {
           </a>
         </div>
       )}
-      <NonAuthUser onOpenModal={openModal} user={user} />
-      <NonAuthModal isOpen={isModalOpen} onClose={closeModal} user={user} />
+      <NonAuthUser onOpenModal={openModal} />
+      <NonAuthModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };
