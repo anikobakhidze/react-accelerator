@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { deleteCartAction } from "@/actions";
+import { deleteCartAction, emptyUserCart } from "@/actions";
 import { useI18n } from "@/locales/client";
 
 export default function Success() {
@@ -15,7 +15,7 @@ export default function Success() {
   const t = useI18n();
   useEffect(() => {
     if (userId) {
-      deleteCartAction(userId);
+      emptyUserCart(userId);
     }
     router.refresh();
   }, [userId, router]);
