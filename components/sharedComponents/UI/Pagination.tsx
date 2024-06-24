@@ -1,3 +1,5 @@
+"use client";
+import { useI18n } from "@/locales/client";
 import React from "react";
 
 interface PaginationProps {
@@ -16,7 +18,7 @@ function Pagination({
       onPageChange(currentPage + 1);
     }
   };
-
+  const t = useI18n();
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -28,9 +30,9 @@ function Pagination({
       <button
         onClick={handlePreviousPage}
         disabled={currentPage === 1}
-        className="px-4 py-2 mx-2 bg-black hover:opacity-75 text-white dark:bg-white dark:text-black disabled:opacity-50"
+        className="px-4 py-1 mx-2 bg-black hover:opacity-75 text-white dark:bg-white dark:text-black disabled:opacity-50"
       >
-        Previous
+        {t("previous")}
       </button>
       <span className="px-4 py-3 ">
         <span className="text-btn-primary-color font-bold">{currentPage}</span>{" "}
@@ -39,9 +41,9 @@ function Pagination({
       <button
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 mx-2 w-24 bg-black hover:opacity-75 text-white dark:bg-white dark:text-black disabled:opacity-50"
+        className="px-4 py-1 mx-2 w-24 bg-black hover:opacity-75 text-white dark:bg-white dark:text-black disabled:opacity-50"
       >
-        Next
+        {t("next")}
       </button>
     </div>
   );

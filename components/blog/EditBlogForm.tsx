@@ -44,7 +44,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
       console.error("Error uploading image:", error);
       setError(t("editBlog.errorMessage"));
     } finally {
-      setImageLoading(true);
+      setImageLoading(false);
     }
   };
 
@@ -158,6 +158,7 @@ function EditBlogForm({ blogDetails }: { blogDetails: IBlog }) {
           <SuccessModalPages
             close={t("editBlog.close")}
             success={successMessage}
+            href="/blogs"
           />
         )}
         {error && (

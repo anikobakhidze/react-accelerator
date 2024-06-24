@@ -205,13 +205,29 @@ export default {
     totalPrice: "ToTal",
   },
   successPage: {
+    title: "Success",
     paymentSuccess: "Your Payment was Successful",
     thankYou: "Thank you for your payment",
     proceedHome: "Proceed To Home",
   },
   canceledPage: {
+    title: "Cancel",
     paymentCanceled: "Your Payment was Canceled",
     sorry: "We are sorry, your payment was not successful",
     tryAgain: "Try Again",
   },
+  adminPage: {
+    title: "Admin ",
+    description:
+      "This is the admin page where you can manage users, view statistics, and configure settings.",
+  },
+  myProducts: {
+    title: "My Products",
+    description:
+      "This is my products page where you can see your added products",
+    products: "Products",
+    noProducts: "No added products",
+  },
+  previous: "Previous",
+  next: "Next",
 } as const;

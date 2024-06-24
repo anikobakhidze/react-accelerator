@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { updateCartQuantityAction } from "@/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Loader from "../sharedComponents/UI/Loader";
 import { ClipLoader } from "react-spinners";
 import { useI18n } from "@/locales/client";
 function CartQuantityAdjuster({ item }) {

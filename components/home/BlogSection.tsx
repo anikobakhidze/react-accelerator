@@ -2,14 +2,13 @@ import { getI18n } from "@/locales/server";
 import Image from "next/image";
 import headingBackground from "../../public/images/headingB.png";
 import NewBlogs from "../blog/NewBlogs";
-// import { getBlogsAction } from "@/actions";
 async function BlogSection() {
   const t = await getI18n();
-  // const blogs = await getBlogsAction();
+
   return (
     <section>
       <h3 className="text-gray-500 text-center">{t("blogSection.welcome")}</h3>
-      <div className="relative flex justify-center items-center mt-4">
+      <div className="relative flex justify-center items-center t-4">
         <div>
           <Image
             src={headingBackground}

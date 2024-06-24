@@ -5,7 +5,6 @@ import { NextResponse, NextRequest } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const { rating, product_id, user_sub } = await request.json();
-    console.log(user_sub, product_id, rating);
 
     if (!rating || !product_id || !user_sub) {
       return NextResponse.json(

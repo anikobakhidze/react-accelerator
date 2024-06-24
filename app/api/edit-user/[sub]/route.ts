@@ -7,7 +7,6 @@ export async function PUT(request: Request) {
     if (!name || !nickname || !sub) {
       throw new Error(" name, nickname, and sub are required");
     }
-
     const userExists = await sql`SELECT * FROM users WHERE sub=${sub}`;
     if (!userExists) {
       throw new Error("User not found");

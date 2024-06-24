@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function CancelPage() {
   const t = await getI18n();
   return (
-    <div className="flex justify-center items-center flex-1 flex-col p-4">
+    <div className="flex justify-center items-center flex-1 flex-col pb-10 md:py-24 mt-44 md:mt-28">
       <Image
         src={decline}
         width={200}
@@ -21,7 +21,7 @@ export default async function CancelPage() {
       </p>
       <Link
         href="/cart"
-        className="bg-btn-primary-color px-5 py-3 rounded-full hover:opacity-70 transition-all duration-300 text-white hover:shadow-lg mt-6"
+        className="bg-btn-primary-color px-3 py-2 rounded-sm hover:opacity-70 transition-all duration-300 text-white hover:shadow-lg mt-6"
       >
         {t("canceledPage.tryAgain")}
       </Link>

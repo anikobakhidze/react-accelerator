@@ -6,11 +6,12 @@ export async function DELETE(request: NextRequest) {
   try {
     if (!id) throw new Error("ID is required");
 
+    await sql`DELETE FROM rating WHERE product_id=${id}`;
+
     await sql`DELETE FROM products WHERE id=${id}`;
 
     const result = await sql`
-      SELECT id,
-      products FROM carts
+      SELECT id, products FROM carts
     `;
     for (let row of result.rows) {
       let productsArray = row.products;

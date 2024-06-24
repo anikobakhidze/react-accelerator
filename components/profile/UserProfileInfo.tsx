@@ -22,6 +22,7 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
       ...prevProfile,
       name: e.target.value,
     }));
+    setUpdateMessage("");
   };
 
   const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +30,7 @@ function UserProfileInfo({ userInfo }: { userInfo: UserInfo }) {
       ...prevProfile,
       nickname: e.target.value,
     }));
+    setUpdateMessage("");
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

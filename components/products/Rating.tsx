@@ -3,6 +3,8 @@ import { createRatingAction } from "@/actions";
 import React, { useState, useEffect } from "react";
 import { getRating, checkUserRating } from "@/api";
 import { useRouter } from "next/navigation";
+import { ClipLoader } from "react-spinners";
+
 export default function Rating({
   product_id,
   user_sub,
@@ -16,12 +18,15 @@ export default function Rating({
   const [productRating, setProductRating] = useState<number | null | void>(
     null
   );
+  const [loading, setLoading] = useState<boolean>(false);
   const totalStars = 5;
   const router = useRouter();
+
   const handleClick = async (e: React.MouseEvent<HTMLInputElement>) => {
     const currentRating = parseInt(e.currentTarget.value, 10);
     setRating(currentRating);
     setHasRated(true);
+    setLoading(true);
     try {
       await createRatingAction(currentRating, product_id, user_sub);
       const rated = await getRating(product_id);
@@ -29,21 +34,35 @@ export default function Rating({
       router.refresh();
     } catch (error) {
       console.error("Error updating rating:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
   useEffect(() => {
     async function fetchRating() {
-      const currentRating = await getRating(product_id);
-      setProductRating(currentRating);
-      const userHasRated = await checkUserRating(product_id, user_sub);
-      setHasRated(userHasRated);
+      setLoading(true);
+      try {
+        const currentRating = await getRating(product_id);
+        setProductRating(currentRating);
+        const userHasRated = await checkUserRating(product_id, user_sub);
+        setHasRated(userHasRated);
+      } catch (error) {
+        console.error("Error fetching rating:", error);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchRating();
   }, [product_id, user_sub]);
 
   return (
     <div>
-      {hasRated ? (
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <ClipLoader size={30} color="#e4986a" />
+        </div>
+      ) : hasRated ? (
         <div className="mb-4">
           <p className="font-semibold">
             Rating:<span className="text-yellow-400"> &#9733;</span>{" "}

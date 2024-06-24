@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { IoIosLogOut, IoIosLogIn } from "react-icons/io";
 import { LuUser } from "react-icons/lu";
 import { LiaCashRegisterSolid } from "react-icons/lia";
+import { BsBox2Heart } from "react-icons/bs";
+import Link from "next/link";
 interface NonAuthModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -73,6 +75,13 @@ const NonAuthModal: React.FC<NonAuthModalProps> = ({
               <LuUser className="text-lg" />
               <span>{t("profilePage.profile")}</span>
             </button>
+            <Link
+              href="myproducts"
+              className="flex items-center gap-2 text-black  hover:opacity-75 transition-colors duration-300 dark:text-white"
+            >
+              <BsBox2Heart />
+              <span>{t("myProducts.products")}</span>
+            </Link>
             <a
               href="/api/auth/logout"
               className="flex items-center gap-2   text-btn-primary-color  hover:opacity-75 transition-colors duration-300 "

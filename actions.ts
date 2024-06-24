@@ -18,6 +18,7 @@ import {
   deleteBlog,
   deleteCart,
   createRating,
+  getMyProducts,
 } from "./api";
 import { revalidatePath, revalidateTag } from "next/cache";
 export async function deleteUserAction(id: number) {
@@ -174,4 +175,10 @@ export async function createRatingAction(
 ) {
   await createRating(rating, product_id, user_sub);
   revalidatePath("/");
+}
+// get my products
+export async function getMyProductsAction() {
+  const myProducts = await getMyProducts();
+  revalidatePath("/myproducts");
+  return myProducts;
 }

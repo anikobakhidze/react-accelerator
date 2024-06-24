@@ -3,7 +3,7 @@ import headingBackground from "../../../public/images/headingB.png";
 function Heading({ heading }: { heading: string }) {
   return (
     <div>
-      <div className="relative flex justify-center items-center mt-4 mb-10">
+      <div className="relative flex justify-center items-center mt-4 mb-10 ">
         <div>
           <Image
             src={headingBackground}

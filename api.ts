@@ -500,3 +500,19 @@ export async function createCheckout(
     return error;
   }
 }
+// get my products
+export async function getMyProducts() {
+  const session = await getSession();
+  const user = session?.user;
+  const id = user?.sub;
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-my-products/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const getMyProducts = await response.json();
+  const { rows: products } = getMyProducts;
+  return products;
+}

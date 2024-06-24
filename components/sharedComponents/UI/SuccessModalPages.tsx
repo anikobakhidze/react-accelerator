@@ -1,16 +1,16 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { CiCircleCheck } from "react-icons/ci";
 import { useEffect } from "react";
-
+import Link from "next/link";
 function SuccessModalPages({
   success,
   close,
+  href,
 }: {
   success: string;
   close: string;
+  href: string;
 }) {
-  const router = useRouter();
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -26,12 +26,12 @@ function SuccessModalPages({
             <CiCircleCheck className="mr-2 text-3xl" />
             {success}
           </div>
-          <button
-            onClick={() => router.back()}
-            className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
+          <Link
+            href={href}
+            className="mt-4 rounded-full bg-green-600 text-white py-2 px-4  hover:bg-green-700"
           >
             {close}
-          </button>
+          </Link>
         </div>
       )}
     </>
