@@ -52,11 +52,7 @@ export async function editUser(name: string, nickname: string) {
   return response;
 }
 
-export async function getUser() {
-  const session = await getSession();
-  const user = session?.user;
-  const id = user?.sub;
-
+export async function getUser(id: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-user/${id}`,
     {
