@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useI18n } from "@/locales/client";
 import NonAuthModal from "./NonAuthModal";
 import NonAuthUser from "./NonAuthUser";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-const AuthButtons = ({ user }: any) => {
+const AuthButtons = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const t = useI18n();
 
@@ -15,7 +16,7 @@ const AuthButtons = ({ user }: any) => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  const { user } = useUser();
   return (
     <div className="flex items-center">
       {!user && (

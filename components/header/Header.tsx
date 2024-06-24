@@ -10,11 +10,9 @@ import BurgerMenu from "./BurgerMenu";
 import AddProductsBtn from "../products/AddProductsBtn";
 import AddBlogBtn from "../blog/AddBlogBtn";
 import { hasUserRole } from "@/utils/userRole";
-import { getUser } from "@/api";
 async function Header() {
   const session = await getSession();
   const user = session?.user;
-  const userInfo = await getUser();
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 dark:bg-black">
       <SettingsPanel />
@@ -39,7 +37,7 @@ async function Header() {
           <div className="xl:hidden">{user && <AddProductsBtn />}</div>
           {user && <AddToCartBtn />}
           <BurgerMenu user={user} />
-          <AuthButtons user={userInfo} />
+          <AuthButtons />
         </div>
       </div>
     </header>
