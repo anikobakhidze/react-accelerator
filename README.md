@@ -91,7 +91,6 @@ Explore the live demo of Earthen: **<a href="https://react-accelerator-chi.verce
     * *products* - General product listings page.
     * *profile* - User profile management page.
     * *success* - Page displayed upon successful order completion.
-    * *test* - Test page for development purposes.
     * *users* - User management pages.
   * *layout.tsx* - Layout component for the application.
   * *loading.tsx* - Loading component displayed during data fetching.
